@@ -1,0 +1,1145 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Grel Design</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,200..800&family=Instrument+Sans:wght@400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#F0E9DE;
+  --paper-2:#E8DFD0;
+  --sheet:#F7F3EA;
+  --ink:#151413;
+  --ink-2:#5A544B;
+  --ink-3:#8C8579;
+  --line:rgba(21,20,19,.16);
+  --line-strong:rgba(21,20,19,.9);
+  --accent:#8FD9CF;
+  --body-c:#252525;
+  --display:'Bricolage Grotesque','Arial Narrow',Arial,sans-serif;
+  --text:'Instrument Sans',system-ui,-apple-system,'Segoe UI',sans-serif;
+  --mono:'DM Mono',ui-monospace,Menlo,Consolas,monospace;
+  --gut:clamp(16px,3.4vw,52px);
+  --nav-h:64px;
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--text);font-size:16px;line-height:1.55;-webkit-font-smoothing:antialiased;padding-inline:0;overflow-x:hidden}
+img{display:block;max-width:100%;height:auto}
+button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:pointer}
+a{color:inherit;text-decoration:none}
+:focus-visible{outline:2px solid var(--ink);outline-offset:3px}
+::selection{background:var(--accent);color:var(--ink)}
+.wrap{max-width:1440px;margin-inline:auto;padding-inline:var(--gut)}
+.mono{font-family:var(--mono);font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;font-weight:400}
+.h-xl,.h-lg,.h-md{font-family:var(--display);font-stretch:75%;font-weight:700;text-transform:uppercase;line-height:.86;letter-spacing:-.012em;text-wrap:balance;margin:0}
+.h-xl{font-size:clamp(3.6rem,15.5vw,13.5rem)}
+.h-lg{font-size:clamp(2.7rem,9.4vw,8.6rem)}
+.h-md{font-size:clamp(1.9rem,4.6vw,3.6rem);line-height:.92}
+.lede{font-size:clamp(1.05rem,1.5vw,1.3rem);line-height:1.5;max-width:34em;color:var(--ink)}
+.sub{color:var(--ink-2);max-width:32em}
+p{margin:0}
+.sec{padding-block:clamp(72px,11vw,150px)}
+.sec-tight{padding-block:clamp(48px,7vw,96px)}
+.rule{border-top:1px solid var(--line)}
+.label{display:flex;gap:.9rem;align-items:center;color:var(--ink-2)}
+.label::before{content:"";width:22px;height:1px;background:currentColor}
+
+/* nav */
+.nav{position:fixed;top:0;left:0;right:0;z-index:50;height:calc(var(--nav-h) + env(safe-area-inset-top,0px));padding-top:env(safe-area-inset-top,0px);background:color-mix(in srgb,var(--paper) 88%,transparent);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid transparent;transition:border-color .3s}
+.nav.scrolled{border-bottom-color:var(--line)}
+.nav-in{height:var(--nav-h);display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:1rem}
+.brand{display:inline-flex;align-items:center;gap:.7rem;font-family:var(--display);font-stretch:85%;font-size:1.02rem;letter-spacing:.16em;text-transform:uppercase}
+.brand b{font-weight:800}.brand span{font-weight:300}
+.brand svg{width:26px;height:26px;flex:none}
+.nav-links{display:flex;gap:clamp(1rem,2.6vw,2.4rem)}
+.nav-links a,.nav-right button{position:relative;padding-block:.4rem}
+.nav-links a::after,.nav-right button::after{content:"";position:absolute;left:0;right:0;bottom:0;height:1px;background:currentColor;transform:scaleX(0);transform-origin:left;transition:transform .35s cubic-bezier(.2,.7,.2,1)}
+.nav-links a:hover::after,.nav-links a.on::after,.nav-right button:hover::after{transform:scaleX(1)}
+.nav-right{display:flex;justify-content:flex-end;align-items:center;gap:1.2rem}
+.cart-n{display:inline-grid;place-items:center;min-width:1.5em;height:1.5em;margin-left:.5em;background:var(--ink);color:var(--paper);font-size:.66rem;letter-spacing:0}
+.menu-btn{display:none}
+@media (max-width:820px){
+  .nav-in{grid-template-columns:1fr auto}
+  .nav-links{position:fixed;inset:calc(var(--nav-h) + env(safe-area-inset-top,0px)) 0 auto 0;flex-direction:column;gap:0;background:var(--paper);border-bottom:1px solid var(--line);padding:.6rem var(--gut) 1.4rem;transform:translateY(-8px);opacity:0;pointer-events:none;transition:.25s}
+  .nav-links a{padding-block:1rem;border-bottom:1px solid var(--line);font-size:.9rem}
+  .nav.open .nav-links{opacity:1;transform:none;pointer-events:auto}
+  .menu-btn{display:inline-block}
+  .nav-right{gap:.9rem}
+}
+
+/* buttons */
+.btn{display:inline-flex;align-items:center;gap:.8rem;padding:1.05rem 1.5rem;border:1.5px solid var(--ink);font-family:var(--mono);font-size:.74rem;letter-spacing:.14em;text-transform:uppercase;font-weight:500;transition:background .25s,color .25s,transform .25s;background:transparent}
+.btn .ar{transition:transform .3s}
+.btn:hover .ar{transform:translateX(5px)}
+.btn.solid{background:var(--ink);color:var(--paper)}
+.btn.solid:hover{background:var(--accent);color:var(--ink);border-color:var(--ink)}
+.btn:not(.solid):hover{background:var(--ink);color:var(--paper)}
+.btn.sm{padding:.75rem 1rem;font-size:.68rem}
+.btn[disabled]{opacity:.4;pointer-events:none}
+.linkline{display:inline-block;border-bottom:1px solid currentColor;padding-bottom:2px}
+
+/* hero */
+.hero{padding-top:calc(var(--nav-h) + clamp(28px,5vw,64px));position:relative;overflow:hidden}
+.hero-grid{display:grid;grid-template-columns:repeat(12,1fr);gap:0 clamp(12px,2vw,28px);align-items:end}
+.hero-kicker{grid-column:1/-1;display:flex;justify-content:space-between;gap:1rem;color:var(--ink-2);margin-bottom:clamp(8px,2vw,24px);flex-wrap:wrap}
+.hero h1{grid-column:1/-1;grid-row:2;position:relative;z-index:2;margin-bottom:-.03em;line-height:.8}
+.hero-img{grid-column:4/13;grid-row:3;margin-top:calc(-1 * clamp(40px,9vw,150px));position:relative;z-index:1;-webkit-mask-image:radial-gradient(ellipse 70% 68% at 50% 52%,#000 66%,transparent 100%);mask-image:radial-gradient(ellipse 70% 68% at 50% 52%,#000 66%,transparent 100%)}
+.hero-img img{width:100%;aspect-ratio:1110/1040;object-fit:cover;transition:opacity .5s}
+.hero-copy{grid-column:1/5;grid-row:3;align-self:end;display:flex;flex-direction:column;gap:1.6rem;padding-bottom:clamp(20px,5vw,80px);position:relative;z-index:3}
+.hero-copy .tagline{font-family:var(--display);font-stretch:80%;font-weight:500;font-size:clamp(1.5rem,2.6vw,2.2rem);line-height:1.05;letter-spacing:-.005em;text-transform:none}
+.hero-cta{display:flex;flex-wrap:wrap;gap:.7rem}
+.hero-meta{display:flex;flex-wrap:wrap;gap:.4rem 1.4rem;color:var(--ink-2)}
+.hero-meta i{font-style:normal;color:var(--ink)}
+@media (max-width:900px){
+  .hero-img{grid-column:1/-1;grid-row:3;margin-top:-2rem;-webkit-mask-image:radial-gradient(ellipse 70% 64% at 50% 50%,#000 60%,transparent 100%);mask-image:radial-gradient(ellipse 70% 64% at 50% 50%,#000 60%,transparent 100%)}
+  .hero-copy{grid-column:1/-1;grid-row:4;padding-bottom:2rem}
+}
+
+/* idea */
+.idea-grid{display:grid;grid-template-columns:repeat(12,1fr);gap:clamp(24px,4vw,64px) clamp(12px,2vw,28px);align-items:end}
+.idea-grid .txt{grid-column:1/6;display:flex;flex-direction:column;gap:1.4rem}
+.idea-grid figure{grid-column:6/13;margin:0}
+.idea-grid figure img{width:100%;aspect-ratio:3/2;object-fit:cover}
+.idea-grid figcaption{margin-top:.8rem;color:var(--ink-2);display:flex;justify-content:space-between;gap:1rem}
+.idea-head{grid-column:1/-1}
+@media (max-width:860px){.idea-grid .txt,.idea-grid figure{grid-column:1/-1}}
+
+/* sheet (sticky) */
+.sheet-sec{position:relative;height:360vh;border-top:1px solid var(--line)}
+.sheet-st{position:sticky;top:env(safe-area-inset-top,0px);height:100vh;min-height:600px;padding-top:calc(var(--nav-h) + 12px);display:flex;flex-direction:column;overflow:hidden}
+.sheet-in{flex:1;min-height:0;display:grid;grid-template-rows:minmax(0,1fr);grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:clamp(16px,3vw,48px);align-items:center;padding-bottom:1rem}
+.sheet-t{display:flex;flex-direction:column;gap:1.2rem;align-self:center}
+.sheet-t .cap{min-height:4.6em;max-width:26em;color:var(--ink-2)}
+.stages{display:flex;flex-wrap:wrap;gap:.3rem 1.2rem;margin-top:.4rem}
+.stages span{color:var(--ink-3);border-bottom:1px solid transparent;transition:color .3s,border-color .3s;padding-bottom:3px}
+.stages span.on{color:var(--ink);border-color:var(--ink)}
+.sheet-fig{position:relative;height:100%;min-height:0;min-width:0;display:grid;place-items:center}
+.sheet-fig svg{width:100%;height:100%;overflow:visible}
+.sheet-fig .photo{position:absolute;inset:6% 6%;display:grid;place-items:center;opacity:0;pointer-events:none;-webkit-mask-image:radial-gradient(ellipse 60% 58% at 50% 52%,#000 60%,transparent 100%);mask-image:radial-gradient(ellipse 60% 58% at 50% 52%,#000 60%,transparent 100%)}
+.sheet-fig .photo img{width:100%;height:100%;object-fit:contain}
+.dr text{font-family:var(--mono);font-size:2.3px;letter-spacing:.06em;fill:var(--ink-2);text-transform:uppercase}
+.dr .ln{stroke:var(--ink);stroke-width:.28;fill:none;vector-effect:non-scaling-stroke}
+.dr .thin{stroke:var(--ink-3);stroke-width:.14;fill:none}
+.dr .cut{stroke:var(--ink);stroke-width:.4;fill:none;stroke-linejoin:round}
+@media (max-width:820px){
+  .sheet-sec{height:340vh}
+  .sheet-in{grid-template-columns:minmax(0,1fr);grid-template-rows:auto minmax(0,1fr);gap:.5rem}
+  .sheet-t .cap{min-height:3.6em;font-size:.92rem}
+  .sheet-t .h-lg{font-size:clamp(2.4rem,13vw,4rem)}
+}
+
+/* zero waste */
+.zero{background:var(--ink);color:var(--paper)}
+.zero .sub{color:#B9B2A4}.zero .lede,.order .lede{color:var(--paper)}.zero .label,.order .label{color:#B9B2A4}.order .btn:not(.solid):hover{background:var(--paper);color:var(--ink)}
+.zero-grid{display:grid;grid-template-columns:repeat(12,1fr);gap:clamp(24px,4vw,64px) clamp(12px,2vw,28px)}
+.zero-grid .h-lg{grid-column:1/8}
+.zero-grid .txt{grid-column:8/13;align-self:end;display:flex;flex-direction:column;gap:1.2rem}
+.zero-nums{grid-column:1/-1;display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid rgba(240,233,222,.25)}
+.zero-nums div{padding:clamp(16px,2.4vw,32px) 0;display:flex;flex-direction:column;gap:.5rem}
+.zero-nums div+div{padding-left:clamp(12px,2.4vw,32px);border-left:1px solid rgba(240,233,222,.25)}
+.zero-nums b{font-family:var(--display);font-stretch:75%;font-weight:700;font-size:clamp(3.6rem,13vw,12rem);line-height:.8}
+.zero-nums span{color:#B9B2A4}
+.zero-nums div:last-child b{color:var(--accent)}
+@media (max-width:860px){.zero-grid .h-lg,.zero-grid .txt{grid-column:1/-1}}
+
+/* 3D stage shared */
+.stage{position:relative;background:transparent}
+.stage canvas{display:block;width:100%;height:100%;touch-action:pan-y;cursor:grab}
+.stage canvas:active{cursor:grabbing}
+.stage .fallback{position:absolute;inset:0;display:none;place-items:center}
+.stage.nogl .fallback{display:grid}
+.stage.nogl canvas{display:none}
+.stage .fallback img{width:100%;height:100%;object-fit:contain;-webkit-mask-image:radial-gradient(ellipse 72% 70% at 50% 52%,#000 66%,transparent 100%);mask-image:radial-gradient(ellipse 72% 70% at 50% 52%,#000 66%,transparent 100%)}
+.hint{position:absolute;left:0;bottom:0;color:var(--ink-3);pointer-events:none}
+
+/* assembly */
+.asm{border-top:1px solid var(--line)}
+.asm-grid{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:clamp(20px,4vw,64px);align-items:stretch}
+.asm-l{display:flex;flex-direction:column;justify-content:space-between;gap:2rem}
+.steps{list-style:none;margin:0;padding:0;border-top:1px solid var(--line)}
+.steps li{border-bottom:1px solid var(--line)}
+.steps button{width:100%;display:grid;grid-template-columns:3.2rem 1fr;gap:.6rem;align-items:baseline;text-align:left;padding:.95rem 0;color:var(--ink-3);transition:color .25s}
+.steps button:hover{color:var(--ink)}
+.steps li.on button{color:var(--ink)}
+.steps .nm{font-family:var(--display);font-stretch:80%;font-weight:600;font-size:1.25rem;text-transform:uppercase;letter-spacing:.01em}
+.steps .ds{grid-column:2;font-size:.95rem;max-height:0;overflow:hidden;transition:max-height .4s,margin .4s;color:var(--ink-2)}
+.steps li.on .ds{max-height:4em;margin-top:.2rem}
+.steps .n{font-family:var(--mono);font-size:.72rem;letter-spacing:.1em}
+.asm .stage{height:clamp(360px,52vw,660px)}
+@media (max-width:860px){.asm-grid{grid-template-columns:1fr}.asm .stage{order:-1;height:clamp(300px,80vw,460px)}}
+
+/* rotation */
+.rot{border-top:1px solid var(--line)}
+.rot-grid{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:clamp(20px,4vw,64px);align-items:center}
+.rot .stage{height:clamp(340px,50vw,640px)}
+.rot-r{display:flex;flex-direction:column;gap:1.6rem}
+.ctl{display:flex;gap:.6rem;flex-wrap:wrap}
+@media (max-width:860px){.rot-grid{grid-template-columns:1fr}}
+
+/* configurator */
+.cfg{border-top:1px solid var(--line)}
+.cfg-head{display:flex;justify-content:space-between;align-items:end;gap:2rem;flex-wrap:wrap;margin-bottom:clamp(24px,4vw,56px)}
+.cfg-grid{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:clamp(20px,4vw,72px);align-items:start}
+.cfg .stage{height:clamp(380px,56vw,700px)}
+.stage-tags{position:absolute;right:0;top:0;display:flex;flex-direction:column;align-items:flex-end;gap:.2rem;color:var(--ink-2);pointer-events:none}
+.stage-btns{position:absolute;right:0;bottom:0;display:flex;gap:.5rem}
+.panel{display:flex;flex-direction:column;gap:1.6rem;position:sticky;top:calc(var(--nav-h) + 20px)}
+.p-name{font-family:var(--display);font-stretch:75%;font-weight:700;text-transform:uppercase;font-size:clamp(2rem,3.6vw,3rem);line-height:.9;display:flex;flex-wrap:wrap;gap:.2em .35em;align-items:baseline}
+.p-name .x{color:var(--ink-3);font-weight:400}
+.tabs{display:grid;grid-template-columns:repeat(3,1fr);border:1.5px solid var(--ink)}
+.tabs.pair{grid-template-columns:repeat(2,1fr);gap:0}
+.tabs button{padding:.8rem .4rem;font-family:var(--mono);font-size:.66rem;letter-spacing:.1em;text-transform:uppercase;text-align:center;transition:background .2s,color .2s;line-height:1.3}
+.tabs button+button{border-left:1.5px solid var(--ink)}
+.tabs button small{display:block;opacity:.7;letter-spacing:.04em;font-size:.62rem}
+.tabs button[aria-pressed=true]{background:var(--ink);color:var(--paper)}
+.tabs button:not([aria-pressed=true]):hover{background:var(--paper-2)}
+.row-h{display:flex;justify-content:space-between;color:var(--ink-2);margin-bottom:.7rem}
+.row-h b{font-weight:500;color:var(--ink)}
+.sw{display:grid;grid-template-columns:repeat(7,1fr);gap:clamp(4px,1vw,10px)}
+.sw button{display:flex;flex-direction:column;align-items:center;gap:.5rem;color:var(--ink-3)}
+.sw i{display:block;width:100%;max-width:52px;aspect-ratio:1;border-radius:50%;background:var(--c);box-shadow:inset 0 0 0 1px rgba(21,20,19,.14);position:relative;transition:transform .25s}
+.sw button:hover i{transform:scale(1.07)}
+.sw button[aria-pressed=true]{color:var(--ink)}
+.sw button[aria-pressed=true] i::after{content:"";position:absolute;inset:-6px;border-radius:50%;border:1.5px solid var(--ink)}
+.sw span{font-family:var(--mono);font-size:.55rem;letter-spacing:.06em;text-transform:uppercase}
+@media (max-width:520px){.sw span{display:none}}
+.ral{display:grid;grid-template-columns:1fr 1fr;gap:.8rem}
+.ral label{display:flex;flex-direction:column;gap:.4rem;color:var(--ink-2)}
+.ral .in{display:flex;align-items:center;gap:.6rem;border-bottom:1.5px solid var(--ink);padding-bottom:.35rem}
+.ral input{flex:1;min-width:0;background:none;border:0;font-family:var(--mono);font-size:1rem;letter-spacing:.08em;color:var(--ink);padding:.2rem 0;outline:none;text-transform:uppercase}
+.ral .chip{width:22px;height:22px;border-radius:50%;background:var(--c,#ccc);box-shadow:inset 0 0 0 1px rgba(21,20,19,.2);flex:none}
+.note{color:var(--ink-2);font-size:.9rem}
+.opt{display:flex;justify-content:space-between;align-items:center;gap:1rem;padding:1rem 0;border-block:1px solid var(--line);cursor:pointer}
+.opt input{position:absolute;opacity:0;pointer-events:none}
+.opt .box{width:22px;height:22px;border:1.5px solid var(--ink);display:grid;place-items:center;flex:none}
+.opt .box::after{content:"";width:10px;height:10px;background:var(--ink);transform:scale(0);transition:transform .2s}
+.opt input:checked+.box::after{transform:scale(1)}
+.opt input:focus-visible+.box{outline:2px solid var(--ink);outline-offset:3px}
+.opt .t{display:flex;flex-direction:column}
+.opt .t b{font-family:var(--display);font-stretch:80%;font-weight:600;text-transform:uppercase;font-size:1.1rem}
+.buy{display:flex;justify-content:space-between;align-items:end;gap:1rem;flex-wrap:wrap}
+.price{font-family:var(--display);font-stretch:75%;font-weight:700;font-size:clamp(2.4rem,4vw,3.4rem);line-height:.9;letter-spacing:-.01em;font-variant-numeric:tabular-nums}
+.price small{display:block;font-family:var(--mono);font-size:.62rem;letter-spacing:.14em;font-weight:400;color:var(--ink-2);text-transform:uppercase;margin-top:.5rem}
+@media (max-width:900px){.cfg-grid{grid-template-columns:1fr}.panel{position:static}}
+
+/* editions */
+.ed{border-top:1px solid var(--line)}
+.ed-head{display:grid;grid-template-columns:repeat(12,1fr);gap:1.4rem clamp(12px,2vw,28px);margin-bottom:clamp(28px,4vw,56px);align-items:end}
+.ed-head .h-lg{grid-column:1/9}.ed-head p{grid-column:9/13}
+@media (max-width:860px){.ed-head .h-lg,.ed-head p{grid-column:1/-1}}
+.ed-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:clamp(20px,3vw,44px) clamp(10px,1.6vw,24px)}
+.ed-grid button{text-align:left;display:flex;flex-direction:column;gap:.5rem;position:relative}
+.ed-grid .im{overflow:hidden;-webkit-mask-image:radial-gradient(ellipse 72% 70% at 50% 52%,#000 66%,transparent 100%);mask-image:radial-gradient(ellipse 72% 70% at 50% 52%,#000 66%,transparent 100%)}
+.ed-grid img{width:100%;aspect-ratio:1110/1040;object-fit:cover;transition:transform .6s cubic-bezier(.2,.7,.2,1)}
+.ed-grid button:hover img{transform:scale(1.06)}
+.ed-grid .cap{display:flex;justify-content:space-between;gap:.5rem;border-top:1px solid var(--line);padding-top:.55rem;font-size:.62rem}
+.ed-grid .cap em{font-style:normal;color:var(--ink-3)}
+.ed-grid button.on .cap{border-color:var(--ink)}
+.ed-grid button.on .cap b{background:linear-gradient(transparent 85%,var(--accent) 85%)}
+.ed-grid .cap b{font-weight:500}
+@media (max-width:980px){.ed-grid{grid-template-columns:repeat(3,1fr)}}
+@media (max-width:560px){.ed-grid{grid-template-columns:repeat(2,1fr)}}
+
+/* chess */
+.chess{background:var(--paper-2)}
+.chess-grid{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:clamp(20px,4vw,64px);align-items:center}
+.chess-l{display:flex;flex-direction:column;gap:1.5rem}
+.flip-wrap{perspective:1600px;display:grid;place-items:center;padding:clamp(8px,3vw,40px);position:relative}
+.coin{position:relative;z-index:1;width:min(100%,560px);aspect-ratio:1;transform-style:preserve-3d;transition:transform 1.3s cubic-bezier(.5,0,.15,1)}
+.coin.flipped{transform:rotateY(180deg)}
+.coin .face{position:absolute;inset:0;border-radius:50%;backface-visibility:hidden;-webkit-backface-visibility:hidden;overflow:hidden;box-shadow:0 30px 40px -24px rgba(21,20,19,.45),inset 0 0 0 1.5px rgba(21,20,19,.25)}
+.coin .front{background:var(--accent);transition:background .5s}
+.coin .back{transform:rotateY(180deg);background:var(--accent)}
+.coin svg{width:100%;height:100%;display:block}
+.coin .edge{position:absolute;inset:0;border-radius:50%;pointer-events:none}
+.price-tag{display:flex;align-items:baseline;gap:1rem;flex-wrap:wrap}
+.price-tag b{font-family:var(--display);font-stretch:75%;font-weight:700;font-size:clamp(2.6rem,5vw,4rem);line-height:.9}
+@media (max-width:860px){.chess-grid{grid-template-columns:1fr}}
+
+/* natural / custom */
+.nat-grid{display:grid;grid-template-columns:minmax(0,6fr) minmax(0,6fr);gap:clamp(20px,4vw,64px);align-items:center}
+.nat-grid figure{margin:0;-webkit-mask-image:radial-gradient(ellipse 72% 70% at 50% 52%,#000 66%,transparent 100%);mask-image:radial-gradient(ellipse 72% 70% at 50% 52%,#000 66%,transparent 100%)}
+.nat-grid img{width:100%;aspect-ratio:1110/1040;object-fit:cover}
+.nat-r{display:flex;flex-direction:column;gap:1.5rem}
+@media (max-width:860px){.nat-grid{grid-template-columns:1fr}.nat-grid figure{order:-1}}
+.cus{border-top:1px solid var(--line)}
+.cus-grid{display:grid;grid-template-columns:repeat(12,1fr);gap:1.6rem clamp(12px,2vw,28px);align-items:end}
+.cus-grid .h-lg{grid-column:1/8}
+.cus-grid .r{grid-column:8/13;display:flex;flex-direction:column;gap:1.3rem}
+.ralband{grid-column:1/-1;display:flex;height:clamp(60px,10vw,140px)}
+.ralband i{flex:1;background:var(--c)}
+@media (max-width:860px){.cus-grid .h-lg,.cus-grid .r{grid-column:1/-1}}
+
+/* italy + greta */
+.italy{position:relative;color:#fff;overflow:hidden;background:#3a352d}
+.italy img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 35%}
+.italy::before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(21,20,19,.55),rgba(21,20,19,.05) 35%,rgba(21,20,19,.72));z-index:1}
+.italy .wrap{position:relative;z-index:2;min-height:clamp(520px,80vh,860px);display:flex;flex-direction:column;justify-content:space-between;padding-block:clamp(28px,5vw,64px)}
+.italy .row{display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;align-items:end}
+.italy p{max-width:26em;color:#F0E9DE}
+.greta{border-bottom:1px solid var(--line)}
+.greta-grid{display:grid;grid-template-columns:repeat(12,1fr);gap:1.6rem clamp(12px,2vw,28px)}
+.greta-grid .h-lg{grid-column:1/-1}
+.greta-grid .q{grid-column:1/6;display:flex;flex-direction:column;gap:1rem}
+.greta-grid .txt{grid-column:7/13;display:flex;flex-direction:column;gap:1.2rem}
+.greta .big{font-family:var(--display);font-stretch:85%;font-weight:500;font-size:clamp(1.3rem,2.4vw,2rem);line-height:1.15;text-wrap:balance}
+@media (max-width:860px){.greta-grid .q,.greta-grid .txt{grid-column:1/-1}}
+
+/* product page */
+.pp-intro{padding-top:calc(var(--nav-h) + clamp(24px,4vw,56px))}
+.pp-grid{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:clamp(20px,4vw,72px);align-items:center}
+.pp-grid figure{margin:0;-webkit-mask-image:radial-gradient(ellipse 72% 70% at 50% 52%,#000 66%,transparent 100%);mask-image:radial-gradient(ellipse 72% 70% at 50% 52%,#000 66%,transparent 100%)}
+.pp-grid img{width:100%;aspect-ratio:1110/1040;object-fit:cover}
+.pp-r{display:flex;flex-direction:column;gap:1.5rem}
+.pp-r .dim{font-family:var(--mono);font-size:.8rem;letter-spacing:.14em;color:var(--ink-2)}
+.subnav{position:sticky;top:calc(var(--nav-h) + env(safe-area-inset-top,0px));z-index:40;background:color-mix(in srgb,var(--paper) 92%,transparent);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border-block:1px solid var(--line);overflow-x:auto;white-space:nowrap;scrollbar-width:none}
+.subnav::-webkit-scrollbar{display:none}
+.subnav .wrap{display:flex;gap:clamp(1rem,2vw,2rem);padding-block:.85rem}
+.subnav a{color:var(--ink-2);flex:none;transition:color .2s}
+.subnav a:hover,.subnav a.on{color:var(--ink)}
+.subnav a.on{border-bottom:1px solid var(--ink)}
+.spec{width:100%;border-collapse:collapse}
+.spec th,.spec td{text-align:left;padding:1rem 0;border-top:1px solid var(--line);vertical-align:top;font-weight:400}
+.spec tr:last-child th,.spec tr:last-child td{border-bottom:1px solid var(--line)}
+.spec th{width:34%;color:var(--ink-2);padding-right:1rem}
+.spec-grid{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:clamp(20px,4vw,72px)}
+@media (max-width:860px){.spec-grid,.pp-grid{grid-template-columns:1fr}.pp-grid figure{order:-1}}
+.order{background:var(--ink);color:var(--paper)}
+.order .btn{border-color:var(--paper)}
+.order .btn.solid{background:var(--paper);color:var(--ink)}
+.order .btn.solid:hover{background:var(--accent)}
+.order .sub{color:#B9B2A4}
+.order-sum{display:flex;flex-direction:column;gap:1.4rem;margin-top:1.6rem;max-width:34em}
+
+/* collection / about / contact */
+.pg-head{padding-top:calc(var(--nav-h) + clamp(40px,7vw,100px));padding-bottom:clamp(28px,4vw,56px)}
+.coll-list{border-top:1px solid var(--line-strong)}
+.coll-item{display:grid;grid-template-columns:5rem minmax(0,1fr) minmax(0,1.1fr) auto;gap:clamp(12px,2vw,28px);align-items:center;padding-block:clamp(18px,2.6vw,36px);border-bottom:1px solid var(--line)}
+.coll-item .n{color:var(--ink-3)}
+.coll-item .nm{font-family:var(--display);font-stretch:75%;font-weight:700;text-transform:uppercase;font-size:clamp(2.2rem,7vw,6rem);line-height:.9}
+.coll-item .im{-webkit-mask-image:radial-gradient(ellipse 72% 70% at 50% 52%,#000 66%,transparent 100%);mask-image:radial-gradient(ellipse 72% 70% at 50% 52%,#000 66%,transparent 100%)}
+.coll-item .im img{width:100%;aspect-ratio:1110/1040;object-fit:cover;max-height:340px}
+.coll-item.live:hover .nm{color:var(--ink)}
+.coll-item.soon{color:var(--ink-3)}
+.coll-item .ph{aspect-ratio:1110/1040;max-height:340px;display:grid;place-items:center;color:var(--ink-3)}
+.coll-item .ph svg{width:64px;height:64px}
+@media (max-width:820px){.coll-item{grid-template-columns:2.6rem 1fr}.coll-item .im,.coll-item .ph{grid-column:1/-1;order:5}.coll-item .go{display:none}}
+.form{display:flex;flex-direction:column;gap:1.4rem;max-width:34rem}
+.form label{display:flex;flex-direction:column;gap:.4rem;color:var(--ink-2)}
+.form input,.form textarea{background:none;border:0;border-bottom:1.5px solid var(--ink);font:inherit;font-size:1.05rem;color:var(--ink);padding:.5rem 0;outline:none;border-radius:0;resize:vertical}
+.form input:focus,.form textarea:focus{border-bottom-color:var(--accent);box-shadow:0 1.5px 0 var(--accent)}
+.two{display:grid;grid-template-columns:repeat(12,1fr);gap:clamp(20px,4vw,64px) clamp(12px,2vw,28px)}
+.two>.a{grid-column:1/7}.two>.b{grid-column:8/13}
+@media (max-width:860px){.two>.a,.two>.b{grid-column:1/-1}}
+
+/* footer */
+.foot{background:var(--paper);border-top:1px solid var(--line-strong);padding-block:clamp(40px,6vw,80px) 28px}
+.foot-grid{display:grid;grid-template-columns:repeat(12,1fr);gap:2rem clamp(12px,2vw,28px)}
+.foot-b{grid-column:1/6;display:flex;flex-direction:column;gap:1.2rem}
+.foot-b svg{width:clamp(70px,9vw,120px);height:auto}
+.foot-c{grid-column:span 2}
+.foot-c h4{margin:0 0 .9rem;font-weight:400;color:var(--ink-3)}
+.foot-c a,.foot-c span{display:block;padding-block:.2rem}
+.foot-c a:hover{text-decoration:underline;text-underline-offset:3px}
+.foot-c span{color:var(--ink-3)}
+.foot-end{margin-top:clamp(28px,5vw,64px);display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;color:var(--ink-3)}
+@media (max-width:860px){.foot-b{grid-column:1/-1}.foot-c{grid-column:span 6}}
+
+/* cart drawer */
+.veil{position:fixed;inset:0;background:rgba(21,20,19,.4);z-index:90;opacity:0;pointer-events:none;transition:opacity .3s}
+.drawer{position:fixed;top:0;right:0;bottom:0;width:min(440px,100%);background:var(--paper);z-index:100;transform:translateX(102%);visibility:hidden;transition:transform .45s cubic-bezier(.2,.7,.2,1),visibility 0s linear .45s;display:flex;flex-direction:column;padding:calc(var(--nav-h)/2 + env(safe-area-inset-top,0px)) var(--gut) calc(24px + env(safe-area-inset-bottom,0px));border-left:1.5px solid var(--ink)}
+body.cart-open .veil{opacity:1;pointer-events:auto}
+body.cart-open .drawer{transform:none;visibility:visible;transition-delay:0s}
+.drawer header{display:flex;justify-content:space-between;align-items:center;padding-bottom:1rem;border-bottom:1px solid var(--ink)}
+.drawer .items{flex:1;overflow:auto;padding-block:.5rem}
+.cart-item{display:grid;grid-template-columns:84px 1fr auto;gap:1rem;padding-block:1rem;border-bottom:1px solid var(--line);align-items:start}
+.cart-item img{width:84px;aspect-ratio:1110/1040;object-fit:cover}
+.cart-item b{font-family:var(--display);font-stretch:80%;font-weight:700;text-transform:uppercase;font-size:1.1rem;line-height:1}
+.cart-item .d{color:var(--ink-2);font-size:.85rem;margin-top:.3rem}
+.cart-item .rm{color:var(--ink-3);margin-top:.5rem;text-decoration:underline;text-underline-offset:3px}
+.empty{padding-block:2rem;color:var(--ink-2)}
+.drawer footer{border-top:1px solid var(--ink);padding-top:1rem;display:flex;flex-direction:column;gap:1rem}
+.drawer .tot{display:flex;justify-content:space-between;align-items:baseline}
+.drawer .tot b{font-family:var(--display);font-stretch:75%;font-weight:700;font-size:2rem}
+.toast{position:fixed;left:50%;bottom:calc(20px + env(safe-area-inset-bottom,0px));transform:translate(-50%,20px);background:var(--ink);color:var(--paper);padding:.8rem 1.1rem;z-index:120;opacity:0;pointer-events:none;transition:.3s}
+.toast.on{opacity:1;transform:translate(-50%,0)}
+
+/* reveal */
+.rv{opacity:1;transform:none}
+@media (prefers-reduced-motion:no-preference){
+  .rv.pre{opacity:.001;transform:translateY(18px)}
+  .rv{transition:opacity .9s cubic-bezier(.2,.7,.2,1),transform .9s cubic-bezier(.2,.7,.2,1)}
+}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.coin{transition-duration:.01s}}
+</style>
+<header class="nav" id="nav">
+  <div class="wrap nav-in">
+    <a class="brand" href="#/" data-link="/" aria-label="Grel Design, home"><span id="brand-logo"></span><span><b>GREL</b> <span>DESIGN</span></span></a>
+    <nav class="nav-links mono" id="navlinks" aria-label="Main">
+      <a href="#/collection" data-link="/collection">Collection</a>
+      <a href="#/tuttotondo" data-link="/tuttotondo">TuttoTondo</a>
+      <a href="#/about" data-link="/about">About</a>
+      <a href="#/contact" data-link="/contact">Contact</a>
+    </nav>
+    <div class="nav-right mono">
+      <button id="cartbtn" aria-label="Open cart">Cart<span class="cart-n" id="cartn">0</span></button>
+      <button class="menu-btn" id="menubtn" aria-label="Menu" aria-expanded="false">Menu</button>
+    </div>
+  </div>
+</header>
+<main id="app"></main>
+<footer class="foot" id="foot"></footer>
+<div class="veil" id="veil"></div>
+<aside class="drawer" id="drawer" aria-label="Cart">
+  <header><span class="mono">Cart</span><button class="mono" id="cartclose">Close ✕</button></header>
+  <div class="items" id="cartitems"></div>
+  <footer>
+    <div class="tot"><span class="mono">Total</span><b id="carttot">€0</b></div>
+    <button class="btn solid" id="checkout">Checkout <span class="ar">→</span></button>
+    <p class="note" id="checkmsg">Draft site: checkout is not connected yet.</p>
+  </footer>
+</aside>
+<div class="toast mono" id="toast" role="status"></div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script>
+"use strict";
+/* ============ CONFIG: change prices here ============ */
+const PRICE={standard:329,custom:479,naturalMin:499,naturalMax:549,chess:75,cards:75};
+const SURFACES={none:{label:null},chess:{label:'Chess board'},cards:{label:'Cards'}};
+const COLORS=[
+  ['cream','Cream','#E8DFD0'],['sunset','Sunset','#E8753D'],['brick','Brick','#8E3F3B'],
+  ['seaside','Seaside','#8FD9CF'],['blue','Blue','#315C9A'],['white','White','#F7F6F2'],['graphite','Graphite','#252525']];
+const CMAP=Object.fromEntries(COLORS.map(c=>[c[0],{id:c[0],name:c[1],hex:c[2]}]));
+const EDITIONS=[['graphite','seaside'],['graphite','sunset'],['graphite','brick'],['graphite','blue'],['graphite','cream'],
+  ['cream','seaside'],['cream','brick'],['cream','blue'],['blue','cream'],['brick','cream']];
+const RAL={1001:'#C2B078',1013:'#EAE6CA',1015:'#E6D2B5',1018:'#FACA30',2004:'#E75B12',2008:'#EE6A25',3000:'#AB2524',3002:'#A2231D',3004:'#6B1C23',3013:'#9B2D30',3020:'#C1121C',
+  5012:'#3B83BD',5013:'#1E213D',5014:'#606E8C',5015:'#2271B3',5024:'#5D9B9B',6005:'#2F4538',6018:'#57A639',6019:'#B9CEAC',6021:'#89AC76',6027:'#7EBAB5',
+  7016:'#293133',7021:'#23282B',7035:'#CBD0CC',7044:'#B9B9A8',8004:'#8D4931',8017:'#45322E',9001:'#FDF4E3',9003:'#F4F4F4',9005:'#0A0A0A',9010:'#F1EDE1',9016:'#F1F0EA'};
+const eur=n=>'€'+n.toLocaleString('en-US');
+const $=(s,r=document)=>r.querySelector(s), $$=(s,r=document)=>[...r.querySelectorAll(s)];
+const clamp=(v,a=0,b=1)=>Math.min(b,Math.max(a,v));
+const hexRGB=h=>[1,3,5].map(i=>parseInt(h.slice(i,i+2),16));
+
+/* ============ STATE ============ */
+const cfg={finish:'standard',body:'graphite',accent:'seaside',ral1:'',ral2:'',surface:'none'};
+const cart=[];
+const listeners=new Set();
+function ralHex(v){const m=String(v).match(/\d{4}/);return m&&RAL[m[0]]?RAL[m[0]]:null}
+function derived(){
+  if(cfg.finish==='natural')return {oak:true,body:'#D6B587',accent:'#D6B587',name:'Natural oak',photo:'img/oak.jpg',bodyName:'Oak',accName:'Oak'};
+  if(cfg.finish==='custom'){
+    const b=ralHex(cfg.ral1)||'#B9B4A8',a=ralHex(cfg.ral2)||'#8D8778';
+    const near=h=>{const r=hexRGB(h);let best=null,bd=1e9;COLORS.forEach(c=>{const q=hexRGB(c[2]);const d=(q[0]-r[0])**2+(q[1]-r[1])**2+(q[2]-r[2])**2;if(d<bd){bd=d;best=c[0]}});return best};
+    return {oak:false,body:b,accent:a,name:'Custom RAL',photo:`img/c-${near(b)}-${near(a)}.jpg`,bodyName:cfg.ral1?('RAL '+(String(cfg.ral1).match(/\d{4}/)||[cfg.ral1])[0]):'RAL 01',accName:cfg.ral2?('RAL '+(String(cfg.ral2).match(/\d{4}/)||[cfg.ral2])[0]):'RAL 02'};
+  }
+  const B=CMAP[cfg.body],A=CMAP[cfg.accent];
+  return {oak:false,body:B.hex,accent:A.hex,name:`${B.name} × ${A.name}`,photo:`img/c-${B.id}-${A.id}.jpg`,bodyName:B.name,accName:A.name};
+}
+function surfaceExtra(){return cfg.surface==='chess'?PRICE.chess:cfg.surface==='cards'?PRICE.cards:0}
+function priceNow(){
+  const extra=surfaceExtra();
+  if(cfg.finish==='natural')return {min:PRICE.naturalMin+extra,max:PRICE.naturalMax+extra,text:`${eur(PRICE.naturalMin+extra)}–${PRICE.naturalMax+extra}`,label:'Natural oak'};
+  const base=cfg.finish==='custom'?PRICE.custom:PRICE.standard;
+  return {min:base+extra,max:base+extra,text:eur(base+extra),label:cfg.finish==='custom'?'Two RAL colours · made to order':'Standard Grel colour palette'};
+}
+function setCfg(patch){Object.assign(cfg,patch);applyCfg()}
+function applyCfg(){
+  const d=derived(),p=priceNow();
+  document.documentElement.style.setProperty('--accent',d.oak?'#D6B587':(d.accent));
+  document.documentElement.style.setProperty('--body-c',d.body);
+  listeners.forEach(f=>f(d,p));
+}
+const onCfg=f=>{listeners.add(f);return()=>listeners.delete(f)};
+
+/* ============ SVG PARTS ============ */
+const LOGO=(sw=1.6)=>`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="${sw}" stroke-linejoin="miter" aria-hidden="true"><rect x="2" y="2" width="14" height="14"/><rect x="8" y="8" width="14" height="14"/></svg>`;
+const ARROW='<span class="ar">→</span>';
+
+/* the sheet: 70 x 80, two plates and one disc, nested */
+const PATH_A='M0 0H34V5H36V0H70V40H65A30 30 0 0 0 5 40H0Z';
+const PATH_B='M0 80H70V40H65A30 30 0 0 1 36 69.98V75H34V69.98A30 30 0 0 1 5 40H0Z';
+function sheetSVG(){
+  return `<svg class="dr" viewBox="-17 -24 104 126" role="img" aria-label="One sheet cut into two plates, a round top and two small tabs">
+    <rect id="sh-rect" x="0" y="0" width="70" height="80" fill="none" stroke="var(--ink)" stroke-width=".3" stroke-dasharray="1.2 1"/>
+    <g id="sh-dims">
+      <g class="thin"><path d="M0 -7V-3M70 -7V-3M0 -5H70"/><path d="M-7 0H-3M-7 80H-3M-5 0V80"/><path d="M76 0H80M76 40H80M78 0V40"/></g>
+      <text x="35" y="-8" text-anchor="middle">70</text>
+      <text x="-8" y="40" text-anchor="middle" transform="rotate(-90 -8 40)">80</text>
+      <text x="82" y="21" transform="rotate(-90 82 21)" text-anchor="middle">40</text>
+    </g>
+    <g id="sh-parts">
+      <g class="part" id="pt-a"><path class="cut" d="${PATH_A}" pathLength="1"/><text class="lb" x="35" y="20" text-anchor="middle" opacity="0">PLATE A</text></g>
+      <g class="part" id="pt-b"><path class="cut" d="${PATH_B}" pathLength="1"/><text class="lb" x="35" y="61" text-anchor="middle" opacity="0">PLATE B</text></g>
+      <g class="part" id="pt-d"><circle class="cut" cx="35" cy="40" r="30" pathLength="1"/>
+        <g id="d-dim"><path class="thin" d="M5 40H65M5 38V42M65 38V42"/><text x="35" y="38.6" text-anchor="middle">Ø 60</text></g></g>
+      <g class="part" id="pt-t1"><rect class="cut" x="34" y="0" width="2" height="5" pathLength="1"/></g>
+      <g class="part" id="pt-t2"><rect class="cut" x="34" y="70" width="2" height="5" pathLength="1"/></g>
+    </g>
+  </svg>`;
+}
+
+</script>
+<script>
+"use strict";
+/* ============ 3D VIEWER: TuttoTondo, built from the real geometry ============ */
+const ease=t=>t<.5?4*t*t*t:1-Math.pow(-2*t+2,3)/2;
+const PI=Math.PI;
+const POSES={
+  unpack:  {A:{p:[0,1,-30],q:[-PI/2,0,0]},B:{p:[0,1,15],q:[-PI/2,0,0]},D:{p:[0,1,58]},cam:{theta:.5,phi:.92,radius:300,t:[0,0,9]}},
+  slot:    {A:{p:[0,36,0],q:[0,0,0]},B:{p:[0,0,0],q:[0,PI/2,0]},D:{p:[86,1,0]},cam:{theta:.62,phi:1.0,radius:265,t:[26,16,0]}},
+  assemble:{A:{p:[0,0,0],q:[0,0,0]},B:{p:[0,0,0],q:[0,PI/2,0]},D:{p:[86,1,0]},cam:{theta:.62,phi:1.0,radius:255,t:[26,14,0]}},
+  top:     {A:{p:[0,0,0],q:[0,0,0]},B:{p:[0,0,0],q:[0,PI/2,0]},D:{p:[0,74,0]},cam:{theta:.62,phi:.98,radius:225,t:[0,30,0]}},
+  final:   {A:{p:[0,0,0],q:[0,0,0]},B:{p:[0,0,0],q:[0,PI/2,0]},D:{p:[0,38,0]},cam:{theta:.62,phi:1.0,radius:205,t:[0,17,0]}}
+};
+function plateShape(kind){
+  const s=new THREE.Shape(),e=Math.asin(1/30);
+  s.moveTo(-35,0);
+  if(kind==='A'){s.lineTo(-1,0);s.lineTo(-1,5);s.lineTo(1,5);s.lineTo(1,0)}
+  s.lineTo(35,0);s.lineTo(35,40);s.lineTo(30,40);
+  if(kind==='A'){s.absarc(0,40,30,0,PI,true)}
+  else{
+    s.absarc(0,40,30,0,-(PI/2-e),true);
+    s.lineTo(1,5);s.lineTo(-1,5);s.lineTo(-1,40-30*Math.cos(e));
+    s.absarc(0,40,30,-(PI/2+e),-PI,true);
+  }
+  s.lineTo(-35,40);s.lineTo(-35,0);
+  return s;
+}
+function splitGeo(geo,endX){
+  const pos=geo.attributes.position.array,nor=geo.attributes.normal.array,uv=geo.attributes.uv.array;
+  const buckets=[[],[],[]];
+  geo.groups.forEach(gr=>{
+    for(let t=gr.start/3;t<(gr.start+gr.count)/3;t++){
+      let b=gr.materialIndex;
+      if(b===1){
+        let all=true;
+        for(let k=0;k<3;k++){if(Math.abs(pos[(t*3+k)*3])<endX)all=false}
+        if(all)b=2;
+      }
+      buckets[b].push(t);
+    }
+  });
+  const P=[],N=[],UV=[];const ng=new THREE.BufferGeometry();let start=0;const groups=[];
+  buckets.forEach((arr,mi)=>{
+    arr.forEach(t=>{for(let k=0;k<3;k++){const v=t*3+k;P.push(pos[v*3],pos[v*3+1],pos[v*3+2]);N.push(nor[v*3],nor[v*3+1],nor[v*3+2]);UV.push(uv[v*2],uv[v*2+1])}});
+    groups.push([start,arr.length*3,mi]);start+=arr.length*3;
+  });
+  ng.setAttribute('position',new THREE.Float32BufferAttribute(P,3));
+  ng.setAttribute('normal',new THREE.Float32BufferAttribute(N,3));
+  ng.setAttribute('uv',new THREE.Float32BufferAttribute(UV,2));
+  groups.forEach(g=>ng.addGroup(g[0],g[1],g[2]));
+  return ng;
+}
+function cv(size){const c=document.createElement('canvas');c.width=c.height=size;return c}
+function woodCanvas(size){
+  const c=cv(size),x=c.getContext('2d');x.fillStyle='#D9BC8E';x.fillRect(0,0,size,size);
+  let s=13;const rnd=()=>(s=(s*16807)%2147483647)/2147483647;
+  for(let b=0;b<7;b++){const y=rnd()*size,h=20+rnd()*90;const g=x.createLinearGradient(0,y,0,y+h);g.addColorStop(0,'rgba(180,140,90,0)');g.addColorStop(.5,`rgba(170,125,75,${.06+rnd()*.08})`);g.addColorStop(1,'rgba(180,140,90,0)');x.fillStyle=g;x.fillRect(0,y,size,h)}
+  for(let i=0;i<380;i++){
+    const y0=rnd()*size,a=rnd()*.17+.03,amp=rnd()*7+1,fr=rnd()*.018+.004,ph=rnd()*6.28,th=rnd()*1.5+.3;
+    x.strokeStyle=`rgba(${105+rnd()*35|0},${68+rnd()*25|0},${30+rnd()*22|0},${a})`;x.lineWidth=th;x.beginPath();
+    for(let px=0;px<=size;px+=8){const py=y0+Math.sin(px*fr+ph)*amp;px?x.lineTo(px,py):x.moveTo(px,py)}x.stroke();
+  }
+  return c;
+}
+function logoCanvas(){
+  const c=cv(512),x=c.getContext('2d');x.fillStyle='#fff';x.fillRect(0,0,512,512);
+  x.strokeStyle='rgba(0,0,0,.16)';x.lineWidth=4;x.strokeRect(228,40,34,34);x.strokeRect(244,56,34,34);
+  return c;
+}
+function chessCanvas(light,dark){
+  const c=cv(1024),x=c.getContext('2d');x.fillStyle=light;x.fillRect(0,0,1024,1024);
+  const side=1024*.7071*.9,o=(1024-side)/2,q=side/8;
+  for(let i=0;i<8;i++)for(let j=0;j<8;j++){if((i+j)%2){x.fillStyle=dark;x.fillRect(o+i*q,o+j*q,q+.6,q+.6)}}
+  x.strokeStyle=dark;x.lineWidth=5;x.strokeRect(o,o,side,side);
+  return c;
+}
+function cardsCanvas(){
+  const c=cv(1024),x=c.getContext('2d');
+  x.fillStyle='#2E5D46';x.fillRect(0,0,1024,1024);
+  x.strokeStyle='rgba(240,233,222,.32)';x.lineWidth=3;x.beginPath();x.arc(512,512,230,0,Math.PI*2);x.stroke();
+  x.fillStyle='#F0E9DE';x.textAlign='center';x.textBaseline='middle';
+  const suits=['♠','♥','♦','♣'],R=360;
+  suits.forEach((s,i)=>{
+    const ang=i*Math.PI/2-Math.PI/2,cx=512+R*Math.cos(ang),cy=512+R*Math.sin(ang);
+    x.save();x.translate(cx,cy);x.rotate(ang+Math.PI/2);x.font='140px Georgia,"Times New Roman",serif';x.fillText(s,0,0);x.restore();
+  });
+  x.globalAlpha=.4;x.font='60px Georgia,"Times New Roman",serif';x.fillText('✻',512,512);x.globalAlpha=1;
+  return c;
+}
+const LOOP={list:new Set(),on:false,
+  add(v){this.list.add(v);if(!this.on){this.on=true;requestAnimationFrame(this.tick)}},
+  del(v){this.list.delete(v)},
+  tick(now){LOOP.list.forEach(v=>{if(v.visible)v.frame(now)});if(LOOP.list.size)requestAnimationFrame(LOOP.tick);else LOOP.on=false}};
+
+class Viewer{
+  constructor(host,o={}){
+    this.host=host;this.o=Object.assign({pose:'final',interactive:true,auto:false,chessDemo:false,phi:null,theta:null},o);
+    if(typeof THREE==='undefined'){host.classList.add('nogl');this.dead=true;return}
+    this.canvas=document.createElement('canvas');this.canvas.setAttribute('aria-label','Interactive 3D view of TuttoTondo. Drag to turn.');host.prepend(this.canvas);
+    try{this.r=new THREE.WebGLRenderer({canvas:this.canvas,antialias:true,alpha:true});if(!this.r.getContext())throw 0}catch(e){host.classList.add('nogl');this.dead=true;return}
+    const r=this.r;r.setPixelRatio(Math.min(window.devicePixelRatio||1,2));r.shadowMap.enabled=true;r.shadowMap.type=THREE.PCFSoftShadowMap;r.setClearColor(0x000000,0);
+    this.scene=new THREE.Scene();this.camera=new THREE.PerspectiveCamera(26,1,20,1600);
+    const hemi=new THREE.HemisphereLight(0xfff4e6,0xd6c4a8,.66);this.scene.add(hemi);
+    const key=new THREE.DirectionalLight(0xffffff,.62);key.position.set(-120,190,100);key.castShadow=true;
+    key.shadow.mapSize.set(2048,2048);const sc=key.shadow.camera;sc.left=-130;sc.right=130;sc.top=130;sc.bottom=-130;sc.near=50;sc.far=520;key.shadow.bias=-.0008;key.shadow.normalBias=.35;
+    this.scene.add(key);
+    const fill=new THREE.DirectionalLight(0xffe6cf,.16);fill.position.set(140,60,-90);this.scene.add(fill);
+    const ground=new THREE.Mesh(new THREE.PlaneGeometry(900,900).rotateX(-PI/2),new THREE.ShadowMaterial({opacity:.2}));ground.receiveShadow=true;this.scene.add(ground);
+    /* materials */
+    const std=p=>new THREE.MeshStandardMaterial(Object.assign({roughness:.9,metalness:0},p));
+    this.mBody=std({color:0x252525});this.mAcc=std({color:0x8fd9cf});this.mTop=std({color:0x8fd9cf});this.mBot=std({color:0x8fd9cf});
+    this.logoTex=new THREE.CanvasTexture(logoCanvas());
+    this.mTop.map=this.logoTex;this.mBot.map=this.logoTex;
+    const wc=woodCanvas(512);this.wood=new THREE.CanvasTexture(wc);this.wood.wrapS=this.wood.wrapT=THREE.RepeatWrapping;this.wood.repeat.set(1/55,1/28);this.wood.anisotropy=4;
+    this.woodDisc=new THREE.CanvasTexture(wc);this.woodDisc.wrapS=this.woodDisc.wrapT=THREE.RepeatWrapping;this.woodDisc.anisotropy=4;
+    /* parts */
+    const ex=k=>new THREE.ExtrudeGeometry(plateShape(k),{depth:2,bevelEnabled:false,curveSegments:110}).translate(0,0,-1);
+    this.A=new THREE.Group();this.B=new THREE.Group();this.D=new THREE.Group();
+    const mA=new THREE.Mesh(splitGeo(ex('A'),34.9),[this.mBody,this.mBody,this.mBody]);
+    const mB=new THREE.Mesh(splitGeo(ex('B'),34.9),[this.mBody,this.mBody,this.mAcc]);
+    [mA,mB].forEach(m=>{m.castShadow=true;m.receiveShadow=true});
+    this.A.add(mA);this.B.add(mB);
+    this.spinG=new THREE.Group();this.flipG=new THREE.Group();
+    const disc=new THREE.Mesh(new THREE.CylinderGeometry(30,30,2,180),[this.mBody,this.mTop,this.mBot]);disc.castShadow=true;disc.receiveShadow=true;
+    this.flipG.add(disc);this.spinG.add(this.flipG);this.D.add(this.spinG);
+    this.scene.add(this.A,this.B,this.D);
+    /* state */
+    this.cur={body:new THREE.Color(0x252525),acc:new THREE.Color(0x8fd9cf)};this.tar={body:new THREE.Color(0x252525),acc:new THREE.Color(0x8fd9cf)};
+    this.conf={oak:false,surface:'none',body:'#252525',accent:'#8FD9CF'};
+    this.spinA=0;this.spinT=0;this.spinAnim=null;this.flipA=0;this.flipAnim=null;this.flipT=0;
+    const P=POSES[this.o.pose];this.applyPose(P,P,1);
+    this.cam=Object.assign({},P.cam,{t:P.cam.t.slice()});
+    if(this.o.phi!=null)this.cam.phi=this.o.phi;if(this.o.theta!=null)this.cam.theta=this.o.theta;
+    this.vel=0;this.drag=null;this.autoRot=this.o.auto;this.tw=null;this.visible=false;this.aspectK=1;this.poseName=this.o.pose;
+    if(this.o.interactive)this.bindDrag();
+    this.ro=new ResizeObserver(()=>this.resize());this.ro.observe(host);this.resize();
+    this.io=new IntersectionObserver(es=>{this.visible=es[0].isIntersecting;if(this.visible)this.frame(performance.now())},{rootMargin:'120px'});this.io.observe(host);
+    LOOP.add(this);
+  }
+  bindDrag(){
+    const c=this.canvas;
+    c.addEventListener('pointerdown',e=>{this.drag={x:e.clientX,y:e.clientY};this.autoRot=false;this.vel=0;try{c.setPointerCapture(e.pointerId)}catch(_){}});
+    c.addEventListener('pointermove',e=>{if(!this.drag)return;const dx=e.clientX-this.drag.x,dy=e.clientY-this.drag.y;this.drag={x:e.clientX,y:e.clientY};this.cam.theta-=dx*.0075;this.vel=-dx*.0075;this.cam.phi=clamp(this.cam.phi-dy*.005,.28,1.46)});
+    const up=()=>{this.drag=null};c.addEventListener('pointerup',up);c.addEventListener('pointercancel',up);
+  }
+  resize(){
+    const w=this.host.clientWidth,h=this.host.clientHeight;if(!w||!h)return;
+    this.r.setSize(w,h,false);this.camera.aspect=w/h;this.aspectK=Math.max(1,1.12/(w/h));this.camera.updateProjectionMatrix();
+  }
+  applyPose(a,b,e){
+    ['A','B','D'].forEach(k=>{
+      const g=this[k],pa=a[k],pb=b[k];
+      g.position.set(pa.p[0]+(pb.p[0]-pa.p[0])*e,pa.p[1]+(pb.p[1]-pa.p[1])*e,pa.p[2]+(pb.p[2]-pa.p[2])*e);
+      if(k!=='D'){const q0=new THREE.Quaternion().setFromEuler(new THREE.Euler(...pa.q,'YXZ')),q1=new THREE.Quaternion().setFromEuler(new THREE.Euler(...pb.q,'YXZ'));g.quaternion.copy(q0).slerp(q1,e)}
+    });
+  }
+  setPose(name,dur=1300){
+    if(this.dead)return;const to=POSES[name];if(!to)return;
+    const from={A:{p:this.A.position.toArray(),q:new THREE.Euler().setFromQuaternion(this.A.quaternion,'YXZ').toArray().slice(0,3)},
+      B:{p:this.B.position.toArray(),q:new THREE.Euler().setFromQuaternion(this.B.quaternion,'YXZ').toArray().slice(0,3)},D:{p:this.D.position.toArray()},cam:Object.assign({},this.cam,{t:this.cam.t.slice()})};
+    this.tw={from,to,t0:performance.now(),dur};this.poseName=name;this.autoRot=false;
+  }
+  setConfig(c){
+    if(this.dead)return;this.conf=Object.assign(this.conf,c);const d=this.conf;
+    this.tar.body.set(d.oak?0xffffff:d.body);this.tar.acc.set(d.oak?0xffffff:d.accent);
+    const oak=d.oak;
+    const set=(m,map)=>{if(m.map!==map){m.map=map;m.needsUpdate=true}};
+    set(this.mBody,oak?this.wood:null);set(this.mAcc,oak?this.wood:null);
+    const surface=this.o.chessDemo?'chess':(d.surface||'none');
+    set(this.mTop,oak?this.woodDisc:this.logoTex);
+    if(surface==='chess'||surface==='cards'){
+      const canvas=surface==='chess'?chessCanvas(oak?'#DCBF92':d.accent,oak?'#A47C4C':d.body):cardsCanvas();
+      const t=new THREE.CanvasTexture(canvas);t.anisotropy=4;
+      if(this.surfaceTex)this.surfaceTex.dispose();this.surfaceTex=t;set(this.mBot,t);
+    }else set(this.mBot,oak?this.woodDisc:this.logoTex);
+    this.surfaceOn=surface==='chess'||surface==='cards';
+  }
+  spin(){this.spinT+=PI/2;this.spinAnim={t0:performance.now(),from:this.spinA,to:this.spinT,dur:1000}}
+  flip(){this.flipT=this.flipT?0:PI;this.flipAnim={t0:performance.now(),from:this.flipA,to:this.flipT,dur:1300}}
+  frame(now){
+    if(this.dead)return;
+    const k=.14;this.cur.body.lerp(this.tar.body,k);this.cur.acc.lerp(this.tar.acc,k);
+    this.mBody.color.copy(this.cur.body);this.mAcc.color.copy(this.cur.acc);this.mTop.color.copy(this.cur.acc);
+    if(this.surfaceOn)this.mBot.color.set(0xffffff);else this.mBot.color.copy(this.cur.body);
+    if(this.tw){
+      const t=clamp((now-this.tw.t0)/this.tw.dur),e=ease(t),{from,to}=this.tw;
+      this.applyPose(from,to,e);
+      const a=from.cam,b=to.cam;this.cam.phi=a.phi+(b.phi-a.phi)*e;this.cam.radius=a.radius+(b.radius-a.radius)*e;
+      this.cam.theta=a.theta+(b.theta-a.theta)*e;
+      for(let i=0;i<3;i++)this.cam.t[i]=a.t[i]+(b.t[i]-a.t[i])*e;
+      if(t>=1)this.tw=null;
+    }
+    if(this.spinAnim){const t=clamp((now-this.spinAnim.t0)/this.spinAnim.dur);this.spinA=this.spinAnim.from+(this.spinAnim.to-this.spinAnim.from)*ease(t);if(t>=1)this.spinAnim=null;this.spinG.rotation.y=this.spinA}
+    if(this.flipAnim){const t=clamp((now-this.flipAnim.t0)/this.flipAnim.dur);this.flipA=this.flipAnim.from+(this.flipAnim.to-this.flipAnim.from)*ease(t);this.flipG.position.y=Math.sin(t*PI)*24;if(t>=1){this.flipAnim=null;this.flipG.position.y=0}this.flipG.rotation.x=this.flipA}
+    if(!this.drag){
+      if(Math.abs(this.vel)>1e-4){this.cam.theta+=this.vel;this.vel*=.93}
+      else if(this.autoRot&&!this.tw&&!matchMedia('(prefers-reduced-motion:reduce)').matches)this.cam.theta+=.0022;
+    }
+    const c=this.cam,R=c.radius*this.aspectK;
+    this.camera.position.set(c.t[0]+R*Math.sin(c.phi)*Math.sin(c.theta),c.t[1]+R*Math.cos(c.phi),c.t[2]+R*Math.sin(c.phi)*Math.cos(c.theta));
+    this.camera.lookAt(c.t[0],c.t[1],c.t[2]);
+    this.r.render(this.scene,this.camera);
+  }
+  dispose(){
+    LOOP.del(this);if(this.dead)return;this.ro.disconnect();this.io.disconnect();
+    this.scene.traverse(o=>{if(o.geometry)o.geometry.dispose()});[this.mBody,this.mAcc,this.mTop,this.mBot].forEach(m=>m.dispose());
+    this.r.dispose();try{this.r.forceContextLoss()}catch(_){}
+  }
+}
+</script>
+<style>
+.h-lg.col{font-size:clamp(2.7rem,6.6vw,6.2rem)}
+.dr #pt-a .cut,.dr #pt-b .cut{fill:var(--body-c);fill-opacity:var(--f,0)}
+.dr #pt-d .cut,.dr #pt-t1 .cut,.dr #pt-t2 .cut{fill:var(--accent);fill-opacity:var(--f,0)}
+.dr .part{transition:none}
+.dr .lb{font-size:2.1px}
+section[id]{scroll-margin-top:calc(var(--nav-h) + 52px)}
+.pp .sheet-st{padding-top:calc(var(--nav-h) + 60px)}
+.pg-lede{max-width:22em}
+.soon-tag{border:1px solid currentColor;padding:.2rem .5rem}
+.dot{display:inline-block;width:.6em;height:.6em;background:var(--accent);margin-right:.5em;border-radius:50%;vertical-align:baseline}
+.cred{color:var(--ink-3)}
+</style>
+<script>
+"use strict";
+const pr=k=>k==='standard'?eur(PRICE.standard):k==='custom'?eur(PRICE.custom):k==='chess'?'+'+eur(PRICE.chess):k==='cards'?'+'+eur(PRICE.cards):`${eur(PRICE.naturalMin)}–${PRICE.naturalMax}`;
+const P=k=>`<span data-p="${k}">${pr(k)}</span>`;
+const H=(t,c='')=>`<h2 class="h-lg ${c}">${t}</h2>`;
+const LBL=t=>`<span class="label mono">${t}</span>`;
+
+/* ---------- sections ---------- */
+const S={};
+S.hero=()=>`
+<section class="hero"><div class="wrap"><div class="hero-grid">
+  <div class="hero-kicker mono"><span>Grel Design · Collection</span><span>Milano, Italy</span></div>
+  <h1 class="h-xl">TuttoTondo</h1>
+  <div class="hero-copy">
+    <p class="tagline">One sheet.<br>Infinite balance.</p>
+    <div class="hero-cta">
+      <a class="btn solid" href="#/tuttotondo" data-link="/tuttotondo">Discover TuttoTondo ${ARROW}</a>
+      <button class="btn" data-scroll="#configurator">Make it yours ${ARROW}</button>
+    </div>
+    <p class="hero-meta mono"><span><i>Ø 60 × 40 cm</i></span><span>Oak</span><span>Made in Italy</span><span>From <i>${P('standard')}</i></span></p>
+  </div>
+  <div class="hero-img"><img src="img/hero.jpg" width="1110" height="1040" alt="TuttoTondo coffee table in graphite and seaside, three-quarter view"></div>
+</div></div></section>`;
+
+S.idea=()=>`
+<section class="sec" id="idea"><div class="wrap idea-grid">
+  <div class="idea-head">${LBL('The idea')}</div>
+  <h2 class="h-lg idea-head">It started with one sheet.</h2>
+  <div class="txt">
+    <p class="lede">TuttoTondo started as a simple idea for our own home: a table reduced to its essential elements.</p>
+    <p class="sub">The name is Italian for <em>all round</em>. <span lang="it">Tutto tondo.</span> It describes the shape, and the way the idea holds together from every side.</p>
+    <div><a class="linkline mono" href="#/about" data-link="/about">Designed by Greta →</a></div>
+  </div>
+  <figure><img src="img/lifestyle.jpg" width="1500" height="1000" loading="lazy" alt="TuttoTondo in a warm plaster interior with a view of the lake">
+    <figcaption class="mono"><span>TuttoTondo · Graphite × Seaside</span><span>Ø 60 × H 40</span></figcaption></figure>
+</div></section>`;
+
+S.sheet=()=>`
+<section class="sheet-sec" id="sheet" aria-label="One sheet, one cut, components, table">
+  <div class="sheet-st"><div class="wrap sheet-in">
+    <div class="sheet-t">${LBL('The sheet')}<h2 class="h-lg">One sheet.</h2>
+      <p class="cap" id="sh-cap"></p>
+      <div class="stages mono" id="sh-stages"><span>One sheet</span><span>Cut</span><span>Components</span><span>TuttoTondo</span></div>
+      <p class="mono cred" style="margin-top:.4rem">Scroll ↓</p>
+    </div>
+    <div class="sheet-fig" id="sh-fig">${sheetSVG()}<div class="photo"><img id="sh-photo" src="img/c-graphite-seaside.jpg" alt="The finished table"></div></div>
+  </div></div>
+</section>`;
+
+S.zero=()=>`
+<section class="sec zero" id="zero"><div class="wrap zero-grid">
+  <h2 class="h-lg">One cut.<br>Zero waste.</h2>
+  <div class="txt"><p class="lede">The two base plates and the round top share one outline. The curve cut out of each plate is the edge of the tabletop.</p>
+    <p class="sub">What one part gives up, the next one takes. The geometry is designed around the sheet, not the other way round.</p></div>
+  <div class="zero-nums"><div><b>1</b><span class="mono">Sheet</span></div><div><b>1</b><span class="mono">Cut</span></div><div><b>0</b><span class="mono">Waste</span></div></div>
+</div></section>`;
+
+S.assembly=()=>`
+<section class="sec asm" id="assembly"><div class="wrap"><div class="asm-grid">
+  <div class="asm-l">
+    <div>${LBL('Assembly')}<h2 class="h-lg col" style="margin-top:1.2rem">No screws.</h2><p class="lede" style="margin-top:1.4rem">Simple to assemble.<br>Simple to understand.</p></div>
+    <ol class="steps" id="steps">
+      <li data-pose="unpack" class="on"><button><span class="n">01</span><span class="nm">Unpack</span><span class="ds">Two plates, one round top.</span></button></li>
+      <li data-pose="slot"><button><span class="n">02</span><span class="nm">Slot</span><span class="ds">One plate drops onto the other. The slots meet halfway.</span></button></li>
+      <li data-pose="assemble"><button><span class="n">03</span><span class="nm">Assemble</span><span class="ds">A cross. Nothing to fix, nothing to tighten.</span></button></li>
+      <li data-pose="top"><button><span class="n">04</span><span class="nm">Add the top</span><span class="ds">Lower the round top into the curves.</span></button></li>
+      <li data-pose="final"><button><span class="n">05</span><span class="nm">Done</span><span class="ds">No tools. No screws.</span></button></li>
+    </ol>
+    <div class="ctl"><button class="btn sm" id="asm-play">Play sequence ▶</button></div>
+  </div>
+  <div class="stage" id="asm-stage"><div class="fallback"><img class="fbimg" src="img/hero.jpg" alt="TuttoTondo assembled"></div><span class="hint mono">Drag to turn</span></div>
+</div></div></section>`;
+
+S.rotation=()=>`
+<section class="sec rot" id="rotation"><div class="wrap rot-grid">
+  <div class="stage" id="rot-stage"><div class="fallback"><img class="fbimg" src="img/hero.jpg" alt="TuttoTondo"></div><span class="hint mono">Drag to turn</span></div>
+  <div class="rot-r">${LBL('The top')}<h2 class="h-lg col">Two sides. One table.</h2>
+    <p class="lede">The round top turns. Rotate it to change how the table sits in the room. Flip it, and the colour turns with it.</p>
+    <div class="ctl"><button class="btn" id="rot-spin">Rotate <span class="ar">↻</span></button><button class="btn solid" id="rot-flip">Flip the top <span class="ar">⇅</span></button></div>
+  </div>
+</div></section>`;
+
+const swatches=(k)=>COLORS.map(c=>`<button data-k="${k}" data-c="${c[0]}" aria-pressed="false" title="${c[1]}" style="--c:${c[2]}"><i></i><span>${c[1]}</span></button>`).join('');
+S.configurator=()=>`
+<section class="sec cfg" id="configurator"><div class="wrap">
+  <div class="cfg-head"><div>${LBL('Configurator')}<h2 class="h-lg" style="margin-top:1.2rem">Make it yours.</h2></div>
+    <p class="sub">Pick a body, pick an accent. The body is the base. The accent is the top and the small details. The geometry never changes.</p></div>
+  <div class="cfg-grid">
+    <div class="stage" id="cfg-stage"><div class="fallback"><img class="fbimg" id="cfg-fb" src="img/hero.jpg" alt="Your TuttoTondo"></div>
+      <div class="stage-tags mono"><span>Ø 60</span><span>H 40</span></div><span class="hint mono">Drag to turn</span>
+      <div class="stage-btns"><button class="btn sm" id="cfg-flip">Flip the top</button></div></div>
+    <div class="panel">
+      <div class="p-name" id="cfg-name"></div>
+      <div class="tabs" role="group" aria-label="Finish">
+        <button data-fin="standard" aria-pressed="true">Standard<small>${P('standard')}</small></button>
+        <button data-fin="custom" aria-pressed="false">Custom RAL<small>${P('custom')}</small></button>
+        <button data-fin="natural" aria-pressed="false">Natural oak<small>${P('natural')}</small></button>
+      </div>
+      <div id="fin-standard">
+        <div class="row-h mono"><span>Body</span><b id="nm-body"></b></div><div class="sw" id="sw-body">${swatches('body')}</div>
+        <div class="row-h mono" style="margin-top:1.5rem"><span>Accent</span><b id="nm-acc"></b></div><div class="sw" id="sw-acc">${swatches('accent')}</div>
+      </div>
+      <div id="fin-custom" hidden>
+        <p class="note" style="margin-bottom:1rem">Choose two RAL colours and create a TuttoTondo made specifically for you. Made to order.</p>
+        <div class="ral">
+          <label class="mono">RAL 01 · Body<span class="in"><span class="chip" id="chip1"></span><input id="ral1" inputmode="numeric" maxlength="8" placeholder="7016" autocomplete="off"></span></label>
+          <label class="mono">RAL 02 · Accent<span class="in"><span class="chip" id="chip2"></span><input id="ral2" inputmode="numeric" maxlength="8" placeholder="6027" autocomplete="off"></span></label>
+        </div>
+        <p class="note mono" style="margin-top:.9rem;font-size:.62rem;line-height:1.6" id="ralnote">Preview colours are approximate. Final finish is matched to the RAL reference.</p>
+      </div>
+      <div id="fin-natural" hidden><p class="note">The whole table in natural oak: plates, centre and round top. The grain stays visible. A separate material edition, not an eighth colour.</p></div>
+      <div class="row-h mono" style="margin-top:1.5rem"><span>Reverse side</span><b id="nm-surface"></b></div>
+      <div class="tabs" id="surf-tabs" role="group" aria-label="Reverse side">
+        <button data-surf="none" aria-pressed="true">Plain</button>
+        <button data-surf="chess" aria-pressed="false">Chess<small>${P('chess')}</small></button>
+        <button data-surf="cards" aria-pressed="false">Cards<small>${P('cards')}</small></button>
+      </div>
+      <div class="buy"><div class="price" id="cfg-price"></div><button class="btn solid" id="cfg-add">Add to cart ${ARROW}</button></div>
+    </div>
+  </div>
+</div></section>`;
+
+S.editions=()=>`
+<section class="sec ed" id="editions"><div class="wrap">
+  <div class="ed-head"><div style="grid-column:1/-1">${LBL('Signature combinations')}</div>${H('Grel Editions')}<p class="sub">Ten combinations we keep coming back to. Start here, or don’t. Pick one and it loads into the configurator.</p></div>
+  <div class="ed-grid" id="ed-grid">${EDITIONS.map(([b,a],i)=>`<button data-b="${b}" data-a="${a}"><span class="im"><img src="img/c-${b}-${a}.jpg" width="900" height="843" loading="lazy" alt="TuttoTondo ${CMAP[b].name} and ${CMAP[a].name}"></span><span class="cap mono"><b>${CMAP[b].name} × ${CMAP[a].name}</b><em>${String(i+1).padStart(2,'0')}</em></span></button>`).join('')}</div>
+</div></section>`;
+
+function boardSVG(){
+  let q='';const side=63.6,o=(100-side)/2,c=side/8;
+  for(let i=0;i<8;i++)for(let j=0;j<8;j++)if((i+j)%2)q+=`<rect x="${(o+i*c).toFixed(2)}" y="${(o+j*c).toFixed(2)}" width="${(c+.05).toFixed(2)}" height="${(c+.05).toFixed(2)}" fill="var(--dsq)"/>`;
+  return `<svg viewBox="0 0 100 100" aria-hidden="true">${q}<rect x="${o}" y="${o}" width="${side}" height="${side}" fill="none" stroke="var(--dsq)" stroke-width=".5"/></svg>`;
+}
+function cardsFaceSVG(){
+  const suits=[['♠',0],['♥',90],['♦',180],['♣',270]],R=27,s='font-family:Georgia,"Times New Roman",serif';
+  let g='';
+  suits.forEach(([sym,ang])=>{
+    const rad=ang*Math.PI/180,cx=(50+R*Math.sin(rad)).toFixed(2),cy=(50-R*Math.cos(rad)).toFixed(2);
+    g+=`<g transform="translate(${cx} ${cy}) rotate(${ang})"><text x="0" y="0" font-size="12" text-anchor="middle" dominant-baseline="central" style="${s}">${sym}</text></g>`;
+  });
+  return `<svg viewBox="0 0 100 100" aria-hidden="true">
+    <circle cx="50" cy="50" r="50" fill="#2E5D46"/>
+    <circle cx="50" cy="50" r="17" fill="none" stroke="#F0E9DE" stroke-width=".6" opacity=".35"/>
+    <g fill="#F0E9DE">${g}</g>
+    <text x="50" y="51" font-size="5" text-anchor="middle" dominant-baseline="central" fill="#F0E9DE" opacity=".4" style="${s}">✻</text>
+  </svg>`;
+}
+S.chess=()=>`
+<section class="sec chess" id="chess"><div class="wrap chess-grid">
+  <div class="chess-l">${LBL('Optional')}<h2 class="h-lg col">Play with it.</h2>
+    <p class="lede">One table.<br>Two more games.</p>
+    <p class="sub">Flip the top and the reverse becomes a chessboard, or a card table in green. Cut into the design, not placed on top of it.</p>
+    <div class="tabs pair" id="game-tabs" role="group" aria-label="Preview the reverse side" style="max-width:21rem">
+      <button data-surf="chess" aria-pressed="true">Chess<small>${P('chess')}</small></button>
+      <button data-surf="cards" aria-pressed="false">Cards<small>${P('cards')}</small></button>
+    </div>
+    <div class="ctl"><button class="btn solid" id="coin-flip">Turn the top <span class="ar">↻</span></button><button class="btn" id="chess-add">Add to my table ${ARROW}</button></div>
+  </div>
+  <div class="flip-wrap"><div class="coin" id="coin" role="img" aria-label="The round top, standard side and game side">
+    <div class="face front"><svg viewBox="0 0 100 100" aria-hidden="true" style="color:var(--ink)"><g fill="none" stroke="currentColor" stroke-width=".5" opacity=".28"><rect x="46" y="7" width="4.4" height="4.4"/><rect x="48.3" y="9.3" width="4.4" height="4.4"/></g></svg></div>
+    <div class="face back" id="coin-back">${boardSVG()}</div></div></div>
+</div></section>`;
+
+S.custom=()=>`
+<section class="sec cus" id="custom"><div class="wrap cus-grid">
+  <div style="grid-column:1/-1">${LBL('Made to order')}</div>
+  <h2 class="h-lg col">Your colours.</h2>
+  <div class="r"><p class="lede">Choose two RAL colours and create a TuttoTondo made specifically for you.</p>
+    <p class="price" style="font-size:2.6rem">${P('custom')}<small>Two RAL colours · made to order</small></p>
+    <div class="ctl"><button class="btn solid" data-fin-go="custom">Choose your RAL ${ARROW}</button></div></div>
+  <div class="ralband" aria-hidden="true">${['7016','5015','6027','9010','3004','1015','8017','2008','5013','7035'].map(k=>`<i style="--c:${RAL[k]}"></i>`).join('')}</div>
+</div></section>`;
+
+S.natural=()=>`
+<section class="sec" id="natural"><div class="wrap nat-grid">
+  <figure><img src="img/oak.jpg" width="900" height="843" loading="lazy" alt="TuttoTondo Natural, entirely in oak"></figure>
+  <div class="nat-r">${LBL('Material edition')}<h2 class="h-lg col">Natural.</h2>
+    <p class="lede">The same geometry, in oak.</p>
+    <p class="sub">Plates, centre and round top: every part in natural oak, with the grain left visible. It is a material of its own, not an eighth colour.</p>
+    <p class="price">${P('natural')}<small>TuttoTondo Natural</small></p>
+    <div class="ctl"><button class="btn solid" data-fin-go="natural">Configure Natural ${ARROW}</button></div></div>
+</div></section>`;
+
+S.italy=()=>`
+<section class="italy" id="italy"><img src="img/lifestyle.jpg" loading="lazy" alt="">
+  <div class="wrap"><div class="row mono"><span>Milano, Italy</span><span>Ø 60 × H 40</span></div>
+    <div class="row"><h2 class="h-lg" style="max-width:9em;font-size:clamp(2.4rem,6.6vw,6rem)">Designed and made in Italy.</h2><p>Drawn in Milano. Produced locally in Italy, from the sheet to the finished table.</p></div></div></section>`;
+
+S.greta=()=>`
+<section class="sec greta" id="greta"><div class="wrap greta-grid">
+  <div style="grid-column:1/-1">${LBL('The designer')}</div>
+  <h2 class="h-lg">Designed by Greta.</h2>
+  <div class="q"><p class="big">One sheet of wood.<br>A few cuts.<br>No screws.</p><p class="mono cred">Greta · Architect · Milano</p></div>
+  <div class="txt"><p class="lede">TuttoTondo started as a simple idea for our own home: a table reduced to its essential elements.</p>
+    <p class="sub">That idea became the first object of Grel Design.</p>
+    <div><a class="btn" href="#/tuttotondo" data-link="/tuttotondo">See the table ${ARROW}</a></div></div>
+</div></section>`;
+
+S.specs=()=>`
+<section class="sec" id="specs"><div class="wrap spec-grid">
+  <div>${LBL('Specifications')}<h2 class="h-lg col" style="margin-top:1.2rem">The facts.</h2></div>
+  <table class="spec"><tbody>
+    <tr><th class="mono">Object</th><td>TuttoTondo, coffee table</td></tr>
+    <tr><th class="mono">Size</th><td>Ø 60 cm × 40 cm high</td></tr>
+    <tr><th class="mono">Material</th><td>Oak (rovere)</td></tr>
+    <tr><th class="mono">Construction</th><td>Two slotted plates and a round top. Tool-free, no screws.</td></tr>
+    <tr><th class="mono">Colour</th><td>Body + accent from seven standard colours (49 combinations). Custom: two RAL colours. Natural: oak.</td></tr>
+    <tr><th class="mono">Options</th><td>Chess board or cards on the reverse of the top, ${P('chess')}</td></tr>
+    <tr><th class="mono">Made</th><td>Designed and made in Italy</td></tr>
+    <tr><th class="mono">Price</th><td>Standard ${P('standard')} · Custom ${P('custom')} · Natural ${P('natural')}<br><span class="cred">Provisional launch pricing.</span></td></tr>
+  </tbody></table>
+</div></section>`;
+
+S.order=()=>`
+<section class="sec order" id="order"><div class="wrap">
+  ${LBL('Order')}<h2 class="h-xl" style="margin-top:1.2rem">Make it yours.</h2>
+  <div class="order-sum"><p class="lede" id="ord-desc"></p><div class="price" id="ord-price"></div>
+    <div class="ctl"><button class="btn solid" id="ord-add">Add to cart ${ARROW}</button><button class="btn" data-scroll="#configurator">Change configuration</button></div></div>
+</div></section>`;
+
+/* ---------- pages ---------- */
+const PAGES={};
+PAGES['/']=()=>S.hero()+S.idea()+S.sheet()+S.zero()+S.assembly()+S.rotation()+S.configurator()+S.editions()+S.chess()+S.natural()+S.italy()+S.greta();
+const SUB=[['The idea','#idea'],['The design','#sheet'],['Make it yours','#configurator'],['Made in Italy','#italy'],['Specifications','#specs'],['Order','#order']];
+PAGES['/tuttotondo']=()=>`
+<div class="pp">
+<section class="pp-intro" id="intro"><div class="wrap"><div class="pp-grid">
+  <figure><img id="pp-img" src="img/hero.jpg" width="1110" height="1040" alt="TuttoTondo, your configuration"></figure>
+  <div class="pp-r">${LBL('Grel Design · Collection 01')}<h1 class="h-lg col">TuttoTondo</h1>
+    <p class="dim">60 × 40 cm</p>
+    <p class="lede">A coffee table drawn around one sheet of wood. No screws. Two colours. Two sides.</p>
+    <div class="price" id="pp-price"></div>
+    <div class="hero-cta"><button class="btn solid" data-scroll="#configurator">Make yours ${ARROW}</button><button class="btn" data-scroll="#order">Order</button></div>
+  </div></div></div></section>
+<nav class="subnav mono" id="subnav" aria-label="On this page"><div class="wrap">${SUB.map(s=>`<a href="${s[1]}" data-scroll="${s[1]}">${s[0]}</a>`).join('')}</div></nav>
+${S.idea()+S.sheet()+S.zero()+S.assembly()+S.rotation()+S.configurator()+S.editions()+S.chess()+S.custom()+S.natural()+S.italy()+S.specs()+S.order()}
+</div>`;
+
+PAGES['/collection']=()=>`
+<section class="pg-head"><div class="wrap">${LBL('Collection')}<h1 class="h-xl" style="margin-top:1.2rem">Collection</h1></div></section>
+<section class="sec-tight" style="padding-top:0"><div class="wrap"><div class="coll-list">
+  <a class="coll-item live" href="#/tuttotondo" data-link="/tuttotondo"><span class="n mono">01</span><span class="nm">TuttoTondo</span>
+    <span class="im"><img src="img/hero.jpg" alt="TuttoTondo"></span><span class="go mono">${P('standard')} →</span></a>
+  <div class="coll-item soon"><span class="n mono">02</span><span class="nm">Product 02</span><span class="ph" aria-hidden="true">${LOGO(.8)}</span><span class="go mono soon-tag">In drawing</span></div>
+  <div class="coll-item soon"><span class="n mono">03</span><span class="nm">Product 03</span><span class="ph" aria-hidden="true">${LOGO(.8)}</span><span class="go mono soon-tag">In drawing</span></div>
+</div></div></section>`;
+
+PAGES['/about']=()=>`
+<section class="pg-head"><div class="wrap">${LBL('About')}<h1 class="h-lg" style="margin-top:1.2rem;max-width:11em">A small studio. One object at a time.</h1></div></section>
+<section class="sec-tight" style="padding-top:0"><div class="wrap two"><div class="a"><p class="lede">Grel Design is an independent Italian design brand. Every object starts with a simple idea and one rule: use what you need, and nothing else.</p></div>
+  <div class="b"><p class="sub">The first object is TuttoTondo, a coffee table drawn from a single sheet of wood. More will follow, each with the same point of view: honest materials, simple geometry, intelligent construction.</p><p class="mono" style="margin-top:1.4rem">Milano, Italy</p></div></div></section>
+${S.greta()}`;
+
+PAGES['/contact']=()=>`
+<section class="pg-head"><div class="wrap">${LBL('Contact')}<h1 class="h-lg" style="margin-top:1.2rem">Say hello.</h1></div></section>
+<section class="sec-tight" style="padding-top:0"><div class="wrap two"><div class="a"><p class="lede">Questions about TuttoTondo, custom RAL colours or the Natural edition? Write to us.</p><p class="mono" style="margin-top:1.4rem">Grel Design<br>Milano, Italy</p></div>
+  <form class="b form" id="cform"><label class="mono" for="c-name">Name<input id="c-name" required autocomplete="name"></label><label class="mono" for="c-mail">Email<input id="c-mail" type="email" required autocomplete="email"></label><label class="mono" for="c-msg">Message<textarea id="c-msg" rows="5" required></textarea></label>
+    <div><button class="btn solid" type="submit">Send ${ARROW}</button></div><p class="note" id="cmsg" role="status"></p></form></div></section>`;
+
+function footer(){
+  return `<div class="wrap"><div class="foot-grid">
+    <div class="foot-b"><span style="color:var(--ink)">${LOGO(1)}</span><p class="mono">Grel Design<br>Milano, Italy</p><p class="sub" style="font-size:.95rem">One sheet. Infinite balance.</p></div>
+    <div class="foot-c mono"><h4>Collection</h4><a href="#/tuttotondo" data-link="/tuttotondo">TuttoTondo</a><span>Product 02</span><span>Product 03</span></div>
+    <div class="foot-c mono"><h4>Studio</h4><a href="#/about" data-link="/about">About</a><a href="#/contact" data-link="/contact">Contact</a></div>
+    <div class="foot-c mono"><h4>TuttoTondo</h4><button data-link="/tuttotondo">Product page</button><button data-scroll="#configurator">Make it yours</button></div>
+  </div><div class="foot-end mono"><span>© 2026 Grel Design</span><span>Designed and made in Italy</span></div></div>`;
+}
+</script>
+<script>
+"use strict";
+let viewers=[],unsubs=[],offs=[],timers=[],shown=null,virtual=null,pending=null;
+const app=$('#app');
+const on=(el,ev,fn,opt)=>{if(!el)return;el.addEventListener(ev,fn,opt);offs.push(()=>el.removeEventListener(ev,fn,opt))};
+const later=(fn,ms)=>{const t=setTimeout(fn,ms);timers.push(t);return t};
+function cleanup(){viewers.forEach(v=>v.dispose());viewers=[];unsubs.forEach(f=>f());unsubs=[];offs.forEach(f=>f());offs=[];timers.forEach(clearTimeout);timers=[]}
+function toast(msg){const t=$('#toast');t.textContent=msg;t.classList.add('on');clearTimeout(toast.t);toast.t=setTimeout(()=>t.classList.remove('on'),2400)}
+function scrollToSel(sel){const el=$(sel);if(el)el.scrollIntoView({behavior:'smooth',block:'start'});else{pending=sel;go('/tuttotondo')}}
+function seen(el,fn,once=true){const io=new IntersectionObserver(es=>{if(es[0].isIntersecting){fn();if(once)io.disconnect()}},{threshold:.45});io.observe(el);unsubs.push(()=>io.disconnect())}
+function bindViewer(v,extra={}){
+  const f=d=>v.setConfig(Object.assign({oak:d.oak,body:d.body,accent:d.accent,surface:cfg.surface},extra));
+  f(derived());if(!v.dead){v.cur.body.copy(v.tar.body);v.cur.acc.copy(v.tar.acc)}
+  unsubs.push(onCfg(f));
+}
+
+/* ---------- cart ---------- */
+function cartTotal(){return cart.reduce((s,i)=>s+i.price*i.qty,0)}
+function renderCart(){
+  const n=cart.reduce((s,i)=>s+i.qty,0);$('#cartn').textContent=n;
+  $('#cartitems').innerHTML=cart.length?cart.map((i,k)=>`<div class="cart-item"><img src="${i.img}" alt=""><div><b>${i.name}</b><div class="d">${i.desc}</div><button class="rm mono" data-rm="${k}">Remove</button></div><div class="mono">${i.from?'from ':''}${eur(i.price)}${i.qty>1?' × '+i.qty:''}</div></div>`).join(''):'<p class="empty">Your cart is empty. One sheet, one table: start with <a class="linkline" href="#/tuttotondo" data-link="/tuttotondo">TuttoTondo</a>.</p>';
+  $('#carttot').textContent=eur(cartTotal());$('#checkout').disabled=!cart.length;
+}
+function addToCart(){
+  const d=derived(),p=priceNow();
+  const desc=cfg.finish==='natural'?'Natural oak':`${d.bodyName} body · ${d.accName} accent`;
+  const surfLabel=cfg.surface==='chess'?' · Chess board':cfg.surface==='cards'?' · Cards':'';
+  const full=desc+surfLabel;
+  const ex=cart.find(i=>i.desc===full);
+  if(ex)ex.qty++;else cart.push({name:'TuttoTondo'+(cfg.finish==='custom'?' Custom':cfg.finish==='natural'?' Natural':''),desc:full,price:p.min,from:p.min!==p.max,img:d.photo,qty:1});
+  renderCart();toast('Added to cart');document.body.classList.add('cart-open');
+}
+
+/* ---------- inits ---------- */
+function initCfg(){
+  const root=$('#configurator');if(!root)return;
+  const st=$('#cfg-stage'),v=new Viewer(st,{pose:'final',interactive:true,auto:true});viewers.push(v);bindViewer(v);
+  on($('#cfg-flip'),'click',()=>v.flip());
+  $$('.tabs button',root).forEach(b=>on(b,'click',()=>{
+    const f=b.dataset.fin;if(f==='custom'&&!cfg.ral1&&!cfg.ral2){cfg.ral1='7016';cfg.ral2='6027';$('#ral1').value='7016';$('#ral2').value='6027'}setCfg({finish:f})}));
+  $$('.sw button',root).forEach(b=>on(b,'click',()=>setCfg({finish:'standard',[b.dataset.k]:b.dataset.c})));
+  on($('#ral1'),'input',e=>setCfg({ral1:e.target.value}));on($('#ral2'),'input',e=>setCfg({ral2:e.target.value}));
+  $$('#surf-tabs button',root).forEach(b=>on(b,'click',()=>setCfg({surface:cfg.surface===b.dataset.surf?'none':b.dataset.surf})));
+  on($('#cfg-add'),'click',addToCart);
+  const SURF_NAME={none:'Plain',chess:'Chess',cards:'Cards'};
+  const refresh=(d,p)=>{
+    $('#cfg-name').innerHTML=cfg.finish==='natural'?'Natural oak':`${d.bodyName}<span class="x">×</span>${d.accName}`;
+    $$('.tabs button[data-fin]',root).forEach(b=>b.setAttribute('aria-pressed',b.dataset.fin===cfg.finish));
+    $('#fin-standard').hidden=cfg.finish!=='standard';$('#fin-custom').hidden=cfg.finish!=='custom';$('#fin-natural').hidden=cfg.finish!=='natural';
+    $$('#sw-body button').forEach(b=>b.setAttribute('aria-pressed',b.dataset.c===cfg.body));
+    $$('#sw-acc button').forEach(b=>b.setAttribute('aria-pressed',b.dataset.c===cfg.accent));
+    $('#nm-body').textContent=CMAP[cfg.body].name;$('#nm-acc').textContent=CMAP[cfg.accent].name;
+    $('#nm-surface').textContent=SURF_NAME[cfg.surface];
+    $$('#surf-tabs button',root).forEach(b=>b.setAttribute('aria-pressed',b.dataset.surf===cfg.surface));
+    $('#chip1').style.setProperty('--c',ralHex(cfg.ral1)||'#ccc');$('#chip2').style.setProperty('--c',ralHex(cfg.ral2)||'#ccc');
+    const surfLabel=cfg.surface==='chess'?' + chess board':cfg.surface==='cards'?' + cards':'';
+    $('#cfg-price').innerHTML=`${p.text}<small>${p.label}${surfLabel}</small>`;
+    $('#cfg-fb').src=d.photo;
+  };
+  unsubs.push(onCfg(refresh));
+}
+function initAsm(){
+  const st=$('#asm-stage');if(!st)return;
+  const v=new Viewer(st,{pose:'unpack',interactive:true,auto:false});viewers.push(v);bindViewer(v,{surface:'none'});
+  const steps=$$('#steps li');
+  const go=n=>{steps.forEach(li=>li.classList.toggle('on',li.dataset.pose===n));v.setPose(n)};
+  const stop=()=>{timers.forEach(clearTimeout);timers=[]};
+  steps.forEach(li=>on($('button',li),'click',()=>{stop();go(li.dataset.pose)}));
+  const play=()=>{stop();['unpack','slot','assemble','top','final'].forEach((n,i)=>later(()=>go(n),i*2000))};
+  on($('#asm-play'),'click',play);
+  seen(st,()=>later(play,500));
+}
+function initRot(){
+  const st=$('#rot-stage');if(!st)return;
+  const v=new Viewer(st,{pose:'final',interactive:true,phi:.74,theta:.62});viewers.push(v);bindViewer(v);
+  on($('#rot-spin'),'click',()=>v.spin());on($('#rot-flip'),'click',()=>v.flip());
+  seen(st,()=>{later(()=>v.spin(),700);later(()=>v.flip(),2300)});
+}
+function initEditions(){
+  const g=$('#ed-grid');if(!g)return;
+  $$('button',g).forEach(b=>on(b,'click',()=>{setCfg({finish:'standard',body:b.dataset.b,accent:b.dataset.a});scrollToSel('#configurator')}));
+  unsubs.push(onCfg(()=>$$('button',g).forEach(b=>b.classList.toggle('on',cfg.finish==='standard'&&b.dataset.b===cfg.body&&b.dataset.a===cfg.accent))));
+}
+function initChess(){
+  const coin=$('#coin');if(!coin)return;
+  const back=$('#coin-back'),tabs=$$('#game-tabs button');
+  let surf='chess';
+  const paint=()=>{back.innerHTML=surf==='chess'?boardSVG():cardsFaceSVG()};
+  const t=()=>coin.classList.toggle('flipped');
+  on($('#coin-flip'),'click',t);on(coin,'click',t);
+  tabs.forEach(b=>on(b,'click',e=>{e.stopPropagation();surf=b.dataset.surf;tabs.forEach(x=>x.setAttribute('aria-pressed',x===b));paint();if(!coin.classList.contains('flipped'))coin.classList.add('flipped')}));
+  on($('#chess-add'),'click',()=>{setCfg({surface:surf});toast(`${surf==='chess'?'Chess board':'Cards'} added to your table`);scrollToSel('#configurator')});
+  seen(coin,()=>later(()=>coin.classList.add('flipped'),900));
+}
+function initFinGo(){$$('[data-fin-go]').forEach(b=>on(b,'click',()=>{const f=b.dataset.finGo;if(f==='custom'&&!cfg.ral1&&!cfg.ral2){cfg.ral1='7016';cfg.ral2='6027';const a=$('#ral1'),c=$('#ral2');if(a){a.value='7016';c.value='6027'}}setCfg({finish:f});scrollToSel('#configurator')}))}
+function initSheet(){
+  const sec=$('#sheet');if(!sec)return;
+  const svg=$('svg',sec),A=$('#pt-a'),B=$('#pt-b'),T1=$('#pt-t1'),T2=$('#pt-t2'),dims=$('#sh-dims'),dd=$('#d-dim'),photo=$('.photo',sec),cap=$('#sh-cap'),st=$$('#sh-stages span'),lbs=$$('.lb',svg),cuts=$$('.cut',svg);
+  const CAPS=['One sheet. Everything the table needs is drawn inside this rectangle.','One cut line. The curve that shapes each plate is the edge of the round top.','Two plates. One round top. Two small tabs. That is the whole table.','The same parts, coloured. Assembled without a single screw.'];
+  let last=-1;
+  const upd=()=>{
+    const r=sec.getBoundingClientRect(),tot=r.height-window.innerHeight,p=tot>0?clamp(-r.top/tot):0;
+    const cut=clamp((p-.18)/.28),sep=ease(clamp((p-.5)/.24)),fill=clamp((p-.76)/.1),ph=clamp((p-.84)/.09);
+    cuts.forEach(c=>{c.style.strokeDasharray='1 1';c.style.strokeDashoffset=(1-cut).toFixed(4)});
+    A.style.transform=`translate(0px,${(-15*sep).toFixed(2)}px)`;B.style.transform=`translate(0px,${(15*sep).toFixed(2)}px)`;
+    T1.style.transform=`translate(${(-13*sep).toFixed(2)}px,${(-22*sep).toFixed(2)}px)`;T2.style.transform=`translate(${(13*sep).toFixed(2)}px,${(22*sep).toFixed(2)}px)`;
+    dims.style.opacity=1-clamp((p-.14)/.1);dd.style.opacity=clamp((p-.32)/.1)*(1-clamp((p-.5)/.08));
+    const lo=clamp((p-.6)/.08)*(1-clamp((p-.78)/.06));lbs.forEach(l=>l.setAttribute('opacity',lo.toFixed(2)));
+    [A,B,T1,T2,$('#pt-d')].forEach(g=>g.style.setProperty('--f',(fill*.95).toFixed(2)));
+    svg.style.opacity=(1-ph).toFixed(2);photo.style.opacity=ph.toFixed(2);
+    const i=p<.18?0:p<.5?1:p<.86?2:3;
+    if(i!==last){last=i;cap.textContent=CAPS[i];st.forEach((s,k)=>s.classList.toggle('on',k===i))}
+  };
+  on(window,'scroll',upd,{passive:true});on(window,'resize',upd);upd();
+  unsubs.push(onCfg(d=>{$('#sh-photo').src=d.photo}));
+}
+function initPP(){
+  const im=$('#pp-img');if(!im)return;
+  unsubs.push(onCfg((d,p)=>{im.src=d.photo;$('#pp-price').innerHTML=`${p.text}<small>${p.label}</small>`}));
+  const links=$$('#subnav a'),secs=links.map(a=>$(a.dataset.scroll));
+  const spy=()=>{let k=-1;secs.forEach((s,i)=>{if(s&&s.getBoundingClientRect().top<window.innerHeight*.35)k=i});links.forEach((a,i)=>a.classList.toggle('on',i===k));if(k>=0){const a=links[k],sn=$('#subnav');sn.scrollTo?.({left:a.offsetLeft-24,behavior:'auto'})}};
+  on(window,'scroll',spy,{passive:true});spy();
+}
+function initOrder(){
+  const o=$('#order');if(!o)return;
+  unsubs.push(onCfg((d,p)=>{const sl=cfg.surface==='chess'?' · chess board':cfg.surface==='cards'?' · cards':'';$('#ord-desc').textContent=`${d.name}${sl} · Ø 60 × 40 cm`;$('#ord-price').innerHTML=`${p.text}<small>${p.label}</small>`}));
+  on($('#ord-add'),'click',addToCart);
+}
+function initContact(){
+  const f=$('#cform');if(!f)return;
+  on(f,'submit',e=>{e.preventDefault();$('#cmsg').textContent='Thank you. This is a draft site, so the form is not connected yet and nothing was sent.';f.reset()});
+}
+
+/* ---------- router ---------- */
+const validPath=p=>PAGES[p]?p:'/';
+function currentPath(){return validPath(virtual??((location.hash||'#/').slice(1)||'/'))}
+function go(path){
+  if(currentPath()===path&&shown===path){window.scrollTo({top:0,behavior:'smooth'});$('#nav').classList.remove('open');return}
+  virtual=path;try{location.hash='#'+path}catch(_){}
+  if(shown!==path)render();
+}
+function render(){
+  const path=currentPath();cleanup();shown=path;
+  app.innerHTML=PAGES[path]();$('#foot').innerHTML=footer();
+  $$('.nav-links a').forEach(a=>a.classList.toggle('on',a.dataset.link===path));
+  $('#nav').classList.remove('open');$('#menubtn').setAttribute('aria-expanded','false');
+  $$('[data-p]').forEach(e=>e.textContent=pr(e.dataset.p));
+  initSheet();initCfg();initAsm();initRot();initEditions();initChess();initFinGo();initPP();initOrder();initContact();
+  applyCfg();window.scrollTo(0,0);
+  if(pending){const s=pending;pending=null;setTimeout(()=>scrollToSel(s),120)}
+}
+
+/* ---------- boot ---------- */
+$('#brand-logo').innerHTML=LOGO(1.7);
+onCfg(d=>document.documentElement.style.setProperty('--dsq',d.oak?'#A47C4C':d.body));
+document.addEventListener('click',e=>{
+  const l=e.target.closest('[data-link]');if(l){e.preventDefault();go(l.dataset.link);return}
+  const s=e.target.closest('[data-scroll]');if(s){e.preventDefault();scrollToSel(s.dataset.scroll);return}
+  const r=e.target.closest('[data-rm]');if(r){cart.splice(+r.dataset.rm,1);renderCart()}
+});
+window.addEventListener('hashchange',()=>{virtual=null;if(currentPath()!==shown)render()});
+window.addEventListener('scroll',()=>$('#nav').classList.toggle('scrolled',window.scrollY>8),{passive:true});
+$('#cartbtn').addEventListener('click',()=>document.body.classList.add('cart-open'));
+$('#cartclose').addEventListener('click',()=>document.body.classList.remove('cart-open'));
+$('#veil').addEventListener('click',()=>document.body.classList.remove('cart-open'));
+document.addEventListener('keydown',e=>{if(e.key==='Escape')document.body.classList.remove('cart-open')});
+$('#menubtn').addEventListener('click',()=>{const o=$('#nav').classList.toggle('open');$('#menubtn').setAttribute('aria-expanded',o)});
+$('#checkout').addEventListener('click',()=>{$('#checkmsg').textContent='Draft site: checkout is not connected yet. Nothing was charged.'});
+renderCart();render();
+</script>
+
+</body></html>
