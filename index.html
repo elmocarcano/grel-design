@@ -450,7 +450,7 @@ const cart=[];
 const listeners=new Set();
 function ralHex(v){const m=String(v).match(/\d{4}/);return m&&RAL[m[0]]?RAL[m[0]]:null}
 function derived(){
-  if(cfg.finish==='natural')return {oak:true,body:'#D6B587',accent:'#D6B587',name:'Natural oak',photo:'img/oak.jpg',bodyName:'Oak',accName:'Oak'};
+  if(cfg.finish==='natural')return {oak:true,body:'#D6B587',accent:'#D6B587',name:'Natural oak',photo:'img/tt-oak.jpg',bodyName:'Oak',accName:'Oak'};
   if(cfg.finish==='custom'){
     const b=ralHex(cfg.ral1)||'#B9B4A8',a=ralHex(cfg.ral2)||'#8D8778';
     const near=h=>{const r=hexRGB(h);let best=null,bd=1e9;COLORS.forEach(c=>{const q=hexRGB(c[2]);const d=(q[0]-r[0])**2+(q[1]-r[1])**2+(q[2]-r[2])**2;if(d<bd){bd=d;best=c[0]}});return best};
@@ -903,7 +903,7 @@ S.custom=()=>`
 
 S.natural=()=>`
 <section class="sec" id="natural"><div class="wrap nat-grid">
-  <figure><img src="img/oak.jpg" width="900" height="843" loading="lazy" alt="TuttoTondo Natural, entirely in oak"></figure>
+  <figure><img src="img/tt-oak.jpg" width="900" height="843" loading="lazy" alt="TuttoTondo Natural, entirely in oak"></figure>
   <div class="nat-r">${LBL('Material edition')}<h2 class="h-lg col">Natural.</h2>
     <p class="lede">The same geometry, in oak.</p>
     <p class="sub">Plates, centre and round top: every part in natural oak, with the grain left visible. It is a material of its own, not an eighth colour.</p>

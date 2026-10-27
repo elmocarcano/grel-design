@@ -12,7 +12,7 @@ plus light terms) so any colour combination can then be composited instantly.
 """
 import numpy as np
 
-R_EDGE = 0.10  # small edge radius, gives the soft highlight on lacquered edges
+R_EDGE = 0.16  # small edge radius, gives the soft highlight on lacquered edges
 
 
 def box2(px, py, hx, hy):
@@ -148,7 +148,7 @@ def render_buffers(W, H, az=34, el=20, dist=330, fov=22, target=(0, 17, 0),
     att = (np.linalg.norm(lp) / dist_l[:, 0]) ** 2          # 1 at the table centre
     pe = p + n * 0.02
     sh = soft_shadow(pe, Lp, k=10.0)
-    occ = ao(p, n)
+    occ = ao(p, n, samples=8, step=1.3)
     ndl = np.clip(np.sum(n * Lp, -1), 0, 1)
     F = np.asarray(fill_dir, float); F /= np.linalg.norm(F)
     fill = np.clip(n @ F, 0, 1) * 0.22
@@ -171,7 +171,9 @@ def render_buffers(W, H, az=34, el=20, dist=330, fov=22, target=(0, 17, 0),
     occ_g = ao(pg, up, samples=6, step=2.5)
     gshadow[gi] = (0.45 + 0.55 * s) * (0.35 + 0.65 * occ_g)
     cls[gi] = 9
-    return dict(W=W, H=H, cls=cls, diff=diff, amb=amb, spec=spec, gshadow=gshadow)
+    bounce = np.zeros(N); bounce[idx] = np.clip(0.5 - 0.5 * n[:, 1], 0, 1) * occ
+    return dict(W=W, H=H, cls=cls, diff=diff, amb=amb, spec=spec, gshadow=gshadow, bounce=bounce,
+                hidx=idx, pos=p.astype(np.float32), nrm=n.astype(np.float32), part=part.astype(np.int8))
 
 
 def srgb_to_lin(c):
@@ -184,18 +186,70 @@ def lin_to_srgb(c):
     return np.where(c <= 0.0031308, c * 12.92, 1.055 * c ** (1 / 2.4) - 0.055)
 
 
-def composite(buf, body_hex, accent_hex, bg=(241, 232, 222), key=1.05, ambk=0.62):
+def _hash_noise(x, y, z, scale):
+    """Cheap smooth value noise from summed sines (deterministic)."""
+    v = (np.sin(x * 0.91 * scale + y * 1.7 * scale) + np.sin(y * 1.31 * scale - z * 0.77 * scale + 1.3)
+         + np.sin(z * 1.13 * scale + x * 0.53 * scale + 2.1))
+    return v / 3
+
+
+def oak_albedo(p, n, part):
+    """Procedural rift-sawn oak: straight grain along each part's length."""
+    x, y, z = p[:, 0], p[:, 1], p[:, 2]
+    across = np.where(part == 0, y + 0.6 * z, np.where(part == 1, y + 0.6 * x, z + 0.3 * y))
+    along = np.where(part == 0, x, np.where(part == 1, z, x))
+    drift = 0.9 * np.sin(along * 0.045 + across * 0.11) + 0.5 * np.sin(along * 0.013 - across * 0.07 + 1.7)
+    g = across + drift
+    # irregular fine streaks: several incommensurate frequencies, fading in and out along the grain
+    streak = np.zeros_like(g)
+    for f, ph, w in ((1.37, 0.3, .30), (2.71, 1.9, .25), (4.13, 4.2, .2), (6.07, 2.6, .15), (9.31, 5.1, .10)):
+        streak += w * np.sin(g * f * 6.283 / 2.5 + ph + 0.6 * np.sin(along * 0.02 * f + ph))
+    streak = np.clip(streak * 1.6, -1, 1)
+    fade = 0.6 + 0.4 * np.sin(along * 0.07 + g * 0.9)
+    figure = 0.5 + 0.5 * np.sin(g * 0.45 + 0.8 * np.sin(along * 0.03))
+    t = np.clip(0.5 + 0.22 * streak * fade + 0.22 * (figure - 0.5), 0, 1)
+    base = srgb_to_lin([214, 172, 122])
+    dark = srgb_to_lin([176, 128, 82])
+    col = base[None, :] * (1 - t[:, None]) + dark[None, :] * t[:, None]
+    endg = ((part == 0) & (np.abs(n[:, 0]) > 0.6)) | ((part == 1) & (np.abs(n[:, 2]) > 0.6)) | \
+           ((part == 2) & (np.abs(n[:, 1]) < 0.4))
+    col[endg] *= 0.85
+    return col
+
+
+def tone(x):
+    """Gentle highlight shoulder so pale tops keep their tone."""
+    k = 0.72
+    return np.where(x < k, x, k + (1 - k) * (1 - np.exp(-(x - k) / (1 - k))))
+
+
+def composite(buf, body_hex, accent_hex, bg=(241, 232, 222), key=0.80, ambk=0.52, oak=False):
     W, H = buf['W'], buf['H']
     cls = buf['cls']
-    out = np.tile(srgb_to_lin(bg), (cls.size, 1))
+    bgl = srgb_to_lin(bg)
+    # studio sweep: a touch brighter behind the table, softly darker at the edges
+    yy, xx = np.mgrid[0:H, 0:W]
+    r = np.hypot((xx / W - 0.5) * 1.1, (yy / H - 0.42))
+    sweep = (1.06 - 0.22 * r ** 2).reshape(-1)
+    out = bgl[None, :] * sweep[:, None]
     g = cls == 9
     out[g] *= buf['gshadow'][g, None]
+    hidx, pos, nrm, part = buf['hidx'], buf['pos'], buf['nrm'], buf['part']
+    sub = cls[hidx]
     for k, hx in ((1, body_hex), (2, accent_hex)):
-        m = cls == k
-        alb = srgb_to_lin([int(hx[i:i + 2], 16) for i in (1, 3, 5)])
-        light = key * buf['diff'][m] + ambk * buf['amb'][m]
-        out[m] = alb[None, :] * light[:, None] + buf['spec'][m, None]
+        m = sub == k
+        ii = hidx[m]
+        if oak:
+            alb = oak_albedo(pos[m].astype(float), nrm[m].astype(float), part[m])
+        else:
+            alb = np.tile(srgb_to_lin([int(hx[i:i + 2], 16) for i in (1, 3, 5)]), (ii.size, 1))
+            # very slight unevenness of a sprayed lacquer
+            alb *= (1 + 0.012 * _hash_noise(pos[m, 0], pos[m, 1], pos[m, 2], 0.35))[:, None]
+        light = key * buf['diff'][ii] + ambk * buf['amb'][ii]
+        warm = 0.30 * buf['bounce'][ii][:, None] * bgl[None, :]      # floor bounce
+        out[ii] = alb * (light[:, None] + warm) + buf['spec'][ii, None] * (1.4 if oak else 1.0)
+    out = tone(out)
     rng = np.random.default_rng(7)
-    srgb = lin_to_srgb(out) + rng.normal(0, 0.006, out.shape)
+    srgb = lin_to_srgb(out) + rng.normal(0, 0.005, out.shape)
     img = (np.clip(srgb, 0, 1) * 255 + 0.5).astype(np.uint8).reshape(H, W, 3)
     return img
