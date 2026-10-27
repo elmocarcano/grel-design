@@ -628,6 +628,12 @@ class Viewer{
     this.mTop.map=this.logoTex;this.mBot.map=this.logoTex;
     const wc=woodCanvas(512);this.wood=new THREE.CanvasTexture(wc);this.wood.wrapS=this.wood.wrapT=THREE.RepeatWrapping;this.wood.repeat.set(1/55,1/28);this.wood.anisotropy=4;
     this.woodDisc=new THREE.CanvasTexture(wc);this.woodDisc.wrapS=this.woodDisc.wrapT=THREE.RepeatWrapping;this.woodDisc.anisotropy=4;
+    /* real oak veneer (25 x 40 cm sample, mirrored); the drawn grain above stays as a fallback until it loads */
+    new THREE.TextureLoader().load('img/oak-veneer.jpg',t=>{if(this.dead)return;
+      const M=THREE.MirroredRepeatWrapping;
+      this.wood.image=t.image;this.wood.wrapS=this.wood.wrapT=M;this.wood.repeat.set(1/25.3,1/40);this.wood.needsUpdate=true;
+      this.woodDisc.image=t.image;this.woodDisc.wrapS=this.woodDisc.wrapT=M;this.woodDisc.center.set(.5,.5);this.woodDisc.rotation=Math.PI/2;
+      this.woodDisc.repeat.set(60/25.3,60/40);this.woodDisc.needsUpdate=true});
     /* parts */
     const ex=k=>new THREE.ExtrudeGeometry(plateShape(k),{depth:2,bevelEnabled:false,curveSegments:110}).translate(0,0,-1);
     this.A=new THREE.Group();this.B=new THREE.Group();this.D=new THREE.Group();
