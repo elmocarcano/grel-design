@@ -513,7 +513,7 @@ const POSES={
   slot:    {A:{p:[0,36,0],q:[0,0,0]},B:{p:[0,0,0],q:[0,PI/2,0]},D:{p:[86,1,0]},cam:{theta:.62,phi:1.0,radius:265,t:[26,16,0]}},
   assemble:{A:{p:[0,0,0],q:[0,0,0]},B:{p:[0,0,0],q:[0,PI/2,0]},D:{p:[86,1,0]},cam:{theta:.62,phi:1.0,radius:255,t:[26,14,0]}},
   top:     {A:{p:[0,0,0],q:[0,0,0]},B:{p:[0,0,0],q:[0,PI/2,0]},D:{p:[0,74,0]},cam:{theta:.62,phi:.98,radius:225,t:[0,30,0]}},
-  final:   {A:{p:[0,0,0],q:[0,0,0]},B:{p:[0,0,0],q:[0,PI/2,0]},D:{p:[0,38,0]},cam:{theta:.62,phi:1.0,radius:205,t:[0,17,0]}}
+  final:   {A:{p:[0,0,0],q:[0,0,0]},B:{p:[0,0,0],q:[0,PI/2,0]},D:{p:[0,39,0]},cam:{theta:.62,phi:1.0,radius:205,t:[0,17,0]}}
 };
 function plateShape(kind){
   const s=new THREE.Shape(),e=Math.asin(1/30);
@@ -604,14 +604,14 @@ class Viewer{
     try{this.r=new THREE.WebGLRenderer({canvas:this.canvas,antialias:true,alpha:true});if(!this.r.getContext())throw 0}catch(e){host.classList.add('nogl');this.dead=true;return}
     const r=this.r;r.setPixelRatio(Math.min(window.devicePixelRatio||1,2));r.shadowMap.enabled=true;r.shadowMap.type=THREE.PCFSoftShadowMap;r.setClearColor(0x000000,0);
     this.scene=new THREE.Scene();this.camera=new THREE.PerspectiveCamera(26,1,20,1600);
-    const hemi=new THREE.HemisphereLight(0xfff4e6,0xd6c4a8,.66);this.scene.add(hemi);
-    const key=new THREE.DirectionalLight(0xffffff,.62);key.position.set(-120,190,100);key.castShadow=true;
+    const hemi=new THREE.HemisphereLight(0xfffaf2,0xcdbda4,.5);this.scene.add(hemi);
+    const key=new THREE.DirectionalLight(0xfffdf8,.52);key.position.set(-120,190,100);key.castShadow=true;
     key.shadow.mapSize.set(2048,2048);const sc=key.shadow.camera;sc.left=-130;sc.right=130;sc.top=130;sc.bottom=-130;sc.near=50;sc.far=520;key.shadow.bias=-.0008;key.shadow.normalBias=.35;
     this.scene.add(key);
-    const fill=new THREE.DirectionalLight(0xffe6cf,.16);fill.position.set(140,60,-90);this.scene.add(fill);
+    const fill=new THREE.DirectionalLight(0xffeedd,.18);fill.position.set(140,60,-90);this.scene.add(fill);
     const ground=new THREE.Mesh(new THREE.PlaneGeometry(900,900).rotateX(-PI/2),new THREE.ShadowMaterial({opacity:.2}));ground.receiveShadow=true;this.scene.add(ground);
     /* materials */
-    const std=p=>new THREE.MeshStandardMaterial(Object.assign({roughness:.9,metalness:0},p));
+    const std=p=>new THREE.MeshStandardMaterial(Object.assign({roughness:.82,metalness:0},p));
     this.mBody=std({color:0x252525});this.mAcc=std({color:0x8fd9cf});this.mTop=std({color:0x8fd9cf});this.mBot=std({color:0x8fd9cf});
     this.logoTex=new THREE.CanvasTexture(logoCanvas());
     this.mTop.map=this.logoTex;this.mBot.map=this.logoTex;
