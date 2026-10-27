@@ -253,3 +253,39 @@ def composite(buf, body_hex, accent_hex, bg=(241, 232, 222), key=0.80, ambk=0.52
     srgb = lin_to_srgb(out) + rng.normal(0, 0.005, out.shape)
     img = (np.clip(srgb, 0, 1) * 255 + 0.5).astype(np.uint8).reshape(H, W, 3)
     return img
+
+
+def composite_rgba(buf, body_hex, accent_hex, oak=False, shadow_strength=0.85, key=0.80, ambk=0.52, shadow=True):
+    """Cut-out version: transparent background, the floor shadow kept as soft alpha."""
+    W, H = buf['W'], buf['H']
+    cls = buf['cls']
+    bgl = srgb_to_lin((241, 232, 222))  # used only for the warm floor bounce
+    rgb = np.zeros((cls.size, 3)); alpha = np.zeros(cls.size)
+    g = cls == 9
+    alpha[g] = np.clip((1 - buf['gshadow'][g]) * shadow_strength, 0, 1) if shadow else 0
+    rgb[g] = 0
+    hidx, pos, nrm, part = buf['hidx'], buf['pos'], buf['nrm'], buf['part']
+    sub = cls[hidx]
+    for k, hx in ((1, body_hex), (2, accent_hex)):
+        m = sub == k
+        ii = hidx[m]
+        if oak:
+            alb = oak_albedo(pos[m].astype(float), nrm[m].astype(float), part[m])
+        else:
+            alb = np.tile(srgb_to_lin([int(hx[i:i + 2], 16) for i in (1, 3, 5)]), (ii.size, 1))
+            alb *= (1 + 0.012 * _hash_noise(pos[m, 0], pos[m, 1], pos[m, 2], 0.35))[:, None]
+        light = key * buf['diff'][ii] + ambk * buf['amb'][ii]
+        warm = 0.30 * buf['bounce'][ii][:, None] * bgl[None, :]
+        rgb[ii] = alb * (light[:, None] + warm) + buf['spec'][ii, None] * (1.4 if oak else 1.0)
+        alpha[ii] = 1
+    rgb = lin_to_srgb(tone(rgb))
+    out = np.dstack([rgb.reshape(H, W, 3), alpha.reshape(H, W)])
+    return (np.clip(out, 0, 1) * 255 + 0.5).astype(np.uint8)
+
+
+def shadow_rgba(buf, strength=0.8):
+    """Floor shadow only (black + alpha), to be layered with mix-blend-mode: multiply."""
+    W, H = buf['W'], buf['H']
+    a = np.where(buf['cls'] == 9, np.clip((1 - buf['gshadow']) * strength, 0, 1), 0)
+    out = np.zeros((H, W, 4)); out[..., 3] = a.reshape(H, W)
+    return (out * 255 + 0.5).astype(np.uint8)
