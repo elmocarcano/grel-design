@@ -217,6 +217,48 @@ def oak_albedo(p, n, part):
     return col
 
 
+_OAK = None
+
+
+def _oak_tex():
+    """Oak veneer sampled from a reference photo (lighting removed), as linear albedo."""
+    global _OAK
+    if _OAK is None:
+        import os
+        from PIL import Image
+        a = np.asarray(Image.open(os.path.join(os.path.dirname(os.path.abspath(__file__)), 'oak-plate.png')).convert('RGB')).astype(float)
+        lin = srgb_to_lin(a)
+        target = srgb_to_lin([200, 150, 100])
+        _OAK = lin * (target / lin.reshape(-1, 3).mean(0))[None, None, :]
+    return _OAK
+
+
+def _sample_mirror(tex, s, t, cm_per_px=0.11, cm_per_px_t=0.20):
+    """Bilinear lookup with mirrored repeat; s across the grain, t along it (cm)."""
+    H, W = tex.shape[:2]
+    def mirror(u, n):
+        u = np.mod(u, 2 * (n - 1)); return np.where(u > n - 1, 2 * (n - 1) - u, u)
+    x = mirror(s / cm_per_px, W); y = mirror(t / cm_per_px_t, H)
+    x0 = np.floor(x).astype(int); y0 = np.floor(y).astype(int)
+    x1 = np.minimum(x0 + 1, W - 1); y1 = np.minimum(y0 + 1, H - 1)
+    fx = (x - x0)[:, None]; fy = (y - y0)[:, None]
+    return (tex[y0, x0] * (1 - fx) * (1 - fy) + tex[y0, x1] * fx * (1 - fy) +
+            tex[y1, x0] * (1 - fx) * fy + tex[y1, x1] * fx * fy)
+
+
+def oak_albedo_photo(p, n, part):
+    x, y, z = p[:, 0], p[:, 1], p[:, 2]
+    tex = _oak_tex()
+    # plates: grain runs up the height; top: grain runs along x. Offsets keep parts from matching.
+    s = np.where(part == 0, x + 13.0, np.where(part == 1, z + 41.0, z + 7.0))
+    t = np.where(part == 2, x + 30.0, y + np.where(part == 0, 0.5, 1.0))
+    col = _sample_mirror(tex, s, t)
+    endg = ((part == 0) & (np.abs(n[:, 0]) > 0.6)) | ((part == 1) & (np.abs(n[:, 2]) > 0.6)) | \
+           ((part == 2) & (np.abs(n[:, 1]) < 0.4))
+    col[endg] *= 0.86
+    return col
+
+
 def tone(x):
     """Gentle highlight shoulder so pale tops keep their tone."""
     k = 0.72
@@ -240,7 +282,7 @@ def composite(buf, body_hex, accent_hex, bg=(241, 232, 222), key=0.80, ambk=0.52
         m = sub == k
         ii = hidx[m]
         if oak:
-            alb = oak_albedo(pos[m].astype(float), nrm[m].astype(float), part[m])
+            alb = oak_albedo_photo(pos[m].astype(float), nrm[m].astype(float), part[m])
         else:
             alb = np.tile(srgb_to_lin([int(hx[i:i + 2], 16) for i in (1, 3, 5)]), (ii.size, 1))
             # very slight unevenness of a sprayed lacquer
@@ -270,7 +312,7 @@ def composite_rgba(buf, body_hex, accent_hex, oak=False, shadow_strength=0.85, k
         m = sub == k
         ii = hidx[m]
         if oak:
-            alb = oak_albedo(pos[m].astype(float), nrm[m].astype(float), part[m])
+            alb = oak_albedo_photo(pos[m].astype(float), nrm[m].astype(float), part[m])
         else:
             alb = np.tile(srgb_to_lin([int(hx[i:i + 2], 16) for i in (1, 3, 5)]), (ii.size, 1))
             alb *= (1 + 0.012 * _hash_noise(pos[m, 0], pos[m, 1], pos[m, 2], 0.35))[:, None]
