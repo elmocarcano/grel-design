@@ -228,13 +228,13 @@ p{margin:0}
 .tabs button:not([aria-pressed=true]):hover{background:var(--paper-2)}
 .row-h{display:flex;justify-content:space-between;color:var(--ink-2);margin-bottom:.7rem}
 .row-h b{font-weight:500;color:var(--ink)}
-.sw{display:grid;grid-template-columns:repeat(7,1fr);gap:clamp(4px,1vw,10px)}
+.sw{display:grid;grid-template-columns:repeat(8,1fr);gap:clamp(3px,.8vw,8px)}
 .sw button{display:flex;flex-direction:column;align-items:center;gap:.5rem;color:var(--ink-3)}
 .sw i{display:block;width:100%;max-width:52px;aspect-ratio:1;border-radius:50%;background:var(--c);box-shadow:inset 0 0 0 1px rgba(21,20,19,.14);position:relative;transition:transform .25s}
 .sw button:hover i{transform:scale(1.07)}
 .sw button[aria-pressed=true]{color:var(--ink)}
 .sw button[aria-pressed=true] i::after{content:"";position:absolute;inset:-6px;border-radius:50%;border:1.5px solid var(--ink)}
-.sw span{font-family:var(--mono);font-size:.55rem;letter-spacing:.06em;text-transform:uppercase}
+.sw span{font-family:var(--mono);font-size:.5rem;letter-spacing:.03em;text-transform:uppercase}
 @media (max-width:520px){.sw span{display:none}}
 .ral{display:grid;grid-template-columns:1fr 1fr;gap:.8rem}
 .ral label{display:flex;flex-direction:column;gap:.4rem;color:var(--ink-2)}
@@ -260,7 +260,7 @@ p{margin:0}
 .ed-head{display:grid;grid-template-columns:repeat(12,1fr);gap:1.4rem clamp(12px,2vw,28px);margin-bottom:clamp(28px,4vw,56px);align-items:end}
 .ed-head .h-lg{grid-column:1/9}.ed-head p{grid-column:9/13}
 @media (max-width:860px){.ed-head .h-lg,.ed-head p{grid-column:1/-1}}
-.ed-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:clamp(20px,3vw,44px) clamp(10px,1.6vw,24px)}
+.ed-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(20px,3vw,44px) clamp(10px,1.6vw,24px)}
 .ed-grid button{text-align:left;display:flex;flex-direction:column;gap:.5rem;position:relative}
 .ed-grid .im{overflow:hidden;-webkit-mask-image:radial-gradient(ellipse 72% 70% at 50% 52%,#000 66%,transparent 100%);mask-image:radial-gradient(ellipse 72% 70% at 50% 52%,#000 66%,transparent 100%)}
 .ed-grid img{width:100%;aspect-ratio:1110/1040;object-fit:cover;transition:transform .6s cubic-bezier(.2,.7,.2,1)}
@@ -270,7 +270,7 @@ p{margin:0}
 .ed-grid button.on .cap{border-color:var(--ink)}
 .ed-grid button.on .cap b{background:linear-gradient(transparent 85%,var(--accent) 85%)}
 .ed-grid .cap b{font-weight:500}
-@media (max-width:980px){.ed-grid{grid-template-columns:repeat(3,1fr)}}
+@media (max-width:980px){.ed-grid{grid-template-columns:repeat(2,1fr)}}
 @media (max-width:560px){.ed-grid{grid-template-columns:repeat(2,1fr)}}
 
 /* chess */
@@ -441,23 +441,22 @@ body.cart-open .drawer{transform:none;visibility:visible;transition-delay:0s}
 const PRICE={standard:329,custom:479,naturalMin:499,naturalMax:549,chess:75,cards:75};
 const SURFACES={none:{label:null},chess:{label:'Chess board'},cards:{label:'Cards'}};
 const COLORS=[
-  ['cream','Cream','#E8DFD0'],['sunset','Sunset','#E8753D'],['brick','Brick','#8E3F3B'],
-  ['seaside','Seaside','#8FD9CF'],['blue','Blue','#315C9A'],['white','White','#F7F6F2'],['graphite','Graphite','#252525']];
+  ['cream','Cream','#E8DFD0'],['butter','Butter','#E3D5AE'],['rose','Rose','#DDB3AA'],['terracotta','Terracotta','#C98A74'],
+  ['sage','Sage','#A9B79F'],['lake','Lake','#A6BACB'],['bordeaux','Bordeaux','#7E2428'],['graphite','Graphite','#3B3A38']];
 const CMAP=Object.fromEntries(COLORS.map(c=>[c[0],{id:c[0],name:c[1],hex:c[2]}]));
-const EDITIONS=[['graphite','seaside'],['graphite','sunset'],['graphite','brick'],['graphite','blue'],['graphite','cream'],
-  ['cream','seaside'],['cream','brick'],['cream','blue'],['blue','cream'],['brick','cream']];
+const EDITIONS=[['sage','cream'],['rose','terracotta'],['lake','butter'],['graphite','rose']];
 const RAL={1001:'#C2B078',1013:'#EAE6CA',1015:'#E6D2B5',1018:'#FACA30',2004:'#E75B12',2008:'#EE6A25',3000:'#AB2524',3002:'#A2231D',3004:'#6B1C23',3013:'#9B2D30',3020:'#C1121C',
   5012:'#3B83BD',5013:'#1E213D',5014:'#606E8C',5015:'#2271B3',5024:'#5D9B9B',6005:'#2F4538',6018:'#57A639',6019:'#B9CEAC',6021:'#89AC76',6027:'#7EBAB5',
   7016:'#293133',7021:'#23282B',7035:'#CBD0CC',7044:'#B9B9A8',8004:'#8D4931',8017:'#45322E',9001:'#FDF4E3',9003:'#F4F4F4',9005:'#0A0A0A',9010:'#F1EDE1',9016:'#F1F0EA'};
 /* fixed showcase colours (do not follow the configurator) */
-const SHOW={sheet:{body:'#9CAF94',accent:'#E8DFD0',photo:'img/tt-sage-cream.jpg'},cover:{body:'#7E2428',accent:'#E8DFD0'}};
+const SHOW={sheet:{body:'#7E2428',accent:'#E8DFD0',photo:'img/tt-burgundy-cream.jpg'},cover:{body:'#7E2428',accent:'#E8DFD0'}};
 const eur=n=>'€'+n.toLocaleString('en-US');
 const $=(s,r=document)=>r.querySelector(s), $$=(s,r=document)=>[...r.querySelectorAll(s)];
 const clamp=(v,a=0,b=1)=>Math.min(b,Math.max(a,v));
 const hexRGB=h=>[1,3,5].map(i=>parseInt(h.slice(i,i+2),16));
 
 /* ============ STATE ============ */
-const cfg={finish:'standard',body:'graphite',accent:'seaside',ral1:'',ral2:'',surface:'none'};
+const cfg={finish:'standard',body:'cream',accent:'bordeaux',ral1:'',ral2:'',surface:'none'};
 const cart=[];
 const listeners=new Set();
 function ralHex(v){const m=String(v).match(/\d{4}/);return m&&RAL[m[0]]?RAL[m[0]]:null}
@@ -726,7 +725,7 @@ class Viewer{
 </script>
 <style>
 .h-lg.col{font-size:clamp(2.7rem,6.6vw,6.2rem)}
-.dr #pt-a .cut,.dr #pt-b .cut{fill:#9CAF94;fill-opacity:var(--f,0)}
+.dr #pt-a .cut,.dr #pt-b .cut{fill:#7E2428;fill-opacity:var(--f,0)}
 .dr #pt-d .cut,.dr #pt-t1 .cut,.dr #pt-t2 .cut{fill:#E8DFD0;fill-opacity:var(--f,0)}
 .dr .part{transition:none}
 .dr .lb{font-size:2.1px}
@@ -746,7 +745,7 @@ const LBL=t=>`<span class="label mono">${t}</span>`;
 
 /* ---------- sections ---------- */
 const S={};
-const HERO=[['cream','brick'],['graphite','seaside'],['blue','cream'],['brick','cream'],['cream','sunset'],['white','graphite'],['oak','oak']];
+const HERO=[['cream','bordeaux'],['sage','cream'],['rose','terracotta'],['lake','butter'],['graphite','rose'],['oak','oak']];
 const heroHex=k=>k==='oak'?'#C9A06E':CMAP[k].hex;
 const heroName=([b,a])=>b==='oak'?'Natural oak':`${CMAP[b].name} × ${CMAP[a].name}`;
 S.hero=()=>`
@@ -784,7 +783,7 @@ S.sheet=()=>`
       <div class="stages mono" id="sh-stages"><span>One sheet</span><span>Cut</span><span>Components</span><span>TuttoTondo</span></div>
       <p class="mono cred" style="margin-top:.4rem">Scroll ↓</p>
     </div>
-    <div class="sheet-fig" id="sh-fig">${sheetSVG()}<div class="photo"><img id="sh-photo" src="img/tt-sage-cream.jpg" alt="The finished table: sage plates and a cream top"></div></div>
+    <div class="sheet-fig" id="sh-fig">${sheetSVG()}<div class="photo"><img id="sh-photo" src="img/tt-burgundy-cream.jpg" alt="The finished table: bordeaux plates and a cream top"></div></div>
   </div></div>
 </section>`;
 
@@ -863,7 +862,7 @@ S.configurator=()=>`
 
 S.editions=()=>`
 <section class="sec ed" id="editions"><div class="wrap">
-  <div class="ed-head"><div style="grid-column:1/-1">${LBL('Signature combinations')}</div>${H('Grel Editions')}<p class="sub">Ten combinations we keep coming back to. Start here, or don’t. Pick one and it loads into the configurator.</p></div>
+  <div class="ed-head"><div style="grid-column:1/-1">${LBL('Signature combinations')}</div>${H('Grel Editions')}<p class="sub">Four combinations we keep coming back to. Start here, or don’t. Pick one and it loads into the configurator.</p></div>
   <div class="ed-grid" id="ed-grid">${EDITIONS.map(([b,a],i)=>`<button data-b="${b}" data-a="${a}"><span class="im"><img src="img/c-${b}-${a}.jpg" width="900" height="843" loading="lazy" alt="TuttoTondo ${CMAP[b].name} and ${CMAP[a].name}"></span><span class="cap mono"><b>${CMAP[b].name} × ${CMAP[a].name}</b><em>${String(i+1).padStart(2,'0')}</em></span></button>`).join('')}</div>
 </div></section>`;
 
@@ -1051,6 +1050,10 @@ function initCfg(){
   on($('#ral1'),'input',e=>setCfg({ral1:e.target.value}));on($('#ral2'),'input',e=>setCfg({ral2:e.target.value}));
   $$('#surf-tabs button',root).forEach(b=>on(b,'click',()=>setCfg({surface:cfg.surface===b.dataset.surf?'none':b.dataset.surf})));
   on($('#cfg-add'),'click',addToCart);
+  // choosing chess or cards turns the top over so the reverse side is visible; Plain turns it back
+  let lastSurf=cfg.surface;
+  unsubs.push(onCfg(()=>{if(cfg.surface===lastSurf)return;lastSurf=cfg.surface;
+    const want=cfg.surface!=='none',is=v.flipT!==0;if(!v.dead&&want!==is)v.flip()}));
   const SURF_NAME={none:'Plain',chess:'Chess',cards:'Cards'};
   const refresh=(d,p)=>{
     $('#cfg-name').innerHTML=cfg.finish==='natural'?'Natural oak':`${d.bodyName}<span class="x">×</span>${d.accName}`;

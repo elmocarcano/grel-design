@@ -14,10 +14,9 @@ def save(body, acc, name, oak=False):
     img = R.composite(buf, body, acc, oak=oak)
     Image.fromarray(img).resize((900, 843), Image.LANCZOS).save(D + name, quality=87, optimize=True, progressive=True)
 save('#7E2428', '#E8DFD0', 'tt-burgundy-cream.jpg')
-save('#9CAF94', '#E8DFD0', 'tt-sage-cream.jpg')
 save('#000000', '#000000', 'tt-oak.jpg', oak=True)
-C = {'cream': '#E8DFD0', 'sunset': '#E8753D', 'brick': '#8E3F3B', 'seaside': '#8FD9CF',
-     'blue': '#315C9A', 'white': '#F7F6F2', 'graphite': '#252525'}
+C = {'cream': '#E8DFD0', 'butter': '#E3D5AE', 'rose': '#DDB3AA', 'terracotta': '#C98A74',
+     'sage': '#A9B79F', 'lake': '#A6BACB', 'bordeaux': '#7E2428', 'graphite': '#3B3A38'}
 for b in C:
     for a in C:
         save(C[b], C[a], f'c-{b}-{a}.jpg')

@@ -6,10 +6,10 @@ from PIL import Image
 import tt_render as R
 buf = R.render_buffers(2200, 1650, az=45, el=15, dist=205, fov=24, target=(0, 19, 0),
                        light_pos=(90, 300, 240), fill_dir=(0.5, 0.3, -0.8))
-C = {'cream': '#E8DFD0', 'sunset': '#E8753D', 'brick': '#8E3F3B', 'seaside': '#8FD9CF',
-     'blue': '#315C9A', 'white': '#F7F6F2', 'graphite': '#252525'}
-SETS = [('cream', 'brick'), ('graphite', 'seaside'), ('blue', 'cream'), ('brick', 'cream'),
-        ('cream', 'sunset'), ('white', 'graphite'), ('oak', 'oak')]
+C = {'cream': '#E8DFD0', 'butter': '#E3D5AE', 'rose': '#DDB3AA', 'terracotta': '#C98A74',
+     'sage': '#A9B79F', 'lake': '#A6BACB', 'bordeaux': '#7E2428', 'graphite': '#3B3A38'}
+SETS = [('cream', 'bordeaux'), ('sage', 'cream'), ('rose', 'terracotta'), ('lake', 'butter'),
+        ('graphite', 'rose'), ('oak', 'oak')]
 box = None
 imgs = {}
 for b, a in SETS:
