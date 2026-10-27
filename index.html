@@ -437,6 +437,8 @@ const EDITIONS=[['graphite','seaside'],['graphite','sunset'],['graphite','brick'
 const RAL={1001:'#C2B078',1013:'#EAE6CA',1015:'#E6D2B5',1018:'#FACA30',2004:'#E75B12',2008:'#EE6A25',3000:'#AB2524',3002:'#A2231D',3004:'#6B1C23',3013:'#9B2D30',3020:'#C1121C',
   5012:'#3B83BD',5013:'#1E213D',5014:'#606E8C',5015:'#2271B3',5024:'#5D9B9B',6005:'#2F4538',6018:'#57A639',6019:'#B9CEAC',6021:'#89AC76',6027:'#7EBAB5',
   7016:'#293133',7021:'#23282B',7035:'#CBD0CC',7044:'#B9B9A8',8004:'#8D4931',8017:'#45322E',9001:'#FDF4E3',9003:'#F4F4F4',9005:'#0A0A0A',9010:'#F1EDE1',9016:'#F1F0EA'};
+/* fixed showcase colours (do not follow the configurator) */
+const SHOW={sheet:{body:'#E8DFD0',accent:'#9CAF94',photo:'img/c-cream-sage.jpg'},cover:{body:'#E8DFD0',accent:'#7A2A2E'}};
 const eur=n=>'€'+n.toLocaleString('en-US');
 const $=(s,r=document)=>r.querySelector(s), $$=(s,r=document)=>[...r.querySelectorAll(s)];
 const clamp=(v,a=0,b=1)=>Math.min(b,Math.max(a,v));
@@ -712,8 +714,8 @@ class Viewer{
 </script>
 <style>
 .h-lg.col{font-size:clamp(2.7rem,6.6vw,6.2rem)}
-.dr #pt-a .cut,.dr #pt-b .cut{fill:var(--body-c);fill-opacity:var(--f,0)}
-.dr #pt-d .cut,.dr #pt-t1 .cut,.dr #pt-t2 .cut{fill:var(--accent);fill-opacity:var(--f,0)}
+.dr #pt-a .cut,.dr #pt-b .cut{fill:#E8DFD0;fill-opacity:var(--f,0)}
+.dr #pt-d .cut,.dr #pt-t1 .cut,.dr #pt-t2 .cut{fill:#9CAF94;fill-opacity:var(--f,0)}
 .dr .part{transition:none}
 .dr .lb{font-size:2.1px}
 section[id]{scroll-margin-top:calc(var(--nav-h) + 52px)}
@@ -771,7 +773,7 @@ S.sheet=()=>`
       <div class="stages mono" id="sh-stages"><span>One sheet</span><span>Cut</span><span>Components</span><span>TuttoTondo</span></div>
       <p class="mono cred" style="margin-top:.4rem">Scroll ↓</p>
     </div>
-    <div class="sheet-fig" id="sh-fig">${sheetSVG()}<div class="photo"><img id="sh-photo" src="img/c-graphite-seaside.jpg" alt="The finished table"></div></div>
+    <div class="sheet-fig" id="sh-fig">${sheetSVG()}<div class="photo"><img id="sh-photo" src="img/c-cream-sage.jpg" alt="The finished table in cream and sage"></div></div>
   </div></div>
 </section>`;
 
@@ -796,12 +798,12 @@ S.assembly=()=>`
     </ol>
     <div class="ctl"><button class="btn sm" id="asm-play">Play sequence ▶</button></div>
   </div>
-  <div class="stage" id="asm-stage"><div class="fallback"><img class="fbimg" src="img/hero.jpg" alt="TuttoTondo assembled"></div><span class="hint mono">Drag to turn</span></div>
+  <div class="stage" id="asm-stage"><div class="fallback"><img class="fbimg" src="img/c-cream-brick.jpg" alt="TuttoTondo assembled"></div><span class="hint mono">Drag to turn</span></div>
 </div></div></section>`;
 
 S.rotation=()=>`
 <section class="sec rot" id="rotation"><div class="wrap rot-grid">
-  <div class="stage" id="rot-stage"><div class="fallback"><img class="fbimg" src="img/hero.jpg" alt="TuttoTondo"></div><span class="hint mono">Drag to turn</span></div>
+  <div class="stage" id="rot-stage"><div class="fallback"><img class="fbimg" src="img/c-cream-brick.jpg" alt="TuttoTondo"></div><span class="hint mono">Drag to turn</span></div>
   <div class="rot-r">${LBL('The top')}<h2 class="h-lg col">Two sides. One table.</h2>
     <p class="lede">The round top turns. Rotate it to change how the table sits in the room. Flip it, and the colour turns with it.</p>
     <div class="ctl"><button class="btn" id="rot-spin">Rotate <span class="ar">↻</span></button><button class="btn solid" id="rot-flip">Flip the top <span class="ar">⇅</span></button></div>
@@ -1057,7 +1059,7 @@ function initCfg(){
 }
 function initAsm(){
   const st=$('#asm-stage');if(!st)return;
-  const v=new Viewer(st,{pose:'unpack',interactive:true,auto:false});viewers.push(v);bindViewer(v,{surface:'none'});
+  const v=new Viewer(st,{pose:'unpack',interactive:true,auto:false});viewers.push(v);bindViewer(v,{surface:'none',oak:false,...SHOW.cover});
   const steps=$$('#steps li');
   const go=n=>{steps.forEach(li=>li.classList.toggle('on',li.dataset.pose===n));v.setPose(n)};
   const stop=()=>{timers.forEach(clearTimeout);timers=[]};
@@ -1068,7 +1070,7 @@ function initAsm(){
 }
 function initRot(){
   const st=$('#rot-stage');if(!st)return;
-  const v=new Viewer(st,{pose:'final',interactive:true,phi:.74,theta:.62});viewers.push(v);bindViewer(v);
+  const v=new Viewer(st,{pose:'final',interactive:true,phi:.74,theta:.62});viewers.push(v);bindViewer(v,{surface:'none',oak:false,...SHOW.cover});
   on($('#rot-spin'),'click',()=>v.spin());on($('#rot-flip'),'click',()=>v.flip());
   seen(st,()=>{later(()=>v.spin(),700);later(()=>v.flip(),2300)});
 }
@@ -1108,7 +1110,6 @@ function initSheet(){
     if(i!==last){last=i;cap.textContent=CAPS[i];st.forEach((s,k)=>s.classList.toggle('on',k===i))}
   };
   on(window,'scroll',upd,{passive:true});on(window,'resize',upd);upd();
-  unsubs.push(onCfg(d=>{$('#sh-photo').src=d.photo}));
 }
 function initPP(){
   const im=$('#pp-img');if(!im)return;
