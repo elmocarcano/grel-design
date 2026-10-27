@@ -598,7 +598,7 @@ const LOOP={list:new Set(),on:false,
 
 class Viewer{
   constructor(host,o={}){
-    this.host=host;this.o=Object.assign({pose:'final',interactive:true,auto:false,chessDemo:false,phi:null,theta:null,edgeAcc:false},o);
+    this.host=host;this.o=Object.assign({pose:'final',interactive:true,auto:false,chessDemo:false,phi:null,theta:null,edgeAcc:true},o);
     if(typeof THREE==='undefined'){host.classList.add('nogl');this.dead=true;return}
     this.canvas=document.createElement('canvas');this.canvas.setAttribute('aria-label','Interactive 3D view of TuttoTondo. Drag to turn.');host.prepend(this.canvas);
     try{this.r=new THREE.WebGLRenderer({canvas:this.canvas,antialias:true,alpha:true});if(!this.r.getContext())throw 0}catch(e){host.classList.add('nogl');this.dead=true;return}
@@ -816,7 +816,7 @@ S.configurator=()=>`
   <div class="cfg-head"><div>${LBL('Configurator')}<h2 class="h-lg" style="margin-top:1.2rem">Make it yours.</h2></div>
     <p class="sub">Pick a body, pick an accent. The body is the base. The accent is the top and the small details. The geometry never changes.</p></div>
   <div class="cfg-grid">
-    <div class="stage" id="cfg-stage"><div class="fallback"><img class="fbimg" id="cfg-fb" src="img/hero.jpg" alt="Your TuttoTondo"></div>
+    <div class="stage" id="cfg-stage"><div class="fallback"><img class="fbimg" id="cfg-fb" src="img/tt-burgundy-cream.jpg" alt="Your TuttoTondo"></div>
       <div class="stage-tags mono"><span>Ø 60</span><span>H 40</span></div><span class="hint mono">Drag to turn</span>
       <div class="stage-btns"><button class="btn sm" id="cfg-flip">Flip the top</button></div></div>
     <div class="panel">
@@ -955,7 +955,7 @@ const SUB=[['The idea','#idea'],['The design','#sheet'],['Make it yours','#confi
 PAGES['/tuttotondo']=()=>`
 <div class="pp">
 <section class="pp-intro" id="intro"><div class="wrap"><div class="pp-grid">
-  <figure><img id="pp-img" src="img/hero.jpg" width="1110" height="1040" alt="TuttoTondo, your configuration"></figure>
+  <figure><img id="pp-img" src="img/tt-burgundy-cream.jpg" width="1110" height="1040" alt="TuttoTondo, your configuration"></figure>
   <div class="pp-r">${LBL('Grel Design · Collection 01')}<h1 class="h-lg col">TuttoTondo</h1>
     <p class="dim">60 × 40 cm</p>
     <p class="lede">A coffee table drawn around one sheet of wood. No screws. Two colours. Two sides.</p>
@@ -970,7 +970,7 @@ PAGES['/collection']=()=>`
 <section class="pg-head"><div class="wrap">${LBL('Collection')}<h1 class="h-xl" style="margin-top:1.2rem">Collection</h1></div></section>
 <section class="sec-tight" style="padding-top:0"><div class="wrap"><div class="coll-list">
   <a class="coll-item live" href="#/tuttotondo" data-link="/tuttotondo"><span class="n mono">01</span><span class="nm">TuttoTondo</span>
-    <span class="im"><img src="img/hero.jpg" alt="TuttoTondo"></span><span class="go mono">${P('standard')} →</span></a>
+    <span class="im"><img src="img/tt-burgundy-cream.jpg" alt="TuttoTondo"></span><span class="go mono">${P('standard')} →</span></a>
   <div class="coll-item soon"><span class="n mono">02</span><span class="nm">Product 02</span><span class="ph" aria-hidden="true">${LOGO(.8)}</span><span class="go mono soon-tag">In drawing</span></div>
   <div class="coll-item soon"><span class="n mono">03</span><span class="nm">Product 03</span><span class="ph" aria-hidden="true">${LOGO(.8)}</span><span class="go mono soon-tag">In drawing</span></div>
 </div></div></section>`;
