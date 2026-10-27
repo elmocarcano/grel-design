@@ -8,7 +8,7 @@ buf = R.render_buffers(2200, 1650, az=45, el=15, dist=205, fov=24, target=(0, 19
                        light_pos=(90, 300, 240), fill_dir=(0.5, 0.3, -0.8))
 C = {'cream': '#E8DFD0', 'butter': '#E3D5AE', 'rose': '#DDB3AA', 'terracotta': '#C98A74',
      'sage': '#A9B79F', 'lake': '#A6BACB', 'bordeaux': '#7E2428', 'graphite': '#3B3A38'}
-SETS = [('cream', 'bordeaux'), ('sage', 'cream'), ('terracotta', 'lake'), ('rose', 'cream'),
+SETS = [('cream', 'bordeaux'), ('sage', 'cream'), ('terracotta', 'lake'), ('cream', 'rose'),
         ('bordeaux', 'cream'), ('oak', 'oak')]
 box = None
 imgs = {}

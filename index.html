@@ -444,7 +444,7 @@ const COLORS=[
   ['cream','Cream','#E8DFD0'],['butter','Butter','#E3D5AE'],['rose','Rose','#DDB3AA'],['terracotta','Terracotta','#C98A74'],
   ['sage','Sage','#A9B79F'],['lake','Lake','#A6BACB'],['bordeaux','Bordeaux','#7E2428'],['graphite','Graphite','#3B3A38']];
 const CMAP=Object.fromEntries(COLORS.map(c=>[c[0],{id:c[0],name:c[1],hex:c[2]}]));
-const EDITIONS=[['sage','cream'],['terracotta','lake'],['rose','cream'],['bordeaux','cream']];
+const EDITIONS=[['sage','cream'],['terracotta','lake'],['cream','rose'],['bordeaux','cream']];
 const RAL={1001:'#C2B078',1013:'#EAE6CA',1015:'#E6D2B5',1018:'#FACA30',2004:'#E75B12',2008:'#EE6A25',3000:'#AB2524',3002:'#A2231D',3004:'#6B1C23',3013:'#9B2D30',3020:'#C1121C',
   5012:'#3B83BD',5013:'#1E213D',5014:'#606E8C',5015:'#2271B3',5024:'#5D9B9B',6005:'#2F4538',6018:'#57A639',6019:'#B9CEAC',6021:'#89AC76',6027:'#7EBAB5',
   7016:'#293133',7021:'#23282B',7035:'#CBD0CC',7044:'#B9B9A8',8004:'#8D4931',8017:'#45322E',9001:'#FDF4E3',9003:'#F4F4F4',9005:'#0A0A0A',9010:'#F1EDE1',9016:'#F1F0EA'};
@@ -751,7 +751,7 @@ const LBL=t=>`<span class="label mono">${t}</span>`;
 
 /* ---------- sections ---------- */
 const S={};
-const HERO=[['cream','bordeaux'],['sage','cream'],['terracotta','lake'],['rose','cream'],['bordeaux','cream'],['oak','oak']];
+const HERO=[['cream','bordeaux'],['sage','cream'],['terracotta','lake'],['cream','rose'],['bordeaux','cream'],['oak','oak']];
 const heroHex=k=>k==='oak'?'#C9A06E':CMAP[k].hex;
 const heroName=([b,a])=>b==='oak'?'Natural oak':`${CMAP[b].name} × ${CMAP[a].name}`;
 S.hero=()=>`
