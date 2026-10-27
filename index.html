@@ -13,7 +13,7 @@
   --ink-3:#8C8579;
   --line:rgba(21,20,19,.16);
   --line-strong:rgba(21,20,19,.9);
-  --accent:#8FD9CF;
+  --accent:#D9A58F;
   --body-c:#252525;
   --display:'Bricolage Grotesque','Arial Narrow',Arial,sans-serif;
   --text:'Instrument Sans',system-ui,-apple-system,'Segoe UI',sans-serif;
@@ -80,27 +80,47 @@ p{margin:0}
 .linkline{display:inline-block;border-bottom:1px solid currentColor;padding-bottom:2px}
 
 /* hero */
-.hero{padding-top:calc(var(--nav-h) + clamp(28px,5vw,64px));position:relative;overflow:hidden}
-.hero-grid{display:grid;grid-template-columns:repeat(12,1fr);gap:0 clamp(12px,2vw,28px);align-items:end}
-.hero-kicker{grid-column:1/-1;display:flex;justify-content:space-between;gap:1rem;color:var(--ink-2);margin-bottom:clamp(8px,2vw,24px);flex-wrap:wrap}
-.hero h1{grid-column:1/-1;grid-row:2;position:relative;z-index:2;margin-bottom:-.03em;line-height:.8}
-.hero-img{grid-column:4/13;grid-row:3;margin-top:calc(-1 * clamp(40px,9vw,150px));position:relative;z-index:1;-webkit-mask-image:radial-gradient(ellipse 70% 68% at 50% 52%,#000 66%,transparent 100%);mask-image:radial-gradient(ellipse 70% 68% at 50% 52%,#000 66%,transparent 100%)}
-.hero-img img{width:100%;aspect-ratio:1110/1040;object-fit:cover;transition:opacity .5s}
-.hero-copy{grid-column:1/5;grid-row:3;align-self:end;display:flex;flex-direction:column;gap:1.6rem;padding-bottom:clamp(20px,5vw,80px);position:relative;z-index:3}
-.hero-copy .tagline{font-family:var(--display);font-stretch:80%;font-weight:500;font-size:clamp(1.5rem,2.6vw,2.2rem);line-height:1.05;letter-spacing:-.005em;text-transform:none}
+.hero{position:relative;min-height:100svh;display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);padding-top:calc(var(--nav-h) + env(safe-area-inset-top,0px));background:var(--paper)}
+.hero-l{display:flex;flex-direction:column;justify-content:space-between;gap:clamp(28px,4vw,56px);padding:clamp(28px,4vw,64px) clamp(24px,3.6vw,64px) clamp(24px,3vw,44px) var(--gut);min-width:0}
+.hero-kicker{display:flex;justify-content:space-between;gap:1rem;color:var(--ink-2)}
+.hero-kicker b{font-weight:400;color:var(--ink)}
+.hero h1{font-family:var(--display);font-stretch:75%;font-weight:700;text-transform:uppercase;letter-spacing:-.02em;line-height:.8;margin:0;font-size:clamp(4rem,8.4vw,9.2rem)}
+.hero h1 span{display:block}
+.hero h1 span+span{padding-left:.32em}
+.hero-copy{display:flex;flex-direction:column;gap:1.6rem}
+.hero-copy .tagline{font-family:var(--display);font-stretch:80%;font-weight:500;font-size:clamp(1.45rem,2.3vw,2.1rem);line-height:1.08;letter-spacing:-.005em}
+.hero-copy .tagline em{font-style:normal;color:var(--ink-2)}
 .hero-cta{display:flex;flex-wrap:wrap;gap:.7rem}
-.hero-meta{display:flex;flex-wrap:wrap;gap:.4rem 1.4rem;color:var(--ink-2)}
+.hero-meta{display:flex;flex-wrap:wrap;gap:.5rem 1.6rem;color:var(--ink-2);padding-top:1.1rem;border-top:1px solid var(--line)}
 .hero-meta i{font-style:normal;color:var(--ink)}
-@media (max-width:900px){
-  .hero-img{grid-column:1/-1;grid-row:3;margin-top:-2rem;-webkit-mask-image:radial-gradient(ellipse 70% 64% at 50% 50%,#000 60%,transparent 100%);mask-image:radial-gradient(ellipse 70% 64% at 50% 50%,#000 60%,transparent 100%)}
-  .hero-copy{grid-column:1/-1;grid-row:4;padding-bottom:2rem}
+.hero-r{position:relative;overflow:hidden;min-height:0;background:#d9cbb8}
+.hero-r img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:46% 58%}
+.hero-r::after{content:"";position:absolute;inset:auto 0 0 0;height:34%;background:linear-gradient(180deg,transparent,rgba(21,20,19,.42));pointer-events:none}
+.hero-cap{position:absolute;left:clamp(16px,2.4vw,36px);right:clamp(16px,2.4vw,36px);bottom:clamp(16px,2.2vw,32px);z-index:1;display:flex;justify-content:space-between;gap:1rem;color:#F7F3EA}
+.hero-cap i{font-style:normal;display:inline-flex;align-items:center;gap:.6rem}
+.hero-cap i::before{content:"";width:.8em;height:.8em;border-radius:50%;background:linear-gradient(90deg,#E8DFD0 50%,#8E3F3B 50%);box-shadow:0 0 0 1px rgba(247,243,234,.6)}
+@media (prefers-reduced-motion:no-preference){
+  .hero-r img{animation:heroIn 1.6s cubic-bezier(.2,.7,.2,1) both}
+  .hero-l>*{animation:heroUp .9s cubic-bezier(.2,.7,.2,1) both}
+  .hero-l>:nth-child(2){animation-delay:.08s}.hero-l>:nth-child(3){animation-delay:.18s}
 }
+@keyframes heroIn{from{transform:scale(1.06);opacity:.4}to{transform:none;opacity:1}}
+@keyframes heroUp{from{transform:translateY(14px);opacity:0}to{transform:none;opacity:1}}
+@media (max-width:900px){
+  .hero{display:flex;flex-direction:column;min-height:0}
+  .hero-l{display:contents}
+  .hero-kicker{order:1;padding:clamp(20px,5vw,32px) var(--gut) .9rem}
+  .hero h1{order:2;padding:0 var(--gut) 1.2rem;font-size:clamp(3.4rem,20.5vw,8rem)}
+  .hero-r{order:3;aspect-ratio:4/4.4;max-height:62svh;width:100%}
+  .hero-copy{order:4;padding:1.8rem var(--gut) 2.6rem}
+}
+@media (max-width:420px){.hero-cta .btn{flex:1 1 100%;justify-content:space-between}}
 
 /* idea */
 .idea-grid{display:grid;grid-template-columns:repeat(12,1fr);gap:clamp(24px,4vw,64px) clamp(12px,2vw,28px);align-items:end}
 .idea-grid .txt{grid-column:1/6;display:flex;flex-direction:column;gap:1.4rem}
 .idea-grid figure{grid-column:6/13;margin:0}
-.idea-grid figure img{width:100%;aspect-ratio:3/2;object-fit:cover;object-position:50% 62%}
+.idea-grid figure img{width:100%;aspect-ratio:3/2;object-fit:cover}
 .idea-grid figcaption{margin-top:.8rem;color:var(--ink-2);display:flex;justify-content:space-between;gap:1rem}
 .idea-head{grid-column:1/-1}
 @media (max-width:860px){.idea-grid .txt,.idea-grid figure{grid-column:1/-1}}
@@ -713,19 +733,22 @@ const LBL=t=>`<span class="label mono">${t}</span>`;
 /* ---------- sections ---------- */
 const S={};
 S.hero=()=>`
-<section class="hero"><div class="wrap"><div class="hero-grid">
-  <div class="hero-kicker mono"><span>Grel Design · Collection</span><span>Milano, Italy</span></div>
-  <h1 class="h-xl">TuttoTondo</h1>
-  <div class="hero-copy">
-    <p class="tagline">One sheet.<br>Infinite balance.</p>
-    <div class="hero-cta">
-      <a class="btn solid" href="#/tuttotondo" data-link="/tuttotondo">Discover TuttoTondo ${ARROW}</a>
-      <button class="btn" data-scroll="#configurator">Make it yours ${ARROW}</button>
+<section class="hero" aria-label="TuttoTondo">
+  <div class="hero-l">
+    <div class="hero-kicker mono"><span><b>Collection</b> · 01</span><span>Milano, Italy</span></div>
+    <h1><span>Tutto</span><span>tondo</span></h1>
+    <div class="hero-copy">
+      <p class="tagline">One sheet.<br><em>Infinite balance.</em></p>
+      <div class="hero-cta">
+        <a class="btn solid" href="#/tuttotondo" data-link="/tuttotondo">Discover TuttoTondo ${ARROW}</a>
+        <button class="btn" data-scroll="#configurator">Make it yours ${ARROW}</button>
+      </div>
+      <p class="hero-meta mono"><span><i>Ø 60 × 40 cm</i></span><span>Tool-free</span><span>Made in Italy</span><span>From <i>${P('standard')}</i></span></p>
     </div>
-    <p class="hero-meta mono"><span><i>Ø 60 × 40 cm</i></span><span>Oak</span><span>Made in Italy</span><span>From <i>${P('standard')}</i></span></p>
   </div>
-  <div class="hero-img"><img src="img/hero.jpg" width="1110" height="1040" alt="TuttoTondo coffee table in graphite and seaside, three-quarter view"></div>
-</div></div></section>`;
+  <div class="hero-r"><img src="img/lifestyle.jpg" width="1312" height="1199" fetchpriority="high" alt="TuttoTondo coffee table in cream and brick, in a sunlit living room above Lake Como">
+    <p class="hero-cap mono"><i>Cream × Brick</i><span>Ø 60 × H 40</span></p></div>
+</section>`;
 
 S.idea=()=>`
 <section class="sec" id="idea"><div class="wrap idea-grid">
@@ -736,7 +759,7 @@ S.idea=()=>`
     <p class="sub">The name is Italian for <em>all round</em>. <span lang="it">Tutto tondo.</span> It describes the shape, and the way the idea holds together from every side.</p>
     <div><a class="linkline mono" href="#/about" data-link="/about">Designed by Greta →</a></div>
   </div>
-  <figure><img src="img/lifestyle.jpg" width="1312" height="1199" loading="lazy" alt="TuttoTondo in cream and brick in a sunlit living room above the lake">
+  <figure><img src="img/detail-cream-brick.jpg" width="930" height="620" loading="lazy" alt="Detail of TuttoTondo in cream and brick: the round top resting in the slotted plates">
     <figcaption class="mono"><span>TuttoTondo · Cream × Brick</span><span>Ø 60 × H 40</span></figcaption></figure>
 </div></section>`;
 
