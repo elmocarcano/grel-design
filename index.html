@@ -347,7 +347,7 @@ p{margin:0}
 @media (hover:hover) and (pointer:fine){.tabs button:not([aria-pressed=true]):hover{background:var(--paper-2)}}
 .row-h{display:flex;justify-content:space-between;color:var(--ink-2);margin-bottom:.7rem}
 .row-h b{font-weight:500;color:var(--ink)}
-.sw{display:grid;grid-template-columns:repeat(9,1fr);gap:clamp(3px,.8vw,8px)}
+.sw{display:grid;grid-template-columns:repeat(7,1fr);gap:clamp(3px,.8vw,8px)}
 .sw button{display:flex;flex-direction:column;align-items:center;gap:.5rem;color:var(--ink-3)}
 .sw i{display:block;width:100%;max-width:52px;aspect-ratio:1;border-radius:50%;background:var(--c);box-shadow:inset 0 0 0 1px rgba(21,20,19,.14);position:relative;transition:transform .25s}
 @media (hover:hover) and (pointer:fine){.sw button:hover i{transform:scale(1.07)}}
@@ -566,6 +566,8 @@ const COLORS=[
   ['sage','Sage','#A9B79F'],['lake','Lake','#A6BACB'],['bordeaux','Bordeaux','#7E2428'],['graphite','Graphite','#3B3A38']];
 const CMAP=Object.fromEntries(COLORS.map(c=>[c[0],{id:c[0],name:c[1],hex:c[2]}]));
 CMAP.oak={id:'oak',name:'Oak',hex:'#C9A273'}; /* a part in natural oak (configurator only) */
+CMAP.green={id:'green',name:'Play green',hex:'#2E5D46'}; /* the green of the card table */
+const PALETTE=['cream','sage','lake','bordeaux','graphite','green'];   /* colours offered in the configurator (butter, rose, terracotta retired) */
 const EDITIONS=[['sage','cream'],['terracotta','lake'],['cream','rose'],['bordeaux','cream']];
 const RAL={1001:'#C2B078',1013:'#EAE6CA',1015:'#E6D2B5',1018:'#FACA30',2004:'#E75B12',2008:'#EE6A25',3000:'#AB2524',3002:'#A2231D',3004:'#6B1C23',3013:'#9B2D30',3020:'#C1121C',
   5012:'#3B83BD',5013:'#1E213D',5014:'#606E8C',5015:'#2271B3',5024:'#5D9B9B',6005:'#2F4538',6018:'#57A639',6019:'#B9CEAC',6021:'#89AC76',6027:'#7EBAB5',
@@ -600,7 +602,13 @@ function priceNow(){
   const base=cfg.finish==='custom'?PRICE.custom:mix?PRICE.oakMix:PRICE.standard;
   return {min:base+extra,max:base+extra,text:eur(base+extra),label:cfg.finish==='custom'?'Two RAL colours · made to order':mix?'Oak and a Grel colour':'Standard Grel colour palette'};
 }
-function setCfg(patch){Object.assign(cfg,patch);applyCfg()}
+function setCfg(patch){
+  // the card table is green: choosing cards makes the accent Play green (in oak, the plates stay oak)
+  if(patch.surface==='cards'&&cfg.surface!=='cards'&&(patch.finish||cfg.finish)!=='custom'){
+    if((patch.finish||cfg.finish)==='natural')Object.assign(patch,{finish:'standard',body:'oak'});
+    patch.accent='green';
+  }
+  Object.assign(cfg,patch);applyCfg()}
 function applyCfg(){
   const d=derived(),p=priceNow();
   document.documentElement.style.setProperty('--accent',d.oak?'#D6B587':(d.accent));
@@ -947,10 +955,10 @@ S.rotation=()=>`
   </div>
 </div></section>`;
 
-const swatches=(k)=>COLORS.map(c=>`<button data-k="${k}" data-c="${c[0]}" aria-pressed="false" title="${c[1]}" style="--c:${c[2]}"><i></i><span>${c[1]}</span></button>`).join('')+`<button data-k="${k}" data-c="oak" class="oak" aria-pressed="false" title="Oak" style="--c:#C9A273"><i></i><span>Oak</span></button>`;
+const swatches=(k)=>PALETTE.map(id=>CMAP[id]).map(c=>`<button data-k="${k}" data-c="${c.id}" aria-pressed="false" title="${c.name}" style="--c:${c.hex}"><i></i><span>${c.name}</span></button>`).join('')+`<button data-k="${k}" data-c="oak" class="oak" aria-pressed="false" title="Oak" style="--c:#C9A273"><i></i><span>Oak</span></button>`;
 S.configurator=(home)=>`
 <section class="sec cfg" id="configurator"><div class="wrap">
-  <div class="cfg-head"><div>${LBL('Configurator')}<h2 class="h-lg" style="margin-top:1.2rem">${home?'Your table.':'Make it yours.'}</h2></div>
+  <div class="cfg-head"><div>${LBL('Configurator')}<h2 class="h-lg" style="margin-top:1.2rem">Make it yours.</h2></div>
     <p class="sub">Pick a body, pick an accent, or choose oak for either. The body is the base. The accent is the top and the small details. The geometry never changes.</p></div>
   <div class="cfg-grid">
     <div class="stage" id="cfg-stage"><div class="fallback"><img class="fbimg" id="cfg-fb" src="img/tt-burgundy-cream.jpg" alt="Your TuttoTondo"></div>
@@ -1205,7 +1213,7 @@ function initHome(){
   $$('button[data-b]',ed).forEach(b=>on(b,'click',()=>{setCfg({finish:'standard',body:b.dataset.b,accent:b.dataset.a});scrollToSel('#configurator')}));
   $$('.hm-sw button').forEach(b=>on(b,'click',()=>{setCfg({finish:'standard',body:b.dataset.c});scrollToSel('#configurator')}));
 }
-PAGES['/']=()=>S.flip()+HX.idea()+S.sheet()+HX.screws()+S.assembly(true)+HX.make()+S.configurator(true)+S.chess()+S.italy();
+PAGES['/']=()=>S.flip()+HX.idea()+S.sheet()+S.configurator(true)+S.chess()+HX.screws()+S.assembly(true)+S.italy();
 const SUB=[['The idea','#idea'],['The design','#sheet'],['Make it yours','#configurator'],['Made in Italy','#italy'],['Specifications','#specs'],['Order','#order']];
 PAGES['/tuttotondo']=()=>`
 <div class="pp">
@@ -1289,7 +1297,7 @@ function initCfg(){
   const root=$('#configurator');if(!root)return;
   const st=$('#cfg-stage'),v=new Viewer(st,{pose:'final',interactive:true,auto:true});viewers.push(v);bindViewer(v);
   on($('#cfg-flip'),'click',()=>v.flip());
-  $$('.tabs button',root).forEach(b=>on(b,'click',()=>{
+  $$('.tabs button[data-fin]',root).forEach(b=>on(b,'click',()=>{
     const f=b.dataset.fin;if(f==='custom'&&!cfg.ral1&&!cfg.ral2){cfg.ral1='7016';cfg.ral2='6027';$('#ral1').value='7016';$('#ral2').value='6027'}setCfg({finish:f})}));
   $$('.sw button',root).forEach(b=>on(b,'click',()=>setCfg({finish:'standard',[b.dataset.k]:b.dataset.c})));
   on($('#ral1'),'input',e=>setCfg({ral1:e.target.value}));on($('#ral2'),'input',e=>setCfg({ral2:e.target.value}));
