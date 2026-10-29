@@ -281,7 +281,8 @@ def composite(buf, body_hex, accent_hex, bg=(241, 232, 222), key=0.80, ambk=0.52
     for k, hx in ((1, body_hex), (2, accent_hex)):
         m = sub == k
         ii = hidx[m]
-        if oak:
+        wood = oak or hx == 'oak'   # a single part can be oak: body_hex/accent_hex = 'oak'
+        if wood:
             alb = oak_albedo_photo(pos[m].astype(float), nrm[m].astype(float), part[m])
         else:
             alb = np.tile(srgb_to_lin([int(hx[i:i + 2], 16) for i in (1, 3, 5)]), (ii.size, 1))
@@ -289,7 +290,7 @@ def composite(buf, body_hex, accent_hex, bg=(241, 232, 222), key=0.80, ambk=0.52
             alb *= (1 + 0.012 * _hash_noise(pos[m, 0], pos[m, 1], pos[m, 2], 0.35))[:, None]
         light = key * buf['diff'][ii] + ambk * buf['amb'][ii]
         warm = 0.30 * buf['bounce'][ii][:, None] * bgl[None, :]      # floor bounce
-        out[ii] = alb * (light[:, None] + warm) + buf['spec'][ii, None] * (1.4 if oak else 1.0)
+        out[ii] = alb * (light[:, None] + warm) + buf['spec'][ii, None] * (1.4 if wood else 1.0)
     out = tone(out)
     rng = np.random.default_rng(7)
     srgb = lin_to_srgb(out) + rng.normal(0, 0.005, out.shape)

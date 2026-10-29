@@ -20,4 +20,7 @@ C = {'cream': '#E8DFD0', 'butter': '#E3D5AE', 'rose': '#DDB3AA', 'terracotta': '
 for b in C:
     for a in C:
         save(C[b], C[a], f'c-{b}-{a}.jpg')
+for x in C:   # mixed: oak plates with a coloured top, and the reverse
+    save('oak', C[x], f'c-oak-{x}.jpg'); save(C[x], 'oak', f'c-{x}-oak.jpg')
+save('oak', 'oak', 'c-oak-oak.jpg')
 print('done', round(time.time() - t), 's')

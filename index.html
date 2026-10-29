@@ -118,6 +118,94 @@ p{margin:0}
 }
 @media (max-width:420px){.hero-cta .btn{flex:1 1 100%;justify-content:space-between}}
 
+/* home (architect's object) */
+.hm{--rule:rgba(21,20,19,.18)}
+.hm-wrap{max-width:1440px;margin-inline:auto;padding-inline:var(--gut)}
+.hm-mono{font-family:var(--mono);font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;font-weight:400}
+.hm-muted{color:var(--ink-2)}
+.hm-d{font-family:var(--display);font-weight:300;letter-spacing:-.035em;line-height:.95;margin:0;text-transform:none;font-stretch:100%}
+.hm-xl{font-size:clamp(3.4rem,7.8vw,7rem)}
+.hm-l{font-size:clamp(2.2rem,3.9vw,3.5rem);line-height:1.02;letter-spacing:-.03em}
+.hm-intro{padding-top:calc(var(--nav-h) + clamp(40px,5vw,72px));padding-bottom:clamp(28px,3vw,40px);display:flex;justify-content:space-between;align-items:flex-end;gap:2.5rem;flex-wrap:wrap}
+.hm-intro .l{display:flex;flex-direction:column;gap:1.4rem}
+.hm-intro .r{display:flex;flex-direction:column;gap:1.4rem;max-width:360px;padding-bottom:.6rem}
+.hm-intro .r p{margin:0;font-size:1.06rem;line-height:1.55;color:#3d3934}
+.hm-btns{display:flex;gap:.6rem;flex-wrap:wrap}
+.hm-btn{display:inline-flex;align-items:center;gap:.6rem;min-height:48px;padding:0 1.4rem;border:1px solid var(--ink);font-family:var(--mono);font-size:.74rem;letter-spacing:.12em;text-transform:uppercase;transition:background .25s,color .25s}
+.hm-btn.solid{background:var(--ink);color:var(--paper)}
+.hm-btn:hover{background:#7E2428;border-color:#7E2428;color:var(--paper)}
+.hm-photo{position:relative;margin:0;width:100%;aspect-ratio:1312/835;overflow:hidden;background:#d9cbb8}
+.hm-photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.hm-photo svg{position:absolute;inset:0;width:100%;height:100%}
+.hm-photo .dim{stroke:var(--ink);stroke-width:1.4;fill:none;vector-effect:non-scaling-stroke}
+.hm-photo .call{stroke:#7E2428;stroke-width:1.4;fill:none;vector-effect:non-scaling-stroke}
+.hm-tag{position:absolute;padding:.35em .7em;background:var(--paper);font-family:var(--mono);font-size:clamp(.58rem,.85vw,.76rem);letter-spacing:.1em;white-space:nowrap}
+.hm-photo figcaption{position:absolute;left:clamp(10px,1.4vw,20px);bottom:clamp(10px,1.4vw,18px);padding:.4em .7em;background:rgba(240,233,222,.9)}
+@media (prefers-reduced-motion:no-preference){
+  .hm-photo .dim,.hm-photo .call{stroke-dasharray:2000;stroke-dashoffset:2000;animation:hmDraw 1.6s cubic-bezier(.4,0,.2,1) .5s forwards}
+  .hm-tag{opacity:0;animation:hmFade .6s ease 1.6s forwards}
+  .hm-intro .l,.hm-intro .r{animation:hmUp .9s cubic-bezier(.2,.7,.2,1) both}.hm-intro .r{animation-delay:.12s}
+}
+@keyframes hmDraw{to{stroke-dashoffset:0}}
+@keyframes hmFade{to{opacity:1}}
+@keyframes hmUp{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+.hm-sec{padding-block:clamp(80px,10vw,140px)}
+.hm-head{display:flex;justify-content:space-between;align-items:flex-end;gap:2.5rem;flex-wrap:wrap;padding-bottom:1.75rem;border-bottom:1px solid var(--rule)}
+.hm-head h2{max-width:760px}
+.hm-three{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:clamp(24px,3vw,40px);padding-top:3rem}
+.hm-three>div{display:flex;flex-direction:column;gap:1.1rem}
+.hm-panel{aspect-ratio:4/3;display:grid;place-items:center;background:var(--sheet);border:1px solid rgba(21,20,19,.14);position:relative;overflow:hidden}
+.hm-panel svg{height:82%}
+.hm-panel img{position:absolute;left:6%;top:18%;width:88%}
+.hm-panel img.sh{mix-blend-mode:multiply}
+.hm-three p{margin:0;font-size:.95rem;line-height:1.55;color:var(--ink-2)}
+.hm-nums{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));margin-top:4.5rem;border-top:1px solid var(--rule)}
+.hm-nums div{padding:1.4rem 0;display:flex;align-items:baseline;gap:.9rem}
+.hm-nums b{font-family:var(--display);font-weight:300;font-size:clamp(2.8rem,4.4vw,4rem);letter-spacing:-.03em;line-height:1}
+.hm-nums b.acc{color:#7E2428}
+.hm-band{background:var(--sheet);border-block:1px solid rgba(21,20,19,.14)}
+.hm-ed{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1.25rem;padding-top:2.5rem}
+.hm-ed button{display:flex;flex-direction:column;gap:.9rem;text-align:left}
+.hm-ed .im{display:grid;place-items:center;aspect-ratio:5/4;background:var(--t);overflow:hidden}
+.hm-ed .im img{width:96%;transition:transform .6s cubic-bezier(.2,.7,.2,1)}
+.hm-ed button:hover .im img{transform:scale(1.05)}
+.hm-ed .cap{display:flex;justify-content:space-between;gap:.5rem}
+.hm-ed .cap b{font-weight:500}
+.hm-ed .any{display:flex;flex-direction:column;justify-content:space-between;aspect-ratio:5/4;padding:1.4rem;box-sizing:border-box;border:1px solid var(--ink)}
+.hm-dots{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:.6rem;width:70%}
+.hm-dots i,.hm-sw i{display:block;aspect-ratio:1;border-radius:50%;background:var(--c);box-shadow:inset 0 0 0 1px rgba(21,20,19,.14)}
+.hm-ed .any span.t{font-family:var(--display);font-weight:300;font-size:clamp(1.4rem,2vw,1.9rem);line-height:1.05;letter-spacing:-.02em}
+.hm-det{display:flex;gap:clamp(32px,4.5vw,64px);flex-wrap:wrap;align-items:stretch}
+.hm-det figure{margin:0;flex:1 1 480px;min-width:0;display:flex;flex-direction:column;gap:.75rem}
+.hm-det figure img{width:100%;aspect-ratio:3/2;object-fit:cover}
+.hm-det .txt{flex:1 1 380px;min-width:0;display:flex;flex-direction:column;justify-content:space-between;gap:2.5rem}
+.hm-det ol{margin:0;padding:0;list-style:none;border-top:1px solid var(--rule)}
+.hm-det li{display:grid;grid-template-columns:56px minmax(0,1fr);gap:.75rem;padding:1.25rem 0;border-bottom:1px solid var(--rule)}
+.hm-det li .n{font-family:var(--mono);font-size:.76rem;color:#7E2428}
+.hm-det li b{font-weight:600}
+.hm-studio{background:#7E2428;color:var(--paper)}
+.hm-studio .hm-wrap{display:flex;justify-content:space-between;align-items:flex-end;gap:3rem;flex-wrap:wrap}
+.hm-studio .hm-q{margin:0;max-width:900px;font-family:var(--display);font-weight:300;font-size:clamp(2.6rem,5vw,4.5rem);line-height:1;letter-spacing:-.035em}
+.hm-studio .r{display:flex;flex-direction:column;gap:1rem;max-width:320px}
+.hm-studio p{margin:0;font-size:.95rem;line-height:1.55;color:#EBD7D2}
+.hm-studio a{color:var(--paper);border-bottom:1px solid currentColor;align-self:flex-start;padding-bottom:2px}
+.hm-make{display:flex;justify-content:space-between;align-items:center;gap:3rem;flex-wrap:wrap}
+.hm-make .l{display:flex;flex-direction:column;gap:1.1rem}
+.hm-make .l p{margin:0;max-width:420px;font-size:1.06rem;line-height:1.55;color:#3d3934}
+.hm-make .r{display:flex;flex-direction:column;gap:1.4rem;align-items:flex-start}
+.hm-sw{display:flex;gap:.6rem;flex-wrap:wrap}
+.hm-sw button{width:40px;height:40px;border-radius:50%;padding:0}
+.hm-sw button i{width:100%;height:100%;transition:transform .2s}
+.hm-sw button:hover i{transform:scale(1.1)}
+@media (max-width:640px){.hm-intro .r{max-width:none}.hm-tag.h{display:none}}
+
+/* merged home: bands + editions */
+.hm-studio .hm-q{text-transform:none}
+.hm-studio .r p+p{margin-top:-.2rem}
+.hm-head .hm-start{display:flex;flex-direction:column;gap:.9rem;align-items:flex-start}
+.hm-make2 .hm-head p{margin:1.1rem 0 0;max-width:430px;font-size:1.06rem;line-height:1.55;color:#3d3934}
+.flag{display:inline-flex;width:24px;height:16px;vertical-align:-1px;margin-right:.55rem;box-shadow:0 0 0 1px rgba(255,255,255,.35)}
+.flag i{flex:1}.flag i:nth-child(1){background:#009246}.flag i:nth-child(2){background:#F1F2F1}.flag i:nth-child(3){background:#CE2B37}
 /* idea */
 .idea-grid{display:grid;grid-template-columns:repeat(12,1fr);gap:clamp(24px,4vw,64px) clamp(12px,2vw,28px);align-items:end}
 .idea-grid .txt{grid-column:1/6;display:flex;flex-direction:column;gap:1.4rem}
@@ -218,11 +306,12 @@ p{margin:0}
 .tabs button:not([aria-pressed=true]):hover{background:var(--paper-2)}
 .row-h{display:flex;justify-content:space-between;color:var(--ink-2);margin-bottom:.7rem}
 .row-h b{font-weight:500;color:var(--ink)}
-.sw{display:grid;grid-template-columns:repeat(8,1fr);gap:clamp(3px,.8vw,8px)}
+.sw{display:grid;grid-template-columns:repeat(9,1fr);gap:clamp(3px,.8vw,8px)}
 .sw button{display:flex;flex-direction:column;align-items:center;gap:.5rem;color:var(--ink-3)}
 .sw i{display:block;width:100%;max-width:52px;aspect-ratio:1;border-radius:50%;background:var(--c);box-shadow:inset 0 0 0 1px rgba(21,20,19,.14);position:relative;transition:transform .25s}
 .sw button:hover i{transform:scale(1.07)}
 .sw button[aria-pressed=true]{color:var(--ink)}
+.sw button.oak i,.hm-sw button.oak i{background:url(img/oak-veneer.jpg) 40% 50%/cover}
 .sw button[aria-pressed=true] i::after{content:"";position:absolute;inset:-6px;border-radius:50%;border:1.5px solid var(--ink)}
 .sw span{font-family:var(--mono);font-size:.5rem;letter-spacing:.03em;text-transform:uppercase}
 @media (max-width:520px){.sw span{display:none}}
@@ -428,12 +517,13 @@ body.cart-open .drawer{transform:none;visibility:visible;transition-delay:0s}
 <script>
 "use strict";
 /* ============ CONFIG: change prices here ============ */
-const PRICE={standard:329,custom:479,naturalMin:499,naturalMax:549,chess:75,cards:75};
+const PRICE={standard:329,oakMix:429,custom:479,naturalMin:499,naturalMax:549,chess:75,cards:75}; /* oakMix: one part in oak, the other in a colour */
 const SURFACES={none:{label:null},chess:{label:'Chess board'},cards:{label:'Cards'}};
 const COLORS=[
   ['cream','Cream','#E8DFD0'],['butter','Butter','#E3D5AE'],['rose','Rose','#DDB3AA'],['terracotta','Terracotta','#C98A74'],
   ['sage','Sage','#A9B79F'],['lake','Lake','#A6BACB'],['bordeaux','Bordeaux','#7E2428'],['graphite','Graphite','#3B3A38']];
 const CMAP=Object.fromEntries(COLORS.map(c=>[c[0],{id:c[0],name:c[1],hex:c[2]}]));
+CMAP.oak={id:'oak',name:'Oak',hex:'#C9A273'}; /* a part in natural oak (configurator only) */
 const EDITIONS=[['sage','cream'],['terracotta','lake'],['cream','rose'],['bordeaux','cream']];
 const RAL={1001:'#C2B078',1013:'#EAE6CA',1015:'#E6D2B5',1018:'#FACA30',2004:'#E75B12',2008:'#EE6A25',3000:'#AB2524',3002:'#A2231D',3004:'#6B1C23',3013:'#9B2D30',3020:'#C1121C',
   5012:'#3B83BD',5013:'#1E213D',5014:'#606E8C',5015:'#2271B3',5024:'#5D9B9B',6005:'#2F4538',6018:'#57A639',6019:'#B9CEAC',6021:'#89AC76',6027:'#7EBAB5',
@@ -458,14 +548,15 @@ function derived(){
     return {oak:false,body:b,accent:a,name:'Custom RAL',photo:`img/c-${near(b)}-${near(a)}.jpg`,bodyName:cfg.ral1?('RAL '+(String(cfg.ral1).match(/\d{4}/)||[cfg.ral1])[0]):'RAL 01',accName:cfg.ral2?('RAL '+(String(cfg.ral2).match(/\d{4}/)||[cfg.ral2])[0]):'RAL 02'};
   }
   const B=CMAP[cfg.body],A=CMAP[cfg.accent];
-  return {oak:false,body:B.hex,accent:A.hex,name:`${B.name} × ${A.name}`,photo:`img/c-${B.id}-${A.id}.jpg`,bodyName:B.name,accName:A.name};
+  return {oak:false,oakBody:B.id==='oak',oakAcc:A.id==='oak',body:B.hex,accent:A.hex,name:`${B.name} × ${A.name}`,photo:`img/c-${B.id}-${A.id}.jpg`,bodyName:B.name,accName:A.name};
 }
 function surfaceExtra(){return cfg.surface==='chess'?PRICE.chess:cfg.surface==='cards'?PRICE.cards:0}
 function priceNow(){
   const extra=surfaceExtra();
   if(cfg.finish==='natural')return {min:PRICE.naturalMin+extra,max:PRICE.naturalMax+extra,text:`${eur(PRICE.naturalMin+extra)}–${PRICE.naturalMax+extra}`,label:'Natural oak'};
-  const base=cfg.finish==='custom'?PRICE.custom:PRICE.standard;
-  return {min:base+extra,max:base+extra,text:eur(base+extra),label:cfg.finish==='custom'?'Two RAL colours · made to order':'Standard Grel colour palette'};
+  const mix=cfg.finish==='standard'&&(cfg.body==='oak'||cfg.accent==='oak');
+  const base=cfg.finish==='custom'?PRICE.custom:mix?PRICE.oakMix:PRICE.standard;
+  return {min:base+extra,max:base+extra,text:eur(base+extra),label:cfg.finish==='custom'?'Two RAL colours · made to order':mix?'Oak and a Grel colour':'Standard Grel colour palette'};
 }
 function setCfg(patch){Object.assign(cfg,patch);applyCfg()}
 function applyCfg(){
@@ -632,7 +723,7 @@ class Viewer{
     [mA,mB].forEach(m=>{m.castShadow=true;m.receiveShadow=true});
     this.A.add(mA);this.B.add(mB);
     this.spinG=new THREE.Group();this.flipG=new THREE.Group();
-    const disc=new THREE.Mesh(new THREE.CylinderGeometry(30,30,2,180),[this.o.edgeAcc?this.mAcc:this.mBody,this.mTop,this.mBot]);disc.castShadow=true;disc.receiveShadow=true;
+    const disc=new THREE.Mesh(new THREE.CylinderGeometry(30,30,2,180),[this.o.edgeAcc?this.mAcc:this.mBody,this.mTop,this.mBot]);this.disc=disc;disc.castShadow=true;disc.receiveShadow=true;
     this.flipG.add(disc);this.spinG.add(this.flipG);this.D.add(this.spinG);
     this.scene.add(this.A,this.B,this.D);
     /* state */
@@ -673,14 +764,15 @@ class Viewer{
   }
   setConfig(c){
     if(this.dead)return;this.conf=Object.assign(this.conf,c);const d=this.conf;
-    this.tar.body.set(d.oak?0xffffff:d.body);this.tar.acc.set(d.oak?0xffffff:d.accent);
-    const oak=d.oak;
+    const oakB=!!(d.oak||d.oakBody),oakA=!!(d.oak||d.oakAcc),oak=oakA;
+    this.tar.body.set(oakB?0xffffff:d.body);this.tar.acc.set(oakA?0xffffff:d.accent);
     const set=(m,map)=>{if(m.map!==map){m.map=map;m.needsUpdate=true}};
-    set(this.mBody,oak?this.wood:null);set(this.mAcc,oak?this.wood:null);
+    set(this.mBody,oakB?this.wood:null);set(this.mAcc,oakA?this.wood:null);
+    if(this.disc){const edge=(this.o.edgeAcc||(oakA&&!oakB))?this.mAcc:this.mBody;if(this.disc.material[0]!==edge){this.disc.material[0]=edge}}
     const surface=this.o.chessDemo?'chess':(d.surface||'none');
-    set(this.mTop,oak?this.woodDisc:this.logoTex);
+    set(this.mTop,oakA?this.woodDisc:this.logoTex);
     if(surface==='chess'||surface==='cards'){
-      const canvas=surface==='chess'?chessCanvas(oak?'#DCBF92':d.accent,oak?'#A47C4C':d.body):cardsCanvas();
+      const canvas=surface==='chess'?chessCanvas(oakA?'#DCBF92':d.accent,oakB?'#A47C4C':d.body):cardsCanvas();
       const t=new THREE.CanvasTexture(canvas);t.anisotropy=4;
       if(this.surfaceTex)this.surfaceTex.dispose();this.surfaceTex=t;set(this.mBot,t);
     }else set(this.mBot,oak?this.woodDisc:this.logoTex);
@@ -788,10 +880,10 @@ S.zero=()=>`
   <div class="zero-nums"><div><b>1</b><span class="mono">Sheet</span></div><div><b>1</b><span class="mono">Cut</span></div><div><b>0</b><span class="mono">Waste</span></div></div>
 </div></section>`;
 
-S.assembly=()=>`
+S.assembly=(home)=>`
 <section class="sec asm" id="assembly"><div class="wrap"><div class="asm-grid">
   <div class="asm-l">
-    <div>${LBL('Assembly')}<h2 class="h-lg col" style="margin-top:1.2rem">No screws.</h2><p class="lede" style="margin-top:1.4rem">Simple to assemble.<br>Simple to understand.</p></div>
+    <div>${LBL('Assembly')}${home?`<h2 class="h-lg col" style="margin-top:1.2rem">Five steps.</h2>`:`<h2 class="h-lg col" style="margin-top:1.2rem">No screws.</h2><p class="lede" style="margin-top:1.4rem">Simple to assemble.<br>Simple to understand.</p>`}</div>
     <ol class="steps" id="steps">
       <li data-pose="unpack" class="on"><button><span class="n">01</span><span class="nm">Unpack</span><span class="ds">Two plates, one round top.</span></button></li>
       <li data-pose="slot"><button><span class="n">02</span><span class="nm">Slot</span><span class="ds">One plate drops onto the other. The slots meet halfway.</span></button></li>
@@ -813,11 +905,11 @@ S.rotation=()=>`
   </div>
 </div></section>`;
 
-const swatches=(k)=>COLORS.map(c=>`<button data-k="${k}" data-c="${c[0]}" aria-pressed="false" title="${c[1]}" style="--c:${c[2]}"><i></i><span>${c[1]}</span></button>`).join('');
-S.configurator=()=>`
+const swatches=(k)=>COLORS.map(c=>`<button data-k="${k}" data-c="${c[0]}" aria-pressed="false" title="${c[1]}" style="--c:${c[2]}"><i></i><span>${c[1]}</span></button>`).join('')+`<button data-k="${k}" data-c="oak" class="oak" aria-pressed="false" title="Oak" style="--c:#C9A273"><i></i><span>Oak</span></button>`;
+S.configurator=(home)=>`
 <section class="sec cfg" id="configurator"><div class="wrap">
-  <div class="cfg-head"><div>${LBL('Configurator')}<h2 class="h-lg" style="margin-top:1.2rem">Make it yours.</h2></div>
-    <p class="sub">Pick a body, pick an accent. The body is the base. The accent is the top and the small details. The geometry never changes.</p></div>
+  <div class="cfg-head"><div>${LBL('Configurator')}<h2 class="h-lg" style="margin-top:1.2rem">${home?'Your table.':'Make it yours.'}</h2></div>
+    <p class="sub">Pick a body, pick an accent, or choose oak for either. The body is the base. The accent is the top and the small details. The geometry never changes.</p></div>
   <div class="cfg-grid">
     <div class="stage" id="cfg-stage"><div class="fallback"><img class="fbimg" id="cfg-fb" src="img/tt-burgundy-cream.jpg" alt="Your TuttoTondo"></div>
       <div class="stage-tags mono"><span>Ø 60</span><span>H 40</span></div><span class="hint mono">Drag to turn</span>
@@ -916,7 +1008,7 @@ S.natural=()=>`
 
 S.italy=()=>`
 <section class="italy" id="italy"><img src="img/lifestyle.jpg" loading="lazy" alt="">
-  <div class="wrap"><div class="row mono"><span>Milano, Italy</span><span>Ø 60 × H 40</span></div>
+  <div class="wrap"><div class="row mono"><span>${FLAG}Milano, Italy</span><span>Ø 60 × H 40</span></div>
     <div class="row"><h2 class="h-lg" style="max-width:9em;font-size:clamp(2.4rem,6.6vw,6rem)">Designed and made in Italy.</h2><p>Drawn in Milano. Produced locally in Italy, from the sheet to the finished table.</p></div></div></section>`;
 
 S.greta=()=>`
@@ -953,7 +1045,39 @@ S.order=()=>`
 
 /* ---------- pages ---------- */
 const PAGES={};
-PAGES['/']=()=>S.hero()+S.idea()+S.sheet()+S.zero()+S.assembly()+S.rotation()+S.configurator()+S.editions()+S.chess()+S.natural()+S.italy()+S.greta();
+const EDTINT={sage:'#DCE2D6',terracotta:'#EED3C8',rose:'#F3E3DF',bordeaux:'#E6D2D0',cream:'#EEE6D8',lake:'#DCE4EA',butter:'#F1E9CF',graphite:'#D8D5D0'};
+const FLAG='<span class="flag" role="img" aria-label="Italian flag"><i></i><i></i><i></i></span>';
+const HX={};
+HX.idea=()=>`
+<section class="hm hm-studio" id="idea"><div class="hm-wrap hm-sec">
+  <h2 class="hm-q">One sheet.<br>One table.</h2>
+  <div class="r"><span class="hm-mono">The idea</span>
+    <p>TuttoTondo started as a simple idea for our own home: a table reduced to its essential elements.</p>
+    <p>The name is Italian for <em>all round</em>. <span lang="it">Tutto tondo.</span> It describes the shape, and the way the idea holds together from every side.</p>
+    <a class="hm-mono" href="#/about" data-link="/about">Designed by Greta →</a></div>
+</div></section>`;
+HX.screws=()=>`
+<section class="hm hm-studio" id="screws"><div class="hm-wrap hm-sec">
+  <h2 class="hm-q">No screws.</h2>
+  <div class="r"><span class="hm-mono">Assembly</span>
+    <p>Simple to assemble. Simple to understand.</p>
+    <p>Two plates and a round top. Nothing to fix, nothing to tighten.</p></div>
+</div></section>`;
+HX.make=()=>`
+<section class="hm hm-band hm-make2" id="editions"><div class="hm-wrap hm-sec">
+  <div class="hm-head"><div><h2 class="hm-d hm-xl">Make it yours.</h2><p>Pick a colour for the plates and one for the top: eight shades, oak, or any RAL. Or start from one of our four editions.</p></div>
+    <div class="hm-start"><span class="hm-mono hm-muted">Start with a colour</span>
+      <div class="hm-sw" role="group" aria-label="Start with a colour">${COLORS.map(c=>`<button data-c="${c[0]}" title="${c[1]}" aria-label="Start with ${c[1]}"><i style="--c:${c[2]}"></i></button>`).join('')}<button data-c="oak" class="oak" title="Oak" aria-label="Start with oak"><i></i></button></div></div></div>
+  <div class="hm-ed" id="hm-ed">${EDITIONS.map(([b,a])=>`<button data-b="${b}" data-a="${a}"><span class="im" style="--t:${EDTINT[b]||'#EEE6D8'}"><img src="img/hero-${b}-${a}.webp" width="1400" height="745" loading="lazy" alt="TuttoTondo, ${CMAP[b].name} plates and a ${CMAP[a].name} top"></span><span class="cap hm-mono"><b>${CMAP[b].name} × ${CMAP[a].name}</b><span class="hm-muted">${P('standard')}</span></span></button>`).join('')}
+    <button data-fin-go="custom"><span class="any"><span class="hm-dots">${COLORS.map(c=>`<i style="--c:${c[2]}"></i>`).join('')}</span><span class="t">Any two colours.<br>Any RAL.</span></span><span class="cap hm-mono"><b>Configure yours →</b><span class="hm-muted">from ${P('standard')}</span></span></button>
+  </div>
+</div></section>`;
+function initHome(){
+  const ed=$('#hm-ed');if(!ed)return;
+  $$('button[data-b]',ed).forEach(b=>on(b,'click',()=>{setCfg({finish:'standard',body:b.dataset.b,accent:b.dataset.a});scrollToSel('#configurator')}));
+  $$('.hm-sw button').forEach(b=>on(b,'click',()=>{setCfg({finish:'standard',body:b.dataset.c});scrollToSel('#configurator')}));
+}
+PAGES['/']=()=>S.hero()+HX.idea()+S.sheet()+HX.screws()+S.assembly(true)+HX.make()+S.configurator(true)+S.chess()+S.italy();
 const SUB=[['The idea','#idea'],['The design','#sheet'],['Make it yours','#configurator'],['Made in Italy','#italy'],['Specifications','#specs'],['Order','#order']];
 PAGES['/tuttotondo']=()=>`
 <div class="pp">
@@ -1010,7 +1134,7 @@ function toast(msg){const t=$('#toast');t.textContent=msg;t.classList.add('on');
 function scrollToSel(sel){const el=$(sel);if(el)el.scrollIntoView({behavior:'smooth',block:'start'});else{pending=sel;go('/tuttotondo')}}
 function seen(el,fn,once=true){const io=new IntersectionObserver(es=>{if(es[0].isIntersecting){fn();if(once)io.disconnect()}},{threshold:.45});io.observe(el);unsubs.push(()=>io.disconnect())}
 function bindViewer(v,extra={}){
-  const f=d=>v.setConfig(Object.assign({oak:d.oak,body:d.body,accent:d.accent,surface:cfg.surface},extra));
+  const f=d=>v.setConfig(Object.assign({oak:d.oak,oakBody:!!d.oakBody,oakAcc:!!d.oakAcc,body:d.body,accent:d.accent,surface:cfg.surface},extra));
   f(derived());if(!v.dead){v.cur.body.copy(v.tar.body);v.cur.acc.copy(v.tar.acc)}
   unsubs.push(onCfg(f));
 }
@@ -1066,7 +1190,7 @@ function initCfg(){
 }
 function initAsm(){
   const st=$('#asm-stage');if(!st)return;
-  const v=new Viewer(st,{pose:'unpack',interactive:true,auto:false,edgeAcc:true});viewers.push(v);bindViewer(v,{surface:'none',oak:false,...SHOW.cover});
+  const v=new Viewer(st,{pose:'unpack',interactive:true,auto:false,edgeAcc:true});viewers.push(v);bindViewer(v,{surface:'none',oak:false,oakBody:false,oakAcc:false,...SHOW.cover});
   const steps=$$('#steps li');
   const go=n=>{steps.forEach(li=>li.classList.toggle('on',li.dataset.pose===n));v.setPose(n)};
   const stop=()=>{timers.forEach(clearTimeout);timers=[]};
@@ -1077,7 +1201,7 @@ function initAsm(){
 }
 function initRot(){
   const st=$('#rot-stage');if(!st)return;
-  const v=new Viewer(st,{pose:'final',interactive:true,phi:.74,theta:.62,edgeAcc:true});viewers.push(v);bindViewer(v,{surface:'none',oak:false,...SHOW.cover});
+  const v=new Viewer(st,{pose:'final',interactive:true,phi:.74,theta:.62,edgeAcc:true});viewers.push(v);bindViewer(v,{surface:'none',oak:false,oakBody:false,oakAcc:false,...SHOW.cover});
   on($('#rot-spin'),'click',()=>v.spin());on($('#rot-flip'),'click',()=>v.flip());
   seen(st,()=>{later(()=>v.spin(),700);later(()=>v.flip(),2300)});
 }
@@ -1149,7 +1273,7 @@ function render(){
   $$('.nav-links a').forEach(a=>a.classList.toggle('on',a.dataset.link===path));
   $('#nav').classList.remove('open');$('#menubtn').setAttribute('aria-expanded','false');
   $$('[data-p]').forEach(e=>e.textContent=pr(e.dataset.p));
-  initSheet();initCfg();initAsm();initRot();initEditions();initChess();initFinGo();initPP();initOrder();initContact();
+  initHome();initSheet();initCfg();initAsm();initRot();initEditions();initChess();initFinGo();initPP();initOrder();initContact();
   applyCfg();window.scrollTo(0,0);
   if(pending){const s=pending;pending=null;setTimeout(()=>scrollToSel(s),120)}
 }
