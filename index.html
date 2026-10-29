@@ -199,6 +199,44 @@ p{margin:0}
 .hm-sw button:hover i{transform:scale(1.1)}
 @media (max-width:640px){.hm-intro .r{max-width:none}.hm-tag.h{display:none}}
 
+/* cover: the flip (scroll-driven) */
+.flip{position:relative;height:640vh;background:var(--paper)}
+.flip-st{position:sticky;top:0;height:100svh;overflow:hidden}
+.flip-3d{position:absolute;inset:var(--nav-h) 0 0 0}
+.flip-3d canvas{display:block;width:100%;height:100%}
+.flip-3d.nogl{display:none}
+@media (min-width:900px){.flip-3d{left:30%}}
+.flip-word{position:absolute;left:50%;top:calc(50% + var(--nav-h)/2);z-index:4;transform:translate(-50%,-50%);margin:0;pointer-events:none;text-align:center;color:var(--paper);font-family:var(--display);font-stretch:75%;font-weight:800;text-transform:uppercase;letter-spacing:-.02em;line-height:.8;font-size:min(12vh,11vw);white-space:nowrap}
+@media (min-width:900px){.flip-word{left:65%}}
+.flip-word small{display:block;margin-top:1.3rem;font-family:var(--mono);font-weight:400;font-size:.75rem;letter-spacing:.2em;color:rgba(240,233,222,.75)}
+.flip-copy{position:absolute;left:var(--gut);bottom:clamp(28px,6vh,72px);z-index:5;pointer-events:none;width:min(44rem,86vw)}
+.flip-copy .step{position:absolute;left:0;bottom:0;opacity:0;transform:translateY(24px);transition:opacity .5s,transform .6s cubic-bezier(.2,.7,.2,1)}
+.flip-copy .step.on{opacity:1;transform:none}
+.flip-copy h2{margin:0}
+.flip-copy h2.h-lg{font-size:clamp(2.7rem,6.4vw,6.2rem)}
+.flip-copy p{margin:.9rem 0 0;color:var(--ink-2);max-width:26em;font-size:clamp(1rem,1.3vw,1.15rem)}
+.flip-copy .mono{display:block;margin-bottom:1rem;color:var(--ink-2)}
+.flip-ticks{position:absolute;left:var(--gut);top:calc(var(--nav-h) + 3rem);z-index:5;display:flex;flex-direction:column;gap:.9rem;align-items:flex-start}
+.flip-ticks span{color:var(--ink-3);transition:color .3s}
+.flip-ticks span.on{color:var(--ink)}
+.flip-ticks span::after{content:"";display:inline-block;width:18px;height:1px;background:currentColor;margin-left:.7rem;vertical-align:middle;transition:width .3s}
+.flip-ticks span.on::after{width:36px}
+.flip-hint{position:absolute;left:50%;bottom:22px;transform:translateX(-50%);z-index:5;color:var(--ink-2);transition:opacity .4s}
+.flip-cover{position:absolute;inset:0;z-index:8;opacity:0;pointer-events:none}
+.flip-cover.live{pointer-events:auto}
+.flip-cover .hero{position:absolute;inset:0;height:100%;min-height:0}
+@media (max-width:899px){.flip-ticks{display:none}.flip-copy{bottom:clamp(20px,4vh,40px)}.flip-copy h2.h-lg{font-size:clamp(2.6rem,13vw,4.4rem)}}
+@media (max-width:760px){
+  .flip-cover .hero{padding-top:var(--nav-h);background:var(--paper)}
+  .flip-cover .hero-media{position:absolute;inset:var(--nav-h) 0 0 0;aspect-ratio:auto}
+  .flip-cover .hero-media img{object-position:50% 70%}
+  .flip-cover .hero::after{display:block}
+  .flip-cover .hero-top{display:none}
+  .flip-cover .hero-bot{position:absolute;padding-top:0}
+}
+/* no-WebGL or reduced motion: the photo cover alone */
+.flip.still{height:auto}.flip.still .flip-st{position:relative}.flip.still .flip-cover{position:relative;opacity:1;pointer-events:auto;height:100svh;min-height:560px}
+.flip.still .flip-3d,.flip.still .flip-word,.flip.still .flip-copy,.flip.still .flip-ticks,.flip.still .flip-hint{display:none}
 /* merged home: bands + editions */
 .hm-studio .hm-q{text-transform:none}
 .hm-studio .r p+p{margin-top:-.2rem}
@@ -361,7 +399,7 @@ p{margin:0}
 .coin.flipped{transform:rotateY(180deg)}
 .coin .face{position:absolute;inset:0;border-radius:50%;backface-visibility:hidden;-webkit-backface-visibility:hidden;overflow:hidden;box-shadow:0 30px 40px -24px rgba(21,20,19,.45),inset 0 0 0 1.5px rgba(21,20,19,.25)}
 .coin .front{background:var(--accent);transition:background .5s}
-.coin .back{transform:rotateY(180deg);background:var(--accent)}
+.coin .back{transform:rotateY(180deg);background:var(--dsqbg,var(--paper-2))}
 .coin svg{width:100%;height:100%;display:block}
 .coin .edge{position:absolute;inset:0;border-radius:50%;pointer-events:none}
 .price-tag{display:flex;align-items:baseline;gap:1rem;flex-wrap:wrap}
@@ -690,7 +728,7 @@ const LOOP={list:new Set(),on:false,
 
 class Viewer{
   constructor(host,o={}){
-    this.host=host;this.o=Object.assign({pose:'final',interactive:true,auto:false,chessDemo:false,phi:null,theta:null,edgeAcc:true},o);
+    this.host=host;this.o=Object.assign({pose:'final',interactive:true,auto:false,chessDemo:false,phi:null,theta:null,edgeAcc:true,noLogo:false},o);
     if(typeof THREE==='undefined'){host.classList.add('nogl');this.dead=true;return}
     this.canvas=document.createElement('canvas');this.canvas.setAttribute('aria-label','Interactive 3D view of TuttoTondo. Drag to turn.');host.prepend(this.canvas);
     try{this.r=new THREE.WebGLRenderer({canvas:this.canvas,antialias:true,alpha:true});if(!this.r.getContext())throw 0}catch(e){host.classList.add('nogl');this.dead=true;return}
@@ -705,7 +743,7 @@ class Viewer{
     /* materials */
     const std=p=>new THREE.MeshStandardMaterial(Object.assign({roughness:.82,metalness:0},p));
     this.mBody=std({color:0x252525});this.mAcc=std({color:0x8fd9cf});this.mTop=std({color:0x8fd9cf});this.mBot=std({color:0x8fd9cf});
-    this.logoTex=new THREE.CanvasTexture(logoCanvas());
+    this.logoTex=new THREE.CanvasTexture(this.o.noLogo?(()=>{const c=cv(8),x=c.getContext('2d');x.fillStyle='#fff';x.fillRect(0,0,8,8);return c})():logoCanvas());
     this.mTop.map=this.logoTex;this.mBot.map=this.logoTex;
     const wc=woodCanvas(512);this.wood=new THREE.CanvasTexture(wc);this.wood.wrapS=this.wood.wrapT=THREE.RepeatWrapping;this.wood.repeat.set(1/55,1/28);this.wood.anisotropy=4;
     this.woodDisc=new THREE.CanvasTexture(wc);this.woodDisc.wrapS=this.woodDisc.wrapT=THREE.RepeatWrapping;this.woodDisc.anisotropy=4;
@@ -772,7 +810,7 @@ class Viewer{
     const surface=this.o.chessDemo?'chess':(d.surface||'none');
     set(this.mTop,oakA?this.woodDisc:this.logoTex);
     if(surface==='chess'||surface==='cards'){
-      const canvas=surface==='chess'?chessCanvas(oakA?'#DCBF92':d.accent,oakB?'#A47C4C':d.body):cardsCanvas();
+      const canvas=surface==='chess'?chessCanvas(oakB?'#DCBF92':d.body,oakA?'#A47C4C':d.accent):cardsCanvas();
       const t=new THREE.CanvasTexture(canvas);t.anisotropy=4;
       if(this.surfaceTex)this.surfaceTex.dispose();this.surfaceTex=t;set(this.mBot,t);
     }else set(this.mBot,oak?this.woodDisc:this.logoTex);
@@ -1048,6 +1086,58 @@ const PAGES={};
 const EDTINT={sage:'#DCE2D6',terracotta:'#EED3C8',rose:'#F3E3DF',bordeaux:'#E6D2D0',cream:'#EEE6D8',lake:'#DCE4EA',butter:'#F1E9CF',graphite:'#D8D5D0'};
 const FLAG='<span class="flag" role="img" aria-label="Italian flag"><i></i><i></i><i></i></span>';
 const HX={};
+S.flip=()=>`
+<section class="flip" id="flip" aria-label="TuttoTondo: the top flips, chess, cards, coffee">
+  <div class="flip-st">
+    <div class="flip-3d" id="flip-3d"></div>
+    <p class="flip-word" id="flip-word" aria-hidden="true">Tutto<br>tondo<small>Ø 60 cm</small></p>
+    <div class="flip-copy">
+      <div class="step"><h2 class="h-lg">Flip it.</h2><p>The top lifts out and turns over. The reverse is a chessboard.</p></div>
+      <div class="step"><h2 class="h-lg">Or cards.</h2><p>A green card table, cut into the design.</p></div>
+      <div class="step"><h2 class="h-lg">Or just coffee.</h2><p>Turn it back and it is a table again.</p></div>
+      <div class="step"><span class="mono">Ø 60 × H 40 · from ${P('standard')}</span><h2 class="h-lg">One table.<br>Two sides.</h2></div>
+    </div>
+    <div class="flip-ticks mono" id="flip-ticks"><span>Top</span><span>Chess</span><span>Cards</span><span>Coffee</span><span>TuttoTondo</span></div>
+    <span class="flip-hint mono" id="flip-hint">Scroll ↓</span>
+    <div class="flip-cover" id="flip-cover">${S.hero()}</div>
+  </div>
+</section>`;
+function initFlip(){
+  const sec=$('#flip');if(!sec)return;
+  const reduce=matchMedia('(prefers-reduced-motion:reduce)').matches;
+  const V=reduce?null:new Viewer($('#flip-3d'),{pose:'final',interactive:false,auto:false,edgeAcc:true,noLogo:true});
+  if(!V||V.dead){sec.classList.add('still');return}
+  viewers.push(V);
+  const CREAM='#E8DFD0',BORD='#7E2428';
+  const steps=$$('.flip-copy .step',sec),ticks=$$('#flip-ticks span'),cover=$('#flip-cover'),hint=$('#flip-hint'),word=$('#flip-word'),media=$('.hero-media',cover);
+  const sm=(a,b,x)=>{const t=clamp((x-a)/(b-a));return t*t*(3-2*t)};
+  const ABOVE={theta:0,phi:.012,radius:innerWidth<900?150:205,t:[0,40,0]},SIDE=Object.assign({},POSES.final.cam,{radius:POSES.final.cam.radius*1.1});
+  // flip angle along the scroll: 0 top, PI chess, 3PI cards (one extra turn), 4PI the top again
+  const FLIP=[[0,0],[.08,0],[.26,PI],[.32,PI],[.50,3*PI],[.60,3*PI],[.70,4*PI]];
+  const flipAt=p=>{let i=0;while(i<FLIP.length-2&&p>=FLIP[i+1][0])i++;const[a0,v0]=FLIP[i],[a1,v1]=FLIP[i+1];return v0+(v1-v0)*ease(clamp((p-a0)/Math.max(1e-6,a1-a0)))};
+  let last='';const setSurf=s=>{V.setConfig({oak:false,oakBody:false,oakAcc:false,body:CREAM,accent:BORD,surface:s});last=s};
+  setSurf('chess');V.cur.body.set(CREAM);V.cur.acc.set(BORD);
+  let raf=0;
+  const upd=()=>{raf=0;
+    const r=sec.getBoundingClientRect(),p=clamp(-r.top/Math.max(1,r.height-innerHeight));
+    const a=flipAt(p);V.flipG.rotation.x=a;V.flipG.position.y=Math.abs(Math.sin(a))*34;V.flipAnim=null;V.flipA=a;
+    const s=a/(2*PI)<1?'chess':'cards';if(s!==last)setSurf(s);
+    const e=ease(sm(.71,.86,p));
+    V.cam.phi=ABOVE.phi+(SIDE.phi-ABOVE.phi)*e;V.cam.radius=ABOVE.radius+(SIDE.radius-ABOVE.radius)*e;V.cam.theta=ABOVE.theta+(SIDE.theta-ABOVE.theta)*e+(p>.86?(p-.86)*2.4:0);
+    for(let k=0;k<3;k++)V.cam.t[k]=ABOVE.t[k]+(SIDE.t[k]-ABOVE.t[k])*e;
+    word.style.opacity=1-sm(.03,.09,p);
+    const st=p>=.76&&p<.87?3:p>=.62&&p<.73?2:p>=.34&&p<.60?1:p>=.12&&p<.32?0:-1;
+    steps.forEach((el,k)=>el.classList.toggle('on',k===st));
+    const tk=p<.12?0:p<.33?1:p<.61?2:p<.75?3:4;ticks.forEach((el,k)=>el.classList.toggle('on',k===tk));
+    const c=sm(.87,.95,p);cover.style.opacity=c;cover.classList.toggle('live',c>.6);
+    if(media)media.style.transform=`scale(${1.08-.08*c})`;
+    hint.style.opacity=p<.03?1:0;
+  };
+  const onS=()=>{if(!raf)raf=requestAnimationFrame(upd)};
+  addEventListener('scroll',onS,{passive:true});addEventListener('resize',onS);
+  unsubs.push(()=>{removeEventListener('scroll',onS);removeEventListener('resize',onS)});
+  upd();
+}
 HX.idea=()=>`
 <section class="hm hm-studio" id="idea"><div class="hm-wrap hm-sec">
   <h2 class="hm-q">One sheet.<br>One table.</h2>
@@ -1077,7 +1167,7 @@ function initHome(){
   $$('button[data-b]',ed).forEach(b=>on(b,'click',()=>{setCfg({finish:'standard',body:b.dataset.b,accent:b.dataset.a});scrollToSel('#configurator')}));
   $$('.hm-sw button').forEach(b=>on(b,'click',()=>{setCfg({finish:'standard',body:b.dataset.c});scrollToSel('#configurator')}));
 }
-PAGES['/']=()=>S.hero()+HX.idea()+S.sheet()+HX.screws()+S.assembly(true)+HX.make()+S.configurator(true)+S.chess()+S.italy();
+PAGES['/']=()=>S.flip()+HX.idea()+S.sheet()+HX.screws()+S.assembly(true)+HX.make()+S.configurator(true)+S.chess()+S.italy();
 const SUB=[['The idea','#idea'],['The design','#sheet'],['Make it yours','#configurator'],['Made in Italy','#italy'],['Specifications','#specs'],['Order','#order']];
 PAGES['/tuttotondo']=()=>`
 <div class="pp">
@@ -1273,14 +1363,14 @@ function render(){
   $$('.nav-links a').forEach(a=>a.classList.toggle('on',a.dataset.link===path));
   $('#nav').classList.remove('open');$('#menubtn').setAttribute('aria-expanded','false');
   $$('[data-p]').forEach(e=>e.textContent=pr(e.dataset.p));
-  initHome();initSheet();initCfg();initAsm();initRot();initEditions();initChess();initFinGo();initPP();initOrder();initContact();
+  initFlip();initHome();initSheet();initCfg();initAsm();initRot();initEditions();initChess();initFinGo();initPP();initOrder();initContact();
   applyCfg();window.scrollTo(0,0);
   if(pending){const s=pending;pending=null;setTimeout(()=>scrollToSel(s),120)}
 }
 
 /* ---------- boot ---------- */
 $('#brand-logo').innerHTML=LOGO(1.7);
-onCfg(d=>document.documentElement.style.setProperty('--dsq',d.oak?'#A47C4C':d.body));
+onCfg(d=>{const R=document.documentElement.style;R.setProperty('--dsq',(d.oak||d.oakAcc)?'#A47C4C':d.accent);R.setProperty('--dsqbg',(d.oak||d.oakBody)?'#DCBF92':d.body)});
 document.addEventListener('click',e=>{
   const l=e.target.closest('[data-link]');if(l){e.preventDefault();go(l.dataset.link);return}
   const s=e.target.closest('[data-scroll]');if(s){e.preventDefault();scrollToSel(s.dataset.scroll);return}
