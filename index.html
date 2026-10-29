@@ -200,8 +200,8 @@ p{margin:0}
 @media (max-width:640px){.hm-intro .r{max-width:none}.hm-tag.h{display:none}}
 
 /* cover: the flip (scroll-driven) */
-.flip{position:relative;height:640vh;background:var(--paper)}
-.flip-st{position:sticky;top:0;height:100svh;overflow:hidden}
+.flip{position:relative;height:100svh;min-height:560px;background:var(--paper)}
+.flip-st{position:relative;height:100%;overflow:hidden}
 .flip-3d{position:absolute;inset:var(--nav-h) 0 0 0}
 .flip-3d canvas{display:block;width:100%;height:100%}
 .flip-3d.nogl{display:none}
@@ -221,7 +221,11 @@ p{margin:0}
 .flip-ticks span.on{color:var(--ink)}
 .flip-ticks span::after{content:"";display:inline-block;width:18px;height:1px;background:currentColor;margin-left:.7rem;vertical-align:middle;transition:width .3s}
 .flip-ticks span.on::after{width:36px}
-.flip-hint{position:absolute;left:50%;bottom:22px;transform:translateX(-50%);z-index:5;color:var(--ink-2);transition:opacity .4s}
+.flip-hint{position:absolute;right:var(--gut);bottom:clamp(24px,5vh,56px);z-index:9;color:var(--ink-2);border-bottom:1px solid currentColor;padding-bottom:2px;transition:opacity .4s}
+.flip-hint:hover{color:var(--ink)}
+.flip-replay{position:absolute;right:var(--gut);top:calc(var(--nav-h) + 1rem);z-index:9;color:var(--ink);background:color-mix(in srgb,var(--paper) 75%,transparent);padding:.45rem .7rem;opacity:0;pointer-events:none;transition:opacity .4s}
+.flip.done .flip-replay{opacity:1;pointer-events:auto}
+.flip.done .flip-hint{opacity:0;pointer-events:none}
 .flip-cover{position:absolute;inset:0;z-index:8;opacity:0;pointer-events:none}
 .flip-cover.live{pointer-events:auto}
 .flip-cover .hero{position:absolute;inset:0;height:100%;min-height:0}
@@ -1098,7 +1102,7 @@ S.flip=()=>`
       <div class="step"><span class="mono">Ø 60 × H 40 · from ${P('standard')}</span><h2 class="h-lg">One table.<br>Two sides.</h2></div>
     </div>
     <div class="flip-ticks mono" id="flip-ticks"><span>Top</span><span>Chess</span><span>Cards</span><span>Coffee</span><span>TuttoTondo</span></div>
-    <span class="flip-hint mono" id="flip-hint">Scroll ↓</span>
+    <button class="flip-hint mono" id="flip-hint">Skip →</button><button class="flip-replay mono" id="flip-replay">Replay ↻</button>
     <div class="flip-cover" id="flip-cover">${S.hero()}</div>
   </div>
 </section>`;
@@ -1117,26 +1121,28 @@ function initFlip(){
   const flipAt=p=>{let i=0;while(i<FLIP.length-2&&p>=FLIP[i+1][0])i++;const[a0,v0]=FLIP[i],[a1,v1]=FLIP[i+1];return v0+(v1-v0)*ease(clamp((p-a0)/Math.max(1e-6,a1-a0)))};
   let last='';const setSurf=s=>{V.setConfig({oak:false,oakBody:false,oakAcc:false,body:CREAM,accent:BORD,surface:s});last=s};
   setSurf('chess');V.cur.body.set(CREAM);V.cur.acc.set(BORD);
-  let raf=0;
-  const upd=()=>{raf=0;
-    const r=sec.getBoundingClientRect(),p=clamp(-r.top/Math.max(1,r.height-innerHeight));
+  const DUR=17000,HOLD=.14;let t0=0,raf=0;   // the whole story in 15 seconds, then the photo cover stays
+  const upd=raw=>{
+    const p=raw<=HOLD?0:(raw-HOLD)/(1-HOLD);   // hold on the name first
     const a=flipAt(p);V.flipG.rotation.x=a;V.flipG.position.y=Math.abs(Math.sin(a))*34;V.flipAnim=null;V.flipA=a;
     const s=a/(2*PI)<1?'chess':'cards';if(s!==last)setSurf(s);
     const e=ease(sm(.71,.86,p));
     V.cam.phi=ABOVE.phi+(SIDE.phi-ABOVE.phi)*e;V.cam.radius=ABOVE.radius+(SIDE.radius-ABOVE.radius)*e;V.cam.theta=ABOVE.theta+(SIDE.theta-ABOVE.theta)*e+(p>.86?(p-.86)*2.4:0);
     for(let k=0;k<3;k++)V.cam.t[k]=ABOVE.t[k]+(SIDE.t[k]-ABOVE.t[k])*e;
-    word.style.opacity=1-sm(.03,.09,p);
+    word.style.opacity=raw>=1?0:1-sm(HOLD-.03,HOLD+.03,raw);
     const st=p>=.76&&p<.87?3:p>=.62&&p<.73?2:p>=.34&&p<.60?1:p>=.12&&p<.32?0:-1;
     steps.forEach((el,k)=>el.classList.toggle('on',k===st));
     const tk=p<.12?0:p<.33?1:p<.61?2:p<.75?3:4;ticks.forEach((el,k)=>el.classList.toggle('on',k===tk));
     const c=sm(.87,.95,p);cover.style.opacity=c;cover.classList.toggle('live',c>.6);
     if(media)media.style.transform=`scale(${1.08-.08*c})`;
-    hint.style.opacity=p<.03?1:0;
   };
-  const onS=()=>{if(!raf)raf=requestAnimationFrame(upd)};
-  addEventListener('scroll',onS,{passive:true});addEventListener('resize',onS);
-  unsubs.push(()=>{removeEventListener('scroll',onS);removeEventListener('resize',onS)});
-  upd();
+  const tick=now=>{if(!t0)t0=now;const p=Math.min(1,(now-t0)/DUR);upd(p);
+    if(p<1)raf=requestAnimationFrame(tick);else{raf=0;sec.classList.add('done')}};
+  const play=()=>{cancelAnimationFrame(raf);sec.classList.remove('done');t0=0;raf=requestAnimationFrame(tick)};
+  on(hint,'click',()=>{cancelAnimationFrame(raf);raf=0;upd(1);sec.classList.add('done')});
+  on($('#flip-replay'),'click',play);
+  unsubs.push(()=>cancelAnimationFrame(raf));
+  upd(0);later(play,600);
 }
 HX.idea=()=>`
 <section class="hm hm-studio" id="idea"><div class="hm-wrap hm-sec">
