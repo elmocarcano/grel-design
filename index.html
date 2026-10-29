@@ -118,87 +118,6 @@ p{margin:0}
 }
 @media (max-width:420px){.hero-cta .btn{flex:1 1 100%;justify-content:space-between}}
 
-/* home (architect's object) */
-.hm{--rule:rgba(21,20,19,.18)}
-.hm-wrap{max-width:1440px;margin-inline:auto;padding-inline:var(--gut)}
-.hm-mono{font-family:var(--mono);font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;font-weight:400}
-.hm-muted{color:var(--ink-2)}
-.hm-d{font-family:var(--display);font-weight:300;letter-spacing:-.035em;line-height:.95;margin:0;text-transform:none;font-stretch:100%}
-.hm-xl{font-size:clamp(3.4rem,7.8vw,7rem)}
-.hm-l{font-size:clamp(2.2rem,3.9vw,3.5rem);line-height:1.02;letter-spacing:-.03em}
-.hm-intro{padding-top:calc(var(--nav-h) + clamp(40px,5vw,72px));padding-bottom:clamp(28px,3vw,40px);display:flex;justify-content:space-between;align-items:flex-end;gap:2.5rem;flex-wrap:wrap}
-.hm-intro .l{display:flex;flex-direction:column;gap:1.4rem}
-.hm-intro .r{display:flex;flex-direction:column;gap:1.4rem;max-width:360px;padding-bottom:.6rem}
-.hm-intro .r p{margin:0;font-size:1.06rem;line-height:1.55;color:#3d3934}
-.hm-btns{display:flex;gap:.6rem;flex-wrap:wrap}
-.hm-btn{display:inline-flex;align-items:center;gap:.6rem;min-height:48px;padding:0 1.4rem;border:1px solid var(--ink);font-family:var(--mono);font-size:.74rem;letter-spacing:.12em;text-transform:uppercase;transition:background .25s,color .25s}
-.hm-btn.solid{background:var(--ink);color:var(--paper)}
-.hm-btn:hover{background:#7E2428;border-color:#7E2428;color:var(--paper)}
-.hm-photo{position:relative;margin:0;width:100%;aspect-ratio:1312/835;overflow:hidden;background:#d9cbb8}
-.hm-photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
-.hm-photo svg{position:absolute;inset:0;width:100%;height:100%}
-.hm-photo .dim{stroke:var(--ink);stroke-width:1.4;fill:none;vector-effect:non-scaling-stroke}
-.hm-photo .call{stroke:#7E2428;stroke-width:1.4;fill:none;vector-effect:non-scaling-stroke}
-.hm-tag{position:absolute;padding:.35em .7em;background:var(--paper);font-family:var(--mono);font-size:clamp(.58rem,.85vw,.76rem);letter-spacing:.1em;white-space:nowrap}
-.hm-photo figcaption{position:absolute;left:clamp(10px,1.4vw,20px);bottom:clamp(10px,1.4vw,18px);padding:.4em .7em;background:rgba(240,233,222,.9)}
-@media (prefers-reduced-motion:no-preference){
-  .hm-photo .dim,.hm-photo .call{stroke-dasharray:2000;stroke-dashoffset:2000;animation:hmDraw 1.6s cubic-bezier(.4,0,.2,1) .5s forwards}
-  .hm-tag{opacity:0;animation:hmFade .6s ease 1.6s forwards}
-  .hm-intro .l,.hm-intro .r{animation:hmUp .9s cubic-bezier(.2,.7,.2,1) both}.hm-intro .r{animation-delay:.12s}
-}
-@keyframes hmDraw{to{stroke-dashoffset:0}}
-@keyframes hmFade{to{opacity:1}}
-@keyframes hmUp{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
-.hm-sec{padding-block:clamp(80px,10vw,140px)}
-.hm-head{display:flex;justify-content:space-between;align-items:flex-end;gap:2.5rem;flex-wrap:wrap;padding-bottom:1.75rem;border-bottom:1px solid var(--rule)}
-.hm-head h2{max-width:760px}
-.hm-three{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:clamp(24px,3vw,40px);padding-top:3rem}
-.hm-three>div{display:flex;flex-direction:column;gap:1.1rem}
-.hm-panel{aspect-ratio:4/3;display:grid;place-items:center;background:var(--sheet);border:1px solid rgba(21,20,19,.14);position:relative;overflow:hidden}
-.hm-panel svg{height:82%}
-.hm-panel img{position:absolute;left:6%;top:18%;width:88%}
-.hm-panel img.sh{mix-blend-mode:multiply}
-.hm-three p{margin:0;font-size:.95rem;line-height:1.55;color:var(--ink-2)}
-.hm-nums{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));margin-top:4.5rem;border-top:1px solid var(--rule)}
-.hm-nums div{padding:1.4rem 0;display:flex;align-items:baseline;gap:.9rem}
-.hm-nums b{font-family:var(--display);font-weight:300;font-size:clamp(2.8rem,4.4vw,4rem);letter-spacing:-.03em;line-height:1}
-.hm-nums b.acc{color:#7E2428}
-.hm-band{background:var(--sheet);border-block:1px solid rgba(21,20,19,.14)}
-.hm-ed{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1.25rem;padding-top:2.5rem}
-.hm-ed button{display:flex;flex-direction:column;gap:.9rem;text-align:left}
-.hm-ed .im{display:grid;place-items:center;aspect-ratio:5/4;background:var(--t);overflow:hidden}
-.hm-ed .im img{width:96%;transition:transform .6s cubic-bezier(.2,.7,.2,1)}
-.hm-ed button:hover .im img{transform:scale(1.05)}
-.hm-ed .cap{display:flex;justify-content:space-between;gap:.5rem}
-.hm-ed .cap b{font-weight:500}
-.hm-ed .any{display:flex;flex-direction:column;justify-content:space-between;aspect-ratio:5/4;padding:1.4rem;box-sizing:border-box;border:1px solid var(--ink)}
-.hm-dots{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:.6rem;width:70%}
-.hm-dots i,.hm-sw i{display:block;aspect-ratio:1;border-radius:50%;background:var(--c);box-shadow:inset 0 0 0 1px rgba(21,20,19,.14)}
-.hm-ed .any span.t{font-family:var(--display);font-weight:300;font-size:clamp(1.4rem,2vw,1.9rem);line-height:1.05;letter-spacing:-.02em}
-.hm-det{display:flex;gap:clamp(32px,4.5vw,64px);flex-wrap:wrap;align-items:stretch}
-.hm-det figure{margin:0;flex:1 1 480px;min-width:0;display:flex;flex-direction:column;gap:.75rem}
-.hm-det figure img{width:100%;aspect-ratio:3/2;object-fit:cover}
-.hm-det .txt{flex:1 1 380px;min-width:0;display:flex;flex-direction:column;justify-content:space-between;gap:2.5rem}
-.hm-det ol{margin:0;padding:0;list-style:none;border-top:1px solid var(--rule)}
-.hm-det li{display:grid;grid-template-columns:56px minmax(0,1fr);gap:.75rem;padding:1.25rem 0;border-bottom:1px solid var(--rule)}
-.hm-det li .n{font-family:var(--mono);font-size:.76rem;color:#7E2428}
-.hm-det li b{font-weight:600}
-.hm-studio{background:#7E2428;color:var(--paper)}
-.hm-studio .hm-wrap{display:flex;justify-content:space-between;align-items:flex-end;gap:3rem;flex-wrap:wrap}
-.hm-studio blockquote{margin:0;max-width:900px;font-family:var(--display);font-weight:300;font-size:clamp(2.6rem,5vw,4.5rem);line-height:1;letter-spacing:-.035em}
-.hm-studio .r{display:flex;flex-direction:column;gap:1rem;max-width:320px}
-.hm-studio p{margin:0;font-size:.95rem;line-height:1.55;color:#EBD7D2}
-.hm-studio a{color:var(--paper);border-bottom:1px solid currentColor;align-self:flex-start;padding-bottom:2px}
-.hm-make{display:flex;justify-content:space-between;align-items:center;gap:3rem;flex-wrap:wrap}
-.hm-make .l{display:flex;flex-direction:column;gap:1.1rem}
-.hm-make .l p{margin:0;max-width:420px;font-size:1.06rem;line-height:1.55;color:#3d3934}
-.hm-make .r{display:flex;flex-direction:column;gap:1.4rem;align-items:flex-start}
-.hm-sw{display:flex;gap:.6rem;flex-wrap:wrap}
-.hm-sw button{width:40px;height:40px;border-radius:50%;padding:0}
-.hm-sw button i{width:100%;height:100%;transition:transform .2s}
-.hm-sw button:hover i{transform:scale(1.1)}
-@media (max-width:640px){.hm-intro .r{max-width:none}.hm-tag.h{display:none}}
-
 /* idea */
 .idea-grid{display:grid;grid-template-columns:repeat(12,1fr);gap:clamp(24px,4vw,64px) clamp(12px,2vw,28px);align-items:end}
 .idea-grid .txt{grid-column:1/6;display:flex;flex-direction:column;gap:1.4rem}
@@ -443,7 +362,7 @@ p{margin:0}
 .foot-b svg{width:clamp(70px,9vw,120px);height:auto}
 .foot-c{grid-column:span 2}
 .foot-c h4{margin:0 0 .9rem;font-weight:400;color:var(--ink-3)}
-.foot-c a,.foot-c span,.foot-c button{display:block;padding-block:.2rem;text-align:left}
+.foot-c a,.foot-c span{display:block;padding-block:.2rem}
 .foot-c a:hover{text-decoration:underline;text-underline-offset:3px}
 .foot-c span{color:var(--ink-3)}
 .foot-end{margin-top:clamp(28px,5vw,64px);display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;color:var(--ink-3)}
@@ -1034,86 +953,7 @@ S.order=()=>`
 
 /* ---------- pages ---------- */
 const PAGES={};
-
-/* ---------- home: the architect's object ---------- */
-const EDTINT={sage:'#DCE2D6',terracotta:'#EED3C8',rose:'#F3E3DF',bordeaux:'#E6D2D0',cream:'#EEE6D8',lake:'#DCE4EA',butter:'#F1E9CF',graphite:'#D8D5D0'};
-const HM={};
-HM.intro=()=>`
-<section class="hm"><div class="hm-wrap hm-intro">
-  <div class="l"><span class="hm-mono hm-muted">Collection 01 — TuttoTondo coffee table</span>
-    <h1 class="hm-d hm-xl">One sheet.<br>One table.</h1></div>
-  <div class="r"><p>Two plates and a round top, cut from a single sheet and slotted together by hand. No screws, no tools, no waste.</p>
-    <div class="hm-btns"><button class="hm-btn solid" data-scroll="#configurator">Make it yours ${ARROW}</button><a class="hm-btn" href="#/tuttotondo" data-link="/tuttotondo">From ${P('standard')}</a></div></div>
-</div>
-<div class="hm-wrap"><figure class="hm-photo">
-  <img src="img/home-hero.jpg" srcset="img/home-hero.jpg 1312w, img/home-hero@2x.jpg 2624w" sizes="(max-width:1440px) 100vw, 1344px" width="1312" height="835" fetchpriority="high" alt="TuttoTondo in cream and bordeaux in a sunlit living room above Lake Como">
-  <svg viewBox="0 0 1312 835" preserveAspectRatio="none" aria-hidden="true">
-    <path class="dim" d="M278 300V412M1086 286V412M278 400H1086M272 394L284 406M1080 394L1092 406"/>
-    <path class="dim" d="M1130 246H1182M1130 616H1182M1170 246V616M1164 240L1176 252M1164 610L1176 622"/>
-    <path class="call" d="M742 642L860 742H1010"/><circle cx="742" cy="642" r="6" fill="#7E2428"/>
-  </svg>
-  <span class="hm-tag" style="left:50%;top:47.9%;transform:translate(-50%,-50%)">Ø 60 cm</span>
-  <span class="hm-tag" style="left:89.2%;top:51.6%;transform:translate(-50%,-50%) rotate(-90deg)">H 40 cm</span>
-  <span class="hm-tag h" style="left:77.2%;top:89%;transform:translateY(-50%);text-transform:uppercase">Slot joint · no screws</span>
-  <figcaption class="hm-mono">Cream × Bordeaux</figcaption>
-</figure></div></section>`;
-HM.idea=()=>`
-<section class="hm hm-sec"><div class="hm-wrap">
-  <div class="hm-head"><h2 class="hm-d hm-l">Everything the table needs is drawn inside one sheet.</h2><span class="hm-mono hm-muted">01 — The idea</span></div>
-  <div class="hm-three">
-    <div><div class="hm-panel"><svg viewBox="-8 -10 86 100" role="img" aria-label="A 70 by 80 centimetre sheet">
-      <rect x="0" y="0" width="70" height="80" fill="none" stroke="#151413" stroke-width=".5" stroke-dasharray="1.6 1.2"/>
-      <path d="M0 -5H70M0 -6.5V-3.5M70 -6.5V-3.5M-5 0V80M-6.5 0H-3.5M-6.5 80H-3.5" stroke="#8C8579" stroke-width=".3" fill="none"/>
-      <text x="35" y="-6.6" text-anchor="middle" font-family="DM Mono, monospace" font-size="3.2" fill="#5A544B">70</text>
-      <text x="-6.4" y="40" text-anchor="middle" transform="rotate(-90 -6.4 40)" font-family="DM Mono, monospace" font-size="3.2" fill="#5A544B">80</text></svg></div>
-      <span class="hm-mono">01 · One sheet</span><p>A single 70 × 80 cm panel. Nothing added, nothing thrown away.</p></div>
-    <div><div class="hm-panel"><svg viewBox="-8 -10 86 100" role="img" aria-label="The sheet cut into two plates, a round top and two tabs">
-      <path d="${PATH_A}" fill="rgba(126,36,40,.12)" stroke="#151413" stroke-width=".5"/>
-      <path d="${PATH_B}" fill="rgba(126,36,40,.12)" stroke="#151413" stroke-width=".5"/>
-      <circle cx="35" cy="40" r="30" fill="#E8DFD0" stroke="#151413" stroke-width=".5"/>
-      <text x="35" y="41.2" text-anchor="middle" font-family="DM Mono, monospace" font-size="3.2" fill="#5A544B">Ø 60</text></svg></div>
-      <span class="hm-mono">02 · One cut</span><p>The curve that shapes each plate is the edge of the round top.</p></div>
-    <div><div class="hm-panel"><img class="sh" src="img/hero-shadow.webp" alt="" aria-hidden="true" loading="lazy"><img src="img/hero-cream-bordeaux.webp" alt="The assembled table, cream plates and a bordeaux top" loading="lazy"></div>
-      <span class="hm-mono">03 · No screws</span><p>The plates slot into a cross, the top drops in. One minute, by hand.</p></div>
-  </div>
-  <div class="hm-nums"><div><b>1</b><span class="hm-mono hm-muted">sheet</span></div><div><b>1</b><span class="hm-mono hm-muted">cut</span></div><div><b>0</b><span class="hm-mono hm-muted">screws</span></div><div><b class="acc">0</b><span class="hm-mono hm-muted">waste</span></div></div>
-</div></section>`;
-HM.editions=()=>`
-<section class="hm hm-band"><div class="hm-wrap hm-sec">
-  <div class="hm-head"><h2 class="hm-d hm-l">Four editions.<br>Or your own colour.</h2><span class="hm-mono hm-muted">02 — Editions</span></div>
-  <div class="hm-ed" id="hm-ed">${EDITIONS.map(([b,a])=>`<button data-b="${b}" data-a="${a}"><span class="im" style="--t:${EDTINT[b]||'#EEE6D8'}"><img src="img/hero-${b}-${a}.webp" width="1400" height="745" loading="lazy" alt="TuttoTondo, ${CMAP[b].name} plates and a ${CMAP[a].name} top"></span><span class="cap hm-mono"><b>${CMAP[b].name} × ${CMAP[a].name}</b><span class="hm-muted">${P('standard')}</span></span></button>`).join('')}
-    <button data-fin-go="custom"><span class="any"><span class="hm-dots">${COLORS.map(c=>`<i style="--c:${c[2]}"></i>`).join('')}</span><span class="t">Any two colours.<br>Any RAL.</span></span><span class="cap hm-mono"><b>Configure yours →</b><span class="hm-muted">from ${P('standard')}</span></span></button>
-  </div>
-</div></section>`;
-HM.details=()=>`
-<section class="hm hm-sec"><div class="hm-wrap hm-det">
-  <figure><img src="img/detail-cream-brick.jpg" width="930" height="620" loading="lazy" alt="Close-up of the joint where the round top rests in the slotted plates"><figcaption class="hm-mono hm-muted">The joint — top resting in the slotted plates</figcaption></figure>
-  <div class="txt"><div style="display:flex;flex-direction:column;gap:1.1rem"><span class="hm-mono hm-muted">03 — Details</span><h2 class="hm-d hm-l">A table with two sides.</h2></div>
-    <ol>
-      <li><span class="n">01</span><span><b>Turn it.</b> <span class="hm-muted">The round top rotates freely in its seat.</span></span></li>
-      <li><span class="n">02</span><span><b>Flip it.</b> <span class="hm-muted">The reverse can be a chess board or a card table.</span></span></li>
-      <li><span class="n">03</span><span><b>Take it apart.</b> <span class="hm-muted">Flat again in a minute, for moving or storing.</span></span></li>
-      <li><span class="n">04</span><span><b>Or in oak.</b> <span class="hm-muted">TuttoTondo Natural, every part in oak.</span></span></li>
-    </ol>
-    <div><a class="hm-btn" href="#/tuttotondo" data-link="/tuttotondo">See every detail ${ARROW}</a></div></div>
-</div></section>`;
-HM.studio=()=>`
-<section class="hm hm-studio"><div class="hm-wrap hm-sec">
-  <blockquote>“One sheet of wood. A few cuts. No screws.”</blockquote>
-  <div class="r"><span class="hm-mono">Greta · Architect · Milano</span><p>Designed for our own home, then for yours. Drawn in Milano, made in Italy.</p><a class="hm-mono" href="#/about" data-link="/about">The studio →</a></div>
-</div></section>`;
-HM.make=()=>`
-<section class="hm hm-sec"><div class="hm-wrap hm-make">
-  <div class="l"><span class="hm-mono hm-muted">04 — Configurator</span><h2 class="hm-d hm-xl">Make it yours.</h2><p>Pick a colour for the plates and one for the top. Eight shades, or any RAL.</p></div>
-  <div class="r"><div class="hm-sw" role="group" aria-label="Start with a colour">${COLORS.map(c=>`<button data-c="${c[0]}" title="${c[1]}" aria-label="Start with ${c[1]}"><i style="--c:${c[2]}"></i></button>`).join('')}</div>
-    <button class="hm-btn solid" data-scroll="#configurator">Open the configurator ${ARROW}</button></div>
-</div></section>`;
-function initHome(){
-  const ed=$('#hm-ed');if(!ed)return;
-  $$('button[data-b]',ed).forEach(b=>on(b,'click',()=>{setCfg({finish:'standard',body:b.dataset.b,accent:b.dataset.a});scrollToSel('#configurator')}));
-  $$('.hm-sw button').forEach(b=>on(b,'click',()=>{setCfg({finish:'standard',body:b.dataset.c});scrollToSel('#configurator')}));
-}
-PAGES['/']=()=>HM.intro()+HM.idea()+HM.editions()+HM.details()+HM.studio()+HM.make();
+PAGES['/']=()=>S.hero()+S.idea()+S.sheet()+S.zero()+S.assembly()+S.rotation()+S.configurator()+S.editions()+S.chess()+S.natural()+S.italy()+S.greta();
 const SUB=[['The idea','#idea'],['The design','#sheet'],['Make it yours','#configurator'],['Made in Italy','#italy'],['Specifications','#specs'],['Order','#order']];
 PAGES['/tuttotondo']=()=>`
 <div class="pp">
@@ -1309,7 +1149,7 @@ function render(){
   $$('.nav-links a').forEach(a=>a.classList.toggle('on',a.dataset.link===path));
   $('#nav').classList.remove('open');$('#menubtn').setAttribute('aria-expanded','false');
   $$('[data-p]').forEach(e=>e.textContent=pr(e.dataset.p));
-  initHome();initSheet();initCfg();initAsm();initRot();initEditions();initChess();initFinGo();initPP();initOrder();initContact();
+  initSheet();initCfg();initAsm();initRot();initEditions();initChess();initFinGo();initPP();initOrder();initContact();
   applyCfg();window.scrollTo(0,0);
   if(pending){const s=pending;pending=null;setTimeout(()=>scrollToSel(s),120)}
 }
