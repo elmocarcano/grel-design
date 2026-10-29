@@ -222,7 +222,8 @@ p{margin:0}
 .flip-cover.live{pointer-events:auto}
 .flip-cover .hero{position:absolute;inset:0;height:100%;min-height:0}
 /* the name sits in the room: warm ink that multiplies with the wall, lit from the window on the right, slightly soft like the background */
-.hero-word{color:#2c221d;background:linear-gradient(97deg,#1f1814 0%,#2d231d 38%,#4a3a30 72%,#6f5a4b 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;mix-blend-mode:multiply;opacity:.9;filter:blur(.35px)}
+/* the name stands in the room: solid warm ink, sized and placed in the photo's own coordinates so it always sits on the wall above the table, behind the vase and the branches */
+.hero-word{color:#1e1916}
 @media (max-width:899px){.flip-ticks{display:none}.flip-copy{bottom:clamp(20px,4vh,40px)}.flip-copy h2.h-lg{font-size:clamp(2.6rem,13vw,4.4rem)}}
 @media (max-width:760px){
   .flip-cover .hero{padding-top:var(--nav-h);background:var(--paper)}
@@ -231,6 +232,8 @@ p{margin:0}
   .flip-cover .hero::after{display:block}
   .flip-cover .hero-top{display:none}
   .flip-cover .hero-bot{position:absolute;padding-top:0}
+  .flip-cover .hero-word{font-size:23vw}
+  .flip-cover .hero-word .w2{right:auto;left:var(--gut)}   /* both lines on the free wall at left, clear of the branches */
 }
 /* no-WebGL or reduced motion: the photo cover alone */
 .flip.still{height:auto}.flip.still .flip-st{position:relative}.flip.still .flip-cover{position:relative;opacity:1;pointer-events:auto;height:100svh;min-height:560px}
@@ -1102,10 +1105,34 @@ S.flip=()=>`
     <div class="flip-cover" id="flip-cover">${S.hero()}</div>
   </div>
 </section>`;
+/* Fit the cover name to the photo: whatever the screen shape, crop the photo so there is wall between the menu and the table top,
+   and set the letters on that wall, their feet just above the rim. Numbers are measured from the image (rim at 39.5% of its height)
+   and from the font (cap from .048em to .73em of the line box, word width 3.87em). */
+function fitCoverWord(root){
+  const hero=$('.hero',root);if(!hero)return;
+  const media=$('.hero-media',hero),word=$('.hero-word',hero),imgs=$$('.hero-media img',hero);if(!media||!word)return;
+  const RIM=.395,CAP_T=.048,BASE=.73,WIDTH=3.87,IW=1312,IH=1199;
+  const run=()=>{
+    if(innerWidth<=760){imgs.forEach(i=>i.style.objectPosition='');word.style.cssText='';return}
+    const W=media.clientWidth,H=media.clientHeight;if(!W||!H)return;
+    const s=Math.max(W/IW,H/IH),ih=IH*s,navB=(parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--nav-h'))||64)+18,gap=.012*ih;
+    let fs=Math.min(W*.9/WIDTH,H*.34),p=.74;
+    const room=f=>(BASE-CAP_T)*f;                                   // cap height
+    const pMax=f=>(RIM*ih-gap-room(f)-navB)/(ih-H);                 // lowest crop that still leaves wall for the word
+    if(ih>H+1){let m=pMax(fs);while(m<.4&&fs>W*.05){fs*=.95;m=pMax(fs)}p=Math.max(0,Math.min(.74,m))}
+    else{const free=RIM*ih-gap-navB;if(room(fs)>free)fs=free/(BASE-CAP_T)}
+    const offY=(H-ih)*p,feet=offY+RIM*ih-gap;
+    imgs.forEach(i=>i.style.objectPosition=`50% ${(p*100).toFixed(2)}%`);
+    word.style.cssText=`font-size:${fs.toFixed(1)}px;top:${(feet-BASE*fs).toFixed(1)}px`;
+  };
+  run();const ro=new ResizeObserver(run);ro.observe(media);unsubs.push(()=>ro.disconnect());
+  if(document.fonts)document.fonts.ready.then(run);
+}
 function initFlip(){
   const sec=$('#flip');if(!sec)return;
   const reduce=matchMedia('(prefers-reduced-motion:reduce)').matches;
   const V=reduce?null:new Viewer($('#flip-3d'),{pose:'final',interactive:false,auto:false,edgeAcc:true,noLogo:true});
+  fitCoverWord(sec);
   if(!V||V.dead){sec.classList.add('still');return}
   viewers.push(V);
   const CREAM='#E8DFD0',BORD='#7E2428';
