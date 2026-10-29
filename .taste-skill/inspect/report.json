@@ -1,0 +1,2368 @@
+{
+ "url": "http://localhost:8765/index.html",
+ "at": "2026-10-29T19:55:14.484Z",
+ "allow": [],
+ "viewports": [
+  {
+   "width": 1440,
+   "height": 900,
+   "load": "load",
+   "screens": 12,
+   "filled": [
+    0.16,
+    0.26,
+    0.33,
+    0.72,
+    1,
+    1,
+    1,
+    0.71,
+    0.36,
+    0.93,
+    0.87,
+    0.9
+   ],
+   "motion": {
+    "elements": 28,
+    "css": 5,
+    "transitions": 23,
+    "scripted": 0,
+    "videos": 0,
+    "playingVideos": 0
+   },
+   "metrics": {
+    "viewport": {
+     "w": 1440,
+     "h": 900
+    },
+    "page": {
+     "height": 10861,
+     "screens": 12.1,
+     "words": 265,
+     "img": 15,
+     "video": 0,
+     "canvas": 0,
+     "svg": 3,
+     "sections": 9,
+     "horizontalOverflow": 0,
+     "overflowCulprits": [],
+     "uiFragments": 0,
+     "uiAbuse": false,
+     "realPictures": 15,
+     "videoCount": 0,
+     "uiPictures": 0,
+     "pictureSamples": [
+      "object.webp",
+      "room-4x5.jpg",
+      "verb-cut.jpg",
+      "verb-slot.jpg",
+      "verb-drop.jpg",
+      "verb-turn.jpg",
+      "hero-sage-cream.webp",
+      "pick-cream-bordeaux.webp"
+     ],
+     "blendText": 0,
+     "sideScrollers": 0,
+     "brokenImages": [],
+     "emoji": [],
+     "videosNoPoster": 0
+    },
+    "hero": {
+     "text": "tutto tondo",
+     "words": 2,
+     "chars": 11,
+     "lines": 2,
+     "size": 187.2,
+     "vw": 13,
+     "font": "Bricolage Grotesque",
+     "weight": 600,
+     "tracking": -0.05,
+     "leading": 0.86,
+     "upper": false,
+     "italic": false,
+     "mono": false,
+     "align": "right",
+     "position": "right",
+     "widthRatio": 0.33,
+     "top": 263,
+     "tag": "h1",
+     "kind": "heading"
+    },
+    "h1": {
+     "text": "tutto tondo",
+     "words": 2,
+     "lines": 2,
+     "size": 187.2,
+     "font": "Bricolage Grotesque"
+    },
+    "headings": [
+     {
+      "text": "tutto tondo",
+      "words": 2,
+      "chars": 11,
+      "lines": 2,
+      "size": 187.2,
+      "vw": 13,
+      "font": "Bricolage Grotesque",
+      "weight": 600,
+      "tracking": -0.05,
+      "leading": 0.86,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "right",
+      "position": "right",
+      "widthRatio": 0.33,
+      "top": 263,
+      "tag": "h1",
+      "kind": "heading"
+     },
+     {
+      "text": "Seen from every side.",
+      "words": 4,
+      "chars": 21,
+      "lines": 2,
+      "size": 115.2,
+      "vw": 8,
+      "font": "Bricolage Grotesque",
+      "weight": 600,
+      "tracking": -0.04,
+      "leading": 0.92,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "center",
+      "position": "center",
+      "widthRatio": 0.39,
+      "top": 956,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "Cut.",
+      "words": 1,
+      "chars": 4,
+      "lines": 1,
+      "size": 115.2,
+      "vw": 8,
+      "font": "Bricolage Grotesque",
+      "weight": 600,
+      "tracking": -0.04,
+      "leading": 0.9,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.28,
+      "top": 3719,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "Slot.",
+      "words": 1,
+      "chars": 5,
+      "lines": 1,
+      "size": 115.2,
+      "vw": 8,
+      "font": "Bricolage Grotesque",
+      "weight": 600,
+      "tracking": -0.04,
+      "leading": 0.9,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.28,
+      "top": 4647,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "Drop.",
+      "words": 1,
+      "chars": 5,
+      "lines": 1,
+      "size": 115.2,
+      "vw": 8,
+      "font": "Bricolage Grotesque",
+      "weight": 600,
+      "tracking": -0.04,
+      "leading": 0.9,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.28,
+      "top": 5547,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "Turn.",
+      "words": 1,
+      "chars": 5,
+      "lines": 1,
+      "size": 115.2,
+      "vw": 8,
+      "font": "Bricolage Grotesque",
+      "weight": 600,
+      "tracking": -0.04,
+      "leading": 0.9,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.28,
+      "top": 6447,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "Any two colours.",
+      "words": 3,
+      "chars": 16,
+      "lines": 2,
+      "size": 64,
+      "vw": 4.4,
+      "font": "Bricolage Grotesque",
+      "weight": 600,
+      "tracking": -0.04,
+      "leading": 0.92,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.22,
+      "top": 6862,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "Drawn in Milano, made in Italy.",
+      "words": 6,
+      "chars": 31,
+      "lines": 2,
+      "size": 64,
+      "vw": 4.4,
+      "font": "Bricolage Grotesque",
+      "weight": 600,
+      "tracking": -0.04,
+      "leading": 0.92,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.5,
+      "top": 7959,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "Yours, in the round.",
+      "words": 4,
+      "chars": 20,
+      "lines": 2,
+      "size": 64,
+      "vw": 4.4,
+      "font": "Bricolage Grotesque",
+      "weight": 600,
+      "tracking": -0.04,
+      "leading": 0.92,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "right",
+      "widthRatio": 0.32,
+      "top": 9407,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "Grel Design",
+      "words": 2,
+      "chars": 11,
+      "lines": 1,
+      "size": 210.2,
+      "vw": 14.6,
+      "font": "Bricolage Grotesque",
+      "weight": 600,
+      "tracking": -0.05,
+      "leading": 0.8,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.96,
+      "top": 10637,
+      "tag": "p",
+      "kind": "statement"
+     }
+    ],
+    "headingSummary": {
+     "count": 10,
+     "maxLines": 2,
+     "over2Lines": 0,
+     "statements": 1,
+     "centered": 1,
+     "medianWords": 2,
+     "mixedFontHeadings": 0
+    },
+    "type": {
+     "families": [
+      {
+       "family": "Bricolage Grotesque",
+       "share": 1,
+       "mono": false
+      }
+     ],
+     "familyCount": 1,
+     "sizes": [
+      14,
+      16,
+      19,
+      24,
+      26,
+      64,
+      115,
+      187,
+      210
+     ],
+     "sizeCount": 9,
+     "notLoaded": [],
+     "body": {
+      "font": "Bricolage Grotesque",
+      "size": 19,
+      "leading": 1.5,
+      "weight": 400,
+      "tracking": 0,
+      "contrast": null
+     },
+     "measureChars": 35,
+     "max": {
+      "size": 210.2,
+      "vw": 14.6,
+      "font": "Bricolage Grotesque",
+      "text": "Grel Design"
+     },
+     "monoShare": 0,
+     "monoProseShare": 0,
+     "monoFamilies": [],
+     "monoSamples": [],
+     "microLabels": 0,
+     "microLabelShare": 0,
+     "microSamples": [],
+     "upperShare": 0,
+     "centerShare": 0.06,
+     "smallText": 0
+    },
+    "eyebrows": [],
+    "numbered": [],
+    "color": {
+     "bodyBg": "#0d0c0b",
+     "bodyBgHsl": {
+      "h": 30,
+      "s": 0.08,
+      "l": 0.05
+     },
+     "dark": true,
+     "sectionBgs": [
+      {
+       "color": "#0d0c0b",
+       "top": 0,
+       "hsl": {
+        "h": 30,
+        "s": 0.08,
+        "l": 0.05
+       }
+      },
+      {
+       "color": "#171514",
+       "top": 3060,
+       "hsl": {
+        "h": 20,
+        "s": 0.07,
+        "l": 0.08
+       }
+      },
+      {
+       "color": "#3b1015",
+       "top": 7959,
+       "hsl": {
+        "h": 353,
+        "s": 0.57,
+        "l": 0.15
+       }
+      },
+      {
+       "color": "#e6e3de",
+       "top": 9151,
+       "hsl": {
+        "h": 37,
+        "s": 0.14,
+        "l": 0.89
+       }
+      }
+     ],
+     "textColors": [
+      {
+       "color": "#ebe9e5",
+       "share": 0.67
+      },
+      {
+       "color": "#ecdfda",
+       "share": 0.17
+      },
+      {
+       "color": "#0d0c0b",
+       "share": 0.07
+      },
+      {
+       "color": "#ddd5cb",
+       "share": 0.04
+      },
+      {
+       "color": "#a49c92",
+       "share": 0.03
+      }
+     ],
+     "button": {
+      "bg": "#8e1f2a",
+      "hsl": {
+       "h": 354,
+       "s": 0.64,
+       "l": 0.34
+      },
+      "fg": "#ffffff"
+     },
+     "lowContrast": []
+    },
+    "buttons": {
+     "count": 4,
+     "inHero": 2,
+     "radius": 0,
+     "height": 52,
+     "withShadow": 0,
+     "withGradient": 0,
+     "mono": 1,
+     "upper": 1,
+     "heroLabels": [
+      "Make it yours"
+     ]
+    },
+    "surfaces": {
+     "shadowStatic": 0,
+     "shadowOverlay": 0,
+     "shadowSamples": [],
+     "gradients": 0,
+     "scrims": 0,
+     "gradientSamples": [],
+     "gradientText": 0,
+     "hairlines": 0,
+     "hairlineSamples": [],
+     "outlinedBoxes": 0,
+     "dashed": 0,
+     "blurred": 0,
+     "roundedBoxes": 0,
+     "boxRadius": 0,
+     "squareMedia": 14,
+     "roundedMedia": 1,
+     "mediaRadius": 50,
+     "textShadow": 0,
+     "cardRows": []
+    },
+    "heroMedia": [
+     {
+      "type": "img",
+      "ratio": 0.67
+     }
+    ],
+    "nav": {
+     "links": 0,
+     "fixed": true,
+     "height": 0,
+     "floatingPill": false,
+     "blur": true
+    },
+    "fontsLoaded": []
+   },
+   "layout": {
+    "viewport": {
+     "w": 1440,
+     "h": 900
+    },
+    "pageH": 10861,
+    "margins": {
+     "left": 32,
+     "right": 0
+    },
+    "sections": [
+     {
+      "sel": "section.th-hero",
+      "tag": "section",
+      "top": 0,
+      "height": 900,
+      "words": 19,
+      "media": 0,
+      "middle": 0,
+      "heading": {
+       "text": "tutto",
+       "size": 187,
+       "tag": "h1"
+      },
+      "left": 931,
+      "right": 32,
+      "textLeft": 931,
+      "textRight": 32,
+      "fullBleed": false,
+      "footer": false,
+      "hero": true,
+      "continues": false,
+      "pinned": false
+     },
+     {
+      "sel": "section#th-show.th-show",
+      "tag": "section",
+      "top": 900,
+      "height": 2160,
+      "words": 27,
+      "media": 1,
+      "middle": 0,
+      "heading": {
+       "text": "Seen from",
+       "size": 115,
+       "tag": "h2"
+      },
+      "left": 316,
+      "right": 145,
+      "textLeft": 438,
+      "textRight": 145,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": false,
+      "pinned": true
+     },
+     {
+      "sel": "section.th-verb.on",
+      "tag": "section",
+      "top": 3060,
+      "height": 900,
+      "words": 22,
+      "media": 1,
+      "middle": 104,
+      "heading": null,
+      "left": 32,
+      "right": 0,
+      "textLeft": 32,
+      "textRight": 1083,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": false,
+      "pinned": false
+     },
+     {
+      "sel": "section.th-verb.on",
+      "tag": "section",
+      "top": 3960,
+      "height": 900,
+      "words": 16,
+      "media": 1,
+      "middle": 70,
+      "heading": null,
+      "left": 32,
+      "right": 0,
+      "textLeft": 32,
+      "textRight": 1049,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": false,
+      "pinned": false
+     },
+     {
+      "sel": "section.th-verb.on",
+      "tag": "section",
+      "top": 4860,
+      "height": 900,
+      "words": 14,
+      "media": 1,
+      "middle": 94,
+      "heading": null,
+      "left": 32,
+      "right": 0,
+      "textLeft": 32,
+      "textRight": 1073,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": false,
+      "pinned": false
+     },
+     {
+      "sel": "section.th-verb.on",
+      "tag": "section",
+      "top": 5760,
+      "height": 900,
+      "words": 17,
+      "media": 1,
+      "middle": 96,
+      "heading": null,
+      "left": 32,
+      "right": 0,
+      "textLeft": 32,
+      "textRight": 1075,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": false,
+      "pinned": false
+     },
+     {
+      "sel": "section.th-tiles",
+      "tag": "section",
+      "top": 6660,
+      "height": 1299,
+      "words": 47,
+      "media": 6,
+      "middle": 61,
+      "heading": {
+       "text": "Any two colours.",
+       "size": 64,
+       "tag": "h2"
+      },
+      "left": 32,
+      "right": 17,
+      "textLeft": 32,
+      "textRight": 69,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": false,
+      "pinned": false
+     },
+     {
+      "sel": "section.th-about",
+      "tag": "section",
+      "top": 7959,
+      "height": 990,
+      "words": 56,
+      "media": 0,
+      "middle": 350,
+      "heading": {
+       "text": "Drawn in Milano,",
+       "size": 64,
+       "tag": "h2"
+      },
+      "left": 76,
+      "right": 253,
+      "textLeft": 76,
+      "textRight": 253,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": false,
+      "pinned": false
+     },
+     {
+      "sel": "section.th-cta",
+      "tag": "section",
+      "top": 9151,
+      "height": 810,
+      "words": 22,
+      "media": 0,
+      "middle": 0,
+      "heading": {
+       "text": "Yours, in the round.",
+       "size": 64,
+       "tag": "h2"
+      },
+      "left": 949,
+      "right": 44,
+      "textLeft": 949,
+      "textRight": 44,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": false,
+      "pinned": false
+     },
+     {
+      "sel": "footer.th-foot",
+      "tag": "footer",
+      "top": 9961,
+      "height": 900,
+      "words": 18,
+      "media": 0,
+      "middle": 225,
+      "heading": null,
+      "left": 32,
+      "right": 32,
+      "textLeft": 32,
+      "textRight": 32,
+      "fullBleed": false,
+      "footer": true,
+      "hero": false,
+      "continues": false,
+      "pinned": false
+     }
+    ],
+    "gaps": [],
+    "h1s": [
+     {
+      "text": "tutto tondo",
+      "size": 187,
+      "top": 263,
+      "firstScreen": true
+     }
+    ],
+    "edgeText": [],
+    "edges": [
+     {
+      "x": 32,
+      "n": 10
+     },
+     {
+      "x": 902,
+      "n": 4
+     },
+     {
+      "x": 76,
+      "n": 2
+     },
+     {
+      "x": 949,
+      "n": 1
+     },
+     {
+      "x": 968,
+      "n": 1
+     }
+    ],
+    "leftBlocks": 18,
+    "bodySize": 19,
+    "stage": false,
+    "explains": true,
+    "slivers": [],
+    "voidShare": 0.04,
+    "voidBox": {
+     "x": 1020,
+     "y": 660,
+     "w": 420,
+     "h": 120
+    }
+   },
+   "app": null,
+   "consoleErrors": []
+  },
+  {
+   "width": 768,
+   "height": 1024,
+   "load": "load",
+   "screens": 12,
+   "filled": [
+    0.2,
+    0.54,
+    0.62,
+    0.82,
+    1,
+    1,
+    0.78,
+    0.84,
+    0.64,
+    0.81,
+    0.93,
+    0.94
+   ],
+   "motion": {
+    "elements": 28,
+    "css": 5,
+    "transitions": 23,
+    "scripted": 0,
+    "videos": 0,
+    "playingVideos": 0
+   },
+   "metrics": {
+    "viewport": {
+     "w": 768,
+     "h": 1024
+    },
+    "page": {
+     "height": 12591,
+     "screens": 12.3,
+     "words": 265,
+     "img": 15,
+     "video": 0,
+     "canvas": 0,
+     "svg": 3,
+     "sections": 9,
+     "horizontalOverflow": 0,
+     "overflowCulprits": [],
+     "uiFragments": 0,
+     "uiAbuse": false,
+     "realPictures": 15,
+     "videoCount": 0,
+     "uiPictures": 0,
+     "pictureSamples": [
+      "object.webp",
+      "room-4x5.jpg",
+      "verb-cut.jpg",
+      "verb-slot.jpg",
+      "verb-drop.jpg",
+      "verb-turn.jpg",
+      "hero-sage-cream.webp",
+      "pick-cream-bordeaux.webp"
+     ],
+     "blendText": 0,
+     "sideScrollers": 0,
+     "brokenImages": [],
+     "emoji": [],
+     "videosNoPoster": 0
+    },
+    "hero": {
+     "text": "tutto tondo",
+     "words": 2,
+     "chars": 11,
+     "lines": 2,
+     "size": 145.9,
+     "vw": 19,
+     "font": "Bricolage Grotesque",
+     "weight": 600,
+     "tracking": -0.05,
+     "leading": 0.86,
+     "upper": false,
+     "italic": false,
+     "mono": false,
+     "align": "right",
+     "position": "right",
+     "widthRatio": 0.51,
+     "top": 582,
+     "tag": "h1",
+     "kind": "heading"
+    },
+    "h1": {
+     "text": "tutto tondo",
+     "words": 2,
+     "lines": 2,
+     "size": 145.9,
+     "font": "Bricolage Grotesque"
+    },
+    "headings": [
+     {
+      "text": "tutto tondo",
+      "words": 2,
+      "chars": 11,
+      "lines": 2,
+      "size": 145.9,
+      "vw": 19,
+      "font": "Bricolage Grotesque",
+      "weight": 600,
+      "tracking": -0.05,
+      "leading": 0.86,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "right",
+      "position": "right",
+      "widthRatio": 0.51,
+      "top": 582,
+      "tag": "h1",
+      "kind": "heading"
+     },
+     {
+      "text": "Seen from every side.",
+      "words": 4,
+      "chars": 21,
+      "lines": 2,
+      "size": 99.8,
+      "vw": 13,
+      "font": "Bricolage Grotesque",
+      "weight": 600,
+      "tracking": -0.04,
+      "leading": 0.92,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "center",
+      "position": "center",
+      "widthRatio": 0.7,
+      "top": 1036,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "Cut.",
+      "words": 1,
+      "chars": 4,
+      "lines": 1,
+      "size": 61.4,
+      "vw": 8,
+      "font": "Bricolage Grotesque",
+      "weight": 600,
+      "tracking": -0.04,
+      "leading": 0.9,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.95,
+      "top": 4140,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "Slot.",
+      "words": 1,
+      "chars": 5,
+      "lines": 1,
+      "size": 61.4,
+      "vw": 8,
+      "font": "Bricolage Grotesque",
+      "weight": 600,
+      "tracking": -0.04,
+      "leading": 0.9,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.95,
+      "top": 4999,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "Drop.",
+      "words": 1,
+      "chars": 5,
+      "lines": 1,
+      "size": 61.4,
+      "vw": 8,
+      "font": "Bricolage Grotesque",
+      "weight": 600,
+      "tracking": -0.04,
+      "leading": 0.9,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.95,
+      "top": 5832,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "Turn.",
+      "words": 1,
+      "chars": 5,
+      "lines": 1,
+      "size": 61.4,
+      "vw": 8,
+      "font": "Bricolage Grotesque",
+      "weight": 600,
+      "tracking": -0.04,
+      "leading": 0.9,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.95,
+      "top": 6665,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "Any two colours.",
+      "words": 3,
+      "chars": 16,
+      "lines": 1,
+      "size": 45.4,
+      "vw": 5.9,
+      "font": "Bricolage Grotesque",
+      "weight": 600,
+      "tracking": -0.04,
+      "leading": 0.92,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.92,
+      "top": 6960,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "Drawn in Milano, made in Italy.",
+      "words": 6,
+      "chars": 31,
+      "lines": 2,
+      "size": 61.4,
+      "vw": 8,
+      "font": "Bricolage Grotesque",
+      "weight": 600,
+      "tracking": -0.04,
+      "leading": 0.92,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.9,
+      "top": 9418,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "Yours, in the round.",
+      "words": 4,
+      "chars": 20,
+      "lines": 1,
+      "size": 28,
+      "vw": 3.6,
+      "font": "Bricolage Grotesque",
+      "weight": 600,
+      "tracking": -0.04,
+      "leading": 0.92,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.95,
+      "top": 10593,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "Grel Design",
+      "words": 2,
+      "chars": 11,
+      "lines": 1,
+      "size": 134.4,
+      "vw": 17.5,
+      "font": "Bricolage Grotesque",
+      "weight": 600,
+      "tracking": -0.05,
+      "leading": 0.8,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.95,
+      "top": 12427,
+      "tag": "p",
+      "kind": "statement"
+     }
+    ],
+    "headingSummary": {
+     "count": 10,
+     "maxLines": 2,
+     "over2Lines": 0,
+     "statements": 1,
+     "centered": 1,
+     "medianWords": 2,
+     "mixedFontHeadings": 0
+    },
+    "type": {
+     "families": [
+      {
+       "family": "Bricolage Grotesque",
+       "share": 1,
+       "mono": false
+      }
+     ],
+     "familyCount": 1,
+     "sizes": [
+      13,
+      15,
+      16,
+      17,
+      18,
+      23,
+      24,
+      28,
+      45,
+      61,
+      100,
+      134,
+      146
+     ],
+     "sizeCount": 13,
+     "notLoaded": [],
+     "body": {
+      "font": "Bricolage Grotesque",
+      "size": 18,
+      "leading": 1.5,
+      "weight": 400,
+      "tracking": 0,
+      "contrast": 16.1
+     },
+     "measureChars": 43,
+     "max": {
+      "size": 145.9,
+      "vw": 19,
+      "font": "Bricolage Grotesque",
+      "text": "tuttotondo"
+     },
+     "monoShare": 0,
+     "monoProseShare": 0,
+     "monoFamilies": [],
+     "monoSamples": [],
+     "microLabels": 0,
+     "microLabelShare": 0,
+     "microSamples": [],
+     "upperShare": 0,
+     "centerShare": 0.16,
+     "smallText": 0
+    },
+    "eyebrows": [],
+    "numbered": [],
+    "color": {
+     "bodyBg": "#0d0c0b",
+     "bodyBgHsl": {
+      "h": 30,
+      "s": 0.08,
+      "l": 0.05
+     },
+     "dark": true,
+     "sectionBgs": [
+      {
+       "color": "#0d0c0b",
+       "top": 0,
+       "hsl": {
+        "h": 30,
+        "s": 0.08,
+        "l": 0.05
+       }
+      },
+      {
+       "color": "#171514",
+       "top": 1148,
+       "hsl": {
+        "h": 20,
+        "s": 0.07,
+        "l": 0.08
+       }
+      },
+      {
+       "color": "#2a2724",
+       "top": 7109,
+       "hsl": {
+        "h": 30,
+        "s": 0.08,
+        "l": 0.15
+       }
+      },
+      {
+       "color": "#3b1015",
+       "top": 9418,
+       "hsl": {
+        "h": 353,
+        "s": 0.57,
+        "l": 0.15
+       }
+      },
+      {
+       "color": "#e6e3de",
+       "top": 10537,
+       "hsl": {
+        "h": 37,
+        "s": 0.14,
+        "l": 0.89
+       }
+      }
+     ],
+     "textColors": [
+      {
+       "color": "#ebe9e5",
+       "share": 0.67
+      },
+      {
+       "color": "#ecdfda",
+       "share": 0.17
+      },
+      {
+       "color": "#0d0c0b",
+       "share": 0.07
+      },
+      {
+       "color": "#ddd5cb",
+       "share": 0.04
+      },
+      {
+       "color": "#a49c92",
+       "share": 0.03
+      }
+     ],
+     "button": {
+      "bg": "#8e1f2a",
+      "hsl": {
+       "h": 354,
+       "s": 0.64,
+       "l": 0.34
+      },
+      "fg": "#ffffff"
+     },
+     "lowContrast": []
+    },
+    "buttons": {
+     "count": 4,
+     "inHero": 2,
+     "radius": 0,
+     "height": 52,
+     "withShadow": 0,
+     "withGradient": 0,
+     "mono": 1,
+     "upper": 1,
+     "heroLabels": [
+      "Make it yours"
+     ]
+    },
+    "surfaces": {
+     "shadowStatic": 0,
+     "shadowOverlay": 0,
+     "shadowSamples": [],
+     "gradients": 0,
+     "scrims": 0,
+     "gradientSamples": [],
+     "gradientText": 0,
+     "hairlines": 0,
+     "hairlineSamples": [],
+     "outlinedBoxes": 0,
+     "dashed": 0,
+     "blurred": 0,
+     "roundedBoxes": 0,
+     "boxRadius": 0,
+     "squareMedia": 14,
+     "roundedMedia": 1,
+     "mediaRadius": 50,
+     "textShadow": 0,
+     "cardRows": []
+    },
+    "heroMedia": [
+     {
+      "type": "img",
+      "ratio": 0.82
+     }
+    ],
+    "nav": {
+     "links": 0,
+     "fixed": true,
+     "height": 0,
+     "floatingPill": false,
+     "blur": true
+    },
+    "fontsLoaded": []
+   },
+   "layout": {
+    "viewport": {
+     "w": 768,
+     "h": 1024
+    },
+    "pageH": 12591,
+    "margins": {
+     "left": 18,
+     "right": 18
+    },
+    "sections": [
+     {
+      "sel": "section.th-hero",
+      "tag": "section",
+      "top": 0,
+      "height": 1024,
+      "words": 19,
+      "media": 1,
+      "middle": 0,
+      "heading": null,
+      "left": 376,
+      "right": 18,
+      "textLeft": 376,
+      "textRight": 18,
+      "fullBleed": true,
+      "footer": false,
+      "hero": true,
+      "continues": false,
+      "pinned": false
+     },
+     {
+      "sel": "section#th-show.th-show",
+      "tag": "section",
+      "top": 1024,
+      "height": 2458,
+      "words": 27,
+      "media": 0,
+      "middle": 0,
+      "heading": {
+       "text": "Seen from",
+       "size": 100,
+       "tag": "h2"
+      },
+      "left": 140,
+      "right": 140,
+      "textLeft": 140,
+      "textRight": 140,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": false,
+      "pinned": true
+     },
+     {
+      "sel": "section.th-verb.on",
+      "tag": "section",
+      "top": 3482,
+      "height": 859,
+      "words": 22,
+      "media": 1,
+      "middle": 0,
+      "heading": null,
+      "left": 20,
+      "right": 457,
+      "textLeft": 20,
+      "textRight": 457,
+      "fullBleed": true,
+      "footer": false,
+      "hero": false,
+      "continues": false,
+      "pinned": false
+     },
+     {
+      "sel": "section.th-verb.on",
+      "tag": "section",
+      "top": 4340,
+      "height": 833,
+      "words": 16,
+      "media": 1,
+      "middle": 0,
+      "heading": null,
+      "left": 20,
+      "right": 427,
+      "textLeft": 20,
+      "textRight": 427,
+      "fullBleed": true,
+      "footer": false,
+      "hero": false,
+      "continues": false,
+      "pinned": false
+     },
+     {
+      "sel": "section.th-verb.on",
+      "tag": "section",
+      "top": 5173,
+      "height": 833,
+      "words": 14,
+      "media": 1,
+      "middle": 0,
+      "heading": null,
+      "left": 20,
+      "right": 448,
+      "textLeft": 20,
+      "textRight": 448,
+      "fullBleed": true,
+      "footer": false,
+      "hero": false,
+      "continues": false,
+      "pinned": false
+     },
+     {
+      "sel": "section.th-verb.on",
+      "tag": "section",
+      "top": 6007,
+      "height": 833,
+      "words": 17,
+      "media": 1,
+      "middle": 0,
+      "heading": null,
+      "left": 20,
+      "right": 450,
+      "textLeft": 20,
+      "textRight": 450,
+      "fullBleed": true,
+      "footer": false,
+      "hero": false,
+      "continues": false,
+      "pinned": false
+     },
+     {
+      "sel": "section.th-tiles",
+      "tag": "section",
+      "top": 6840,
+      "height": 2578,
+      "words": 47,
+      "media": 6,
+      "middle": 0,
+      "heading": {
+       "text": "Any two colours.",
+       "size": 45,
+       "tag": "h2"
+      },
+      "left": 0,
+      "right": 0,
+      "textLeft": 18,
+      "textRight": 231,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": false,
+      "pinned": false
+     },
+     {
+      "sel": "section.th-about",
+      "tag": "section",
+      "top": 9418,
+      "height": 999,
+      "words": 56,
+      "media": 0,
+      "middle": 0,
+      "heading": {
+       "text": "Drawn in Milano,",
+       "size": 61,
+       "tag": "h2"
+      },
+      "left": 30,
+      "right": 37,
+      "textLeft": 30,
+      "textRight": 37,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": false,
+      "pinned": false
+     },
+     {
+      "sel": "section.th-cta",
+      "tag": "section",
+      "top": 10537,
+      "height": 1152,
+      "words": 22,
+      "media": 0,
+      "middle": 0,
+      "heading": {
+       "text": "Yours, in the round.",
+       "size": 28,
+       "tag": "h2"
+      },
+      "left": 18,
+      "right": 279,
+      "textLeft": 18,
+      "textRight": 279,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": false,
+      "pinned": false
+     },
+     {
+      "sel": "footer.th-foot",
+      "tag": "footer",
+      "top": 11690,
+      "height": 901,
+      "words": 18,
+      "media": 0,
+      "middle": 0,
+      "heading": null,
+      "left": 18,
+      "right": 18,
+      "textLeft": 18,
+      "textRight": 18,
+      "fullBleed": false,
+      "footer": true,
+      "hero": false,
+      "continues": false,
+      "pinned": false
+     }
+    ],
+    "gaps": [],
+    "h1s": [
+     {
+      "text": "tutto tondo",
+      "size": 146,
+      "top": 582,
+      "firstScreen": true
+     }
+    ],
+    "edgeText": [],
+    "edges": [
+     {
+      "x": 18,
+      "n": 11
+     },
+     {
+      "x": 30,
+      "n": 6
+     }
+    ],
+    "leftBlocks": 17,
+    "bodySize": 18,
+    "stage": false,
+    "explains": true,
+    "slivers": [],
+    "voidShare": 0,
+    "voidBox": null
+   },
+   "app": null,
+   "consoleErrors": []
+  },
+  {
+   "width": 390,
+   "height": 844,
+   "load": "load",
+   "screens": 12,
+   "filled": [
+    0.19,
+    0.38,
+    0.5,
+    0.76,
+    1,
+    1,
+    0.86,
+    0.74,
+    0.58,
+    0.81,
+    0.96,
+    0.92
+   ],
+   "motion": {
+    "elements": 28,
+    "css": 5,
+    "transitions": 23,
+    "scripted": 0,
+    "videos": 0,
+    "playingVideos": 0
+   },
+   "metrics": {
+    "viewport": {
+     "w": 390,
+     "h": 844
+    },
+    "page": {
+     "height": 9760,
+     "screens": 11.6,
+     "words": 265,
+     "img": 15,
+     "video": 0,
+     "canvas": 0,
+     "svg": 3,
+     "sections": 9,
+     "horizontalOverflow": 0,
+     "overflowCulprits": [],
+     "uiFragments": 0,
+     "uiAbuse": false,
+     "realPictures": 15,
+     "videoCount": 0,
+     "uiPictures": 0,
+     "pictureSamples": [
+      "object.webp",
+      "room-4x5.jpg",
+      "verb-cut.jpg",
+      "verb-slot.jpg",
+      "verb-drop.jpg",
+      "verb-turn.jpg",
+      "hero-sage-cream.webp",
+      "pick-cream-bordeaux.webp"
+     ],
+     "blendText": 0,
+     "sideScrollers": 0,
+     "brokenImages": [],
+     "emoji": [],
+     "videosNoPoster": 0
+    },
+    "hero": {
+     "text": "tutto tondo",
+     "words": 2,
+     "chars": 11,
+     "lines": 2,
+     "size": 74.1,
+     "vw": 19,
+     "font": "Bricolage Grotesque",
+     "weight": 600,
+     "tracking": -0.05,
+     "leading": 0.86,
+     "upper": false,
+     "italic": false,
+     "mono": false,
+     "align": "right",
+     "position": "right",
+     "widthRatio": 0.54,
+     "top": 528,
+     "tag": "h1",
+     "kind": "heading"
+    },
+    "h1": {
+     "text": "tutto tondo",
+     "words": 2,
+     "lines": 2,
+     "size": 74.1,
+     "font": "Bricolage Grotesque"
+    },
+    "headings": [
+     {
+      "text": "Grel Design",
+      "words": 2,
+      "chars": 11,
+      "lines": 1,
+      "size": 24,
+      "vw": 6.2,
+      "font": "Bricolage Grotesque",
+      "weight": 600,
+      "tracking": -0.02,
+      "leading": 1.5,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "right",
+      "widthRatio": 0.42,
+      "top": 16,
+      "tag": "a",
+      "kind": "heading"
+     },
+     {
+      "text": "tutto tondo",
+      "words": 2,
+      "chars": 11,
+      "lines": 2,
+      "size": 74.1,
+      "vw": 19,
+      "font": "Bricolage Grotesque",
+      "weight": 600,
+      "tracking": -0.05,
+      "leading": 0.86,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "right",
+      "position": "right",
+      "widthRatio": 0.54,
+      "top": 528,
+      "tag": "h1",
+      "kind": "heading"
+     },
+     {
+      "text": "Seen from every side.",
+      "words": 4,
+      "chars": 21,
+      "lines": 2,
+      "size": 50.7,
+      "vw": 13,
+      "font": "Bricolage Grotesque",
+      "weight": 600,
+      "tracking": -0.04,
+      "leading": 0.92,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "center",
+      "position": "center",
+      "widthRatio": 0.7,
+      "top": 985,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "Cut.",
+      "words": 1,
+      "chars": 4,
+      "lines": 1,
+      "size": 56,
+      "vw": 14.4,
+      "font": "Bricolage Grotesque",
+      "weight": 600,
+      "tracking": -0.04,
+      "leading": 0.9,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.9,
+      "top": 3417,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "Slot.",
+      "words": 1,
+      "chars": 5,
+      "lines": 1,
+      "size": 56,
+      "vw": 14.4,
+      "font": "Bricolage Grotesque",
+      "weight": 600,
+      "tracking": -0.04,
+      "leading": 0.9,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.9,
+      "top": 4159,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "Drop.",
+      "words": 1,
+      "chars": 5,
+      "lines": 1,
+      "size": 56,
+      "vw": 14.4,
+      "font": "Bricolage Grotesque",
+      "weight": 600,
+      "tracking": -0.04,
+      "leading": 0.9,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.9,
+      "top": 4876,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "Turn.",
+      "words": 1,
+      "chars": 5,
+      "lines": 1,
+      "size": 56,
+      "vw": 14.4,
+      "font": "Bricolage Grotesque",
+      "weight": 600,
+      "tracking": -0.04,
+      "leading": 0.9,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.9,
+      "top": 5592,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "Any two colours.",
+      "words": 3,
+      "chars": 16,
+      "lines": 1,
+      "size": 33.3,
+      "vw": 8.5,
+      "font": "Bricolage Grotesque",
+      "weight": 600,
+      "tracking": -0.04,
+      "leading": 0.92,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.86,
+      "top": 5882,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "Drawn in Milano, made in Italy.",
+      "words": 6,
+      "chars": 31,
+      "lines": 2,
+      "size": 31.2,
+      "vw": 8,
+      "font": "Bricolage Grotesque",
+      "weight": 600,
+      "tracking": -0.04,
+      "leading": 0.92,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.9,
+      "top": 7385,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "Yours, in the round.",
+      "words": 4,
+      "chars": 20,
+      "lines": 1,
+      "size": 28,
+      "vw": 7.2,
+      "font": "Bricolage Grotesque",
+      "weight": 600,
+      "tracking": -0.04,
+      "leading": 0.92,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.92,
+      "top": 8335,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "Grel Design",
+      "words": 2,
+      "chars": 11,
+      "lines": 1,
+      "size": 68.3,
+      "vw": 17.5,
+      "font": "Bricolage Grotesque",
+      "weight": 600,
+      "tracking": -0.05,
+      "leading": 0.8,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.92,
+      "top": 9650,
+      "tag": "p",
+      "kind": "statement"
+     }
+    ],
+    "headingSummary": {
+     "count": 11,
+     "maxLines": 2,
+     "over2Lines": 0,
+     "statements": 1,
+     "centered": 1,
+     "medianWords": 2,
+     "mixedFontHeadings": 0
+    },
+    "type": {
+     "families": [
+      {
+       "family": "Bricolage Grotesque",
+       "share": 1,
+       "mono": false
+      }
+     ],
+     "familyCount": 1,
+     "sizes": [
+      13,
+      15,
+      16,
+      17,
+      18,
+      20,
+      24,
+      28,
+      31,
+      33,
+      51,
+      56,
+      68,
+      74
+     ],
+     "sizeCount": 14,
+     "notLoaded": [],
+     "body": {
+      "font": "Bricolage Grotesque",
+      "size": 18,
+      "leading": 1.5,
+      "weight": 400,
+      "tracking": 0,
+      "contrast": 16.1
+     },
+     "measureChars": 43,
+     "max": {
+      "size": 74.1,
+      "vw": 19,
+      "font": "Bricolage Grotesque",
+      "text": "tuttotondo"
+     },
+     "monoShare": 0,
+     "monoProseShare": 0,
+     "monoFamilies": [],
+     "monoSamples": [],
+     "microLabels": 0,
+     "microLabelShare": 0,
+     "microSamples": [],
+     "upperShare": 0,
+     "centerShare": 0.16,
+     "smallText": 0
+    },
+    "eyebrows": [],
+    "numbered": [],
+    "color": {
+     "bodyBg": "#0d0c0b",
+     "bodyBgHsl": {
+      "h": 30,
+      "s": 0.08,
+      "l": 0.05
+     },
+     "dark": true,
+     "sectionBgs": [
+      {
+       "color": "#0d0c0b",
+       "top": 0,
+       "hsl": {
+        "h": 30,
+        "s": 0.08,
+        "l": 0.05
+       }
+      },
+      {
+       "color": "#171514",
+       "top": 2870,
+       "hsl": {
+        "h": 20,
+        "s": 0.07,
+        "l": 0.08
+       }
+      },
+      {
+       "color": "#3b1015",
+       "top": 7385,
+       "hsl": {
+        "h": 353,
+        "s": 0.57,
+        "l": 0.15
+       }
+      },
+      {
+       "color": "#e6e3de",
+       "top": 8279,
+       "hsl": {
+        "h": 37,
+        "s": 0.14,
+        "l": 0.89
+       }
+      }
+     ],
+     "textColors": [
+      {
+       "color": "#ebe9e5",
+       "share": 0.67
+      },
+      {
+       "color": "#ecdfda",
+       "share": 0.17
+      },
+      {
+       "color": "#0d0c0b",
+       "share": 0.07
+      },
+      {
+       "color": "#ddd5cb",
+       "share": 0.04
+      },
+      {
+       "color": "#a49c92",
+       "share": 0.03
+      }
+     ],
+     "button": {
+      "bg": "#8e1f2a",
+      "hsl": {
+       "h": 354,
+       "s": 0.64,
+       "l": 0.34
+      },
+      "fg": "#ffffff"
+     },
+     "lowContrast": []
+    },
+    "buttons": {
+     "count": 4,
+     "inHero": 2,
+     "radius": 0,
+     "height": 52,
+     "withShadow": 0,
+     "withGradient": 0,
+     "mono": 1,
+     "upper": 1,
+     "heroLabels": [
+      "Make it yours"
+     ]
+    },
+    "surfaces": {
+     "shadowStatic": 0,
+     "shadowOverlay": 0,
+     "shadowSamples": [],
+     "gradients": 0,
+     "scrims": 0,
+     "gradientSamples": [],
+     "gradientText": 0,
+     "hairlines": 0,
+     "hairlineSamples": [],
+     "outlinedBoxes": 0,
+     "dashed": 0,
+     "blurred": 0,
+     "roundedBoxes": 0,
+     "boxRadius": 0,
+     "squareMedia": 9,
+     "roundedMedia": 1,
+     "mediaRadius": 50,
+     "textShadow": 0,
+     "cardRows": []
+    },
+    "heroMedia": [
+     {
+      "type": "img",
+      "ratio": 0.51
+     }
+    ],
+    "nav": {
+     "links": 0,
+     "fixed": true,
+     "height": 0,
+     "floatingPill": false,
+     "blur": true
+    },
+    "fontsLoaded": []
+   },
+   "layout": {
+    "viewport": {
+     "w": 390,
+     "h": 844
+    },
+    "pageH": 9760,
+    "margins": {
+     "left": 6,
+     "right": 16
+    },
+    "sections": [
+     {
+      "sel": "section.th-hero",
+      "tag": "section",
+      "top": 0,
+      "height": 844,
+      "words": 19,
+      "media": 1,
+      "middle": 0,
+      "heading": {
+       "text": "tutto",
+       "size": 74,
+       "tag": "h1"
+      },
+      "left": 110,
+      "right": 16,
+      "textLeft": 110,
+      "textRight": 16,
+      "fullBleed": true,
+      "footer": false,
+      "hero": true,
+      "continues": false,
+      "pinned": false
+     },
+     {
+      "sel": "section#th-show.th-show",
+      "tag": "section",
+      "top": 844,
+      "height": 2026,
+      "words": 27,
+      "media": 1,
+      "middle": 0,
+      "heading": {
+       "text": "Seen from",
+       "size": 51,
+       "tag": "h2"
+      },
+      "left": 50,
+      "right": 50,
+      "textLeft": 50,
+      "textRight": 50,
+      "fullBleed": true,
+      "footer": false,
+      "hero": false,
+      "continues": false,
+      "pinned": true
+     },
+     {
+      "sel": "section.th-verb.on",
+      "tag": "section",
+      "top": 2870,
+      "height": 742,
+      "words": 22,
+      "media": 1,
+      "middle": 0,
+      "heading": null,
+      "left": 20,
+      "right": 79,
+      "textLeft": 20,
+      "textRight": 79,
+      "fullBleed": true,
+      "footer": false,
+      "hero": false,
+      "continues": false,
+      "pinned": false
+     },
+     {
+      "sel": "section.th-verb.on",
+      "tag": "section",
+      "top": 3612,
+      "height": 717,
+      "words": 16,
+      "media": 1,
+      "middle": 0,
+      "heading": null,
+      "left": 20,
+      "right": 49,
+      "textLeft": 20,
+      "textRight": 49,
+      "fullBleed": true,
+      "footer": false,
+      "hero": false,
+      "continues": false,
+      "pinned": false
+     },
+     {
+      "sel": "section.th-verb.on",
+      "tag": "section",
+      "top": 4328,
+      "height": 717,
+      "words": 14,
+      "media": 1,
+      "middle": 0,
+      "heading": null,
+      "left": 20,
+      "right": 70,
+      "textLeft": 20,
+      "textRight": 70,
+      "fullBleed": true,
+      "footer": false,
+      "hero": false,
+      "continues": false,
+      "pinned": false
+     },
+     {
+      "sel": "section.th-verb.on",
+      "tag": "section",
+      "top": 5045,
+      "height": 717,
+      "words": 17,
+      "media": 1,
+      "middle": 0,
+      "heading": null,
+      "left": 20,
+      "right": 72,
+      "textLeft": 20,
+      "textRight": 72,
+      "fullBleed": true,
+      "footer": false,
+      "hero": false,
+      "continues": false,
+      "pinned": false
+     },
+     {
+      "sel": "section.th-tiles",
+      "tag": "section",
+      "top": 5762,
+      "height": 1624,
+      "words": 47,
+      "media": 6,
+      "middle": 0,
+      "heading": {
+       "text": "Any two colours.",
+       "size": 33,
+       "tag": "h2"
+      },
+      "left": 6,
+      "right": 6,
+      "textLeft": 16,
+      "textRight": 42,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": false,
+      "pinned": false
+     },
+     {
+      "sel": "section.th-about",
+      "tag": "section",
+      "top": 7385,
+      "height": 774,
+      "words": 56,
+      "media": 0,
+      "middle": 0,
+      "heading": {
+       "text": "Drawn in Milano,",
+       "size": 31,
+       "tag": "h2"
+      },
+      "left": 30,
+      "right": 33,
+      "textLeft": 30,
+      "textRight": 33,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": false,
+      "pinned": false
+     },
+     {
+      "sel": "section.th-cta",
+      "tag": "section",
+      "top": 8279,
+      "height": 738,
+      "words": 22,
+      "media": 0,
+      "middle": 0,
+      "heading": {
+       "text": "Yours, in the round.",
+       "size": 28,
+       "tag": "h2"
+      },
+      "left": 16,
+      "right": 36,
+      "textLeft": 16,
+      "textRight": 36,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": false,
+      "pinned": false
+     },
+     {
+      "sel": "footer.th-foot",
+      "tag": "footer",
+      "top": 9018,
+      "height": 743,
+      "words": 18,
+      "media": 0,
+      "middle": 0,
+      "heading": null,
+      "left": 16,
+      "right": 16,
+      "textLeft": 16,
+      "textRight": 16,
+      "fullBleed": false,
+      "footer": true,
+      "hero": false,
+      "continues": false,
+      "pinned": false
+     }
+    ],
+    "gaps": [],
+    "h1s": [
+     {
+      "text": "tutto tondo",
+      "size": 74,
+      "top": 528,
+      "firstScreen": true
+     }
+    ],
+    "edgeText": [],
+    "edges": [
+     {
+      "x": 16,
+      "n": 11
+     },
+     {
+      "x": 30,
+      "n": 6
+     }
+    ],
+    "leftBlocks": 17,
+    "bodySize": 18,
+    "stage": false,
+    "explains": true,
+    "slivers": [],
+    "voidShare": 0,
+    "voidBox": null
+   },
+   "app": null,
+   "consoleErrors": []
+  }
+ ],
+ "findings": [
+  {
+   "level": "WARN",
+   "id": "no-footage",
+   "width": 1440,
+   "message": "No video anywhere on the page.",
+   "fix": "Look for one honest clip with scripts/assets.mjs --video (the place, the material, the process) and use it as a muted loop with a poster frame. Defend its absence only if no clip fits the subject."
+  },
+  {
+   "level": "WARN",
+   "id": "off-centre",
+   "width": 1440,
+   "message": "The margins differ: 32px on the left, 0px on the right, at 1440px.",
+   "fix": "Put the navigation and the content on one pair of margins; check for padding on one side only, a scrollbar gutter, or a header on another inset than the page."
+  },
+  {
+   "level": "WARN",
+   "id": "lopsided",
+   "width": 1440,
+   "message": "A section keeps its content on one side and leaves 949px of the width empty: \"Yours, in the round.\".",
+   "fix": "Fill the other side with what the section has (its picture, a second column, the figure), or defend the void in one sentence."
+  },
+  {
+   "level": "WARN",
+   "id": "pinned-over-picture",
+   "width": 1440,
+   "message": "Pinned large text slides across pictures while the page scrolls: \"Seen from\" (screen 3, 100% over a picture); \"every side.\" (screen 4, 100% over a picture)",
+   "fix": "Jurors read a pinned title crossing drawings or photographs as a collision. Keep the pictures in the column the title does not occupy, or unpin it.",
+   "alsoAt": [
+    768,
+    390
+   ]
+  },
+  {
+   "level": "WARN",
+   "id": "size-count",
+   "width": 768,
+   "message": "13 different font sizes (13, 15, 16, 17, 18, 23, 24, 28, 45, 61, 100, 134, 146).",
+   "fix": "A page needs about five: display, heading, lead, body, small.",
+   "alsoAt": [
+    390
+   ]
+  }
+ ],
+ "images": [
+  {
+   "viewport": "desktop",
+   "width": 1440,
+   "fold": "/home/claude/grel-design/.taste-skill/inspect/desktop-fold.jpg",
+   "pages": [
+    "/home/claude/grel-design/.taste-skill/inspect/desktop-page-01.jpg",
+    "/home/claude/grel-design/.taste-skill/inspect/desktop-page-02.jpg",
+    "/home/claude/grel-design/.taste-skill/inspect/desktop-page-03.jpg"
+   ],
+   "film": []
+  },
+  {
+   "viewport": "tablet",
+   "width": 768,
+   "fold": "/home/claude/grel-design/.taste-skill/inspect/tablet-fold.jpg",
+   "pages": [
+    "/home/claude/grel-design/.taste-skill/inspect/tablet-page-01.jpg",
+    "/home/claude/grel-design/.taste-skill/inspect/tablet-page-02.jpg"
+   ],
+   "film": []
+  },
+  {
+   "viewport": "mobile",
+   "width": 390,
+   "fold": "/home/claude/grel-design/.taste-skill/inspect/mobile-fold.jpg",
+   "pages": [
+    "/home/claude/grel-design/.taste-skill/inspect/mobile-page-01.jpg",
+    "/home/claude/grel-design/.taste-skill/inspect/mobile-page-02.jpg"
+   ],
+   "film": []
+  }
+ ]
+}

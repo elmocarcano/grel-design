@@ -1,0 +1,601 @@
+{
+ "version": 1,
+ "at": "2026-10-29T19:23:25.385Z",
+ "seed": 1583369997,
+ "redraws": 0,
+ "input": {
+  "brief": "TuttoTondo: a round coffee table cut from one 70x80 sheet, two slotted plates and a round top, no screws, by an architect from Lake Como",
+  "sector": "physical-product",
+  "tone": null,
+  "have": [
+   "product-photo"
+  ],
+  "keep": [],
+  "avoid": [],
+  "sections": [
+   "showcase",
+   "how-it-works",
+   "features",
+   "about",
+   "cta",
+   "footer"
+  ],
+  "direction": "hero-object"
+ },
+ "imagery": "own",
+ "allow": [],
+ "direction": {
+  "id": "hero-object",
+  "name": "The object, large",
+  "sectors": [
+   "physical-product",
+   "ecommerce",
+   "consumer-app",
+   "fashion",
+   "finance",
+   "health",
+   "restaurant",
+   "music"
+  ],
+  "tones": [
+   "bold",
+   "luxury",
+   "quiet"
+  ],
+  "needs": [
+   "product-photo"
+  ],
+  "idea": "Show the thing, bigger than seems reasonable. One photographed object fills the first screen, scaled until the viewport crops it, with the text small and tucked beside or behind it. The crop is the idea: a record whose edge leaves the top-right corner, a bottle whose shoulder runs off the bottom, a chair seen so close you read its grain. Being that close reads as confidence in the object. Everything else on the page serves it: details as tight close-ups, facts as short lines, one way to buy.",
+  "composition": "First screen: the object occupies 55–75% of the viewport and breaks at least one edge. It sits on a flat field (ground colour or one bold colour), never in a box. The headline is short and either very large and partly hidden behind the object (10–13vw, the object overlapping two or three letters) or small (28–36px) in the opposite corner with a one-line description. No navigation bar beyond a wordmark and one action. Following sections: a row of three or four close-up details at different crop ratios (not equal tiles), a single wide photograph of the object in use, a plain list of facts set large (materials, size, price) aligned to one edge, then the purchase action. The object returns once at the end from a different angle.",
+  "typography": "Either very large and structural or very small and precise; pick one for the headline and hold it. Facts are set in the text face at 22–28px, not in a table.",
+  "typeClasses": [
+   "grotesk-light",
+   "grotesk-tight",
+   "extended-heavy",
+   "serif-light-large"
+  ],
+  "colour": "A flat field chosen to make the object's own colour sing (its complement, or a tone darker than its shadow side). One field for the whole page, or a second for the facts section.",
+  "paletteTags": [
+   "single-field",
+   "light-neutral",
+   "pastel-fields",
+   "dark-neutral"
+  ],
+  "imagery": "Use the product's own photographs if they exist. Otherwise use a still-life from the dealt set as a stand-in and say so. Prefer images with a plain background; use `mix-blend-mode: multiply` on light fields so a white studio background disappears into the page colour.",
+  "photoTreatment": "Scale the main image well past its container (`width: 120–160%`) and let `overflow: hidden` on the section do the cropping.",
+  "sectionTags": [
+   "object-led",
+   "photo-led",
+   "colour-field"
+  ],
+  "motion": "shutter-image",
+  "richness": "The object's surface at close range, and the tension of the crop.",
+  "pitfalls": "A small centred product shot with space all round is a catalogue thumbnail, not this direction. If the image has a busy background it cannot sit on a field; crop tighter or change image. Keep text off the object's focal area.",
+  "seenIn": [
+   "opl-when-you-wish-upon-a-starboy",
+   "opl-plastic",
+   "opl-archiv",
+   "aww-moto-finance",
+   "aww-the-watch",
+   "opl-aevion"
+  ],
+  "allow": []
+ },
+ "hero": {
+  "id": "object-crops-three-edges",
+  "name": "Object cropped by three edges",
+  "archetype": "object-centre",
+  "directions": [
+   "hero-object",
+   "loud-flat-poster"
+  ],
+  "needs": [
+   "product-photo"
+  ],
+  "blueprint": "A flat off-white or single bold colour field with no navigation bar: only a small wordmark top-right at 24px and the single action fixed bottom-right as a solid rectangular button. The left 60% of the screen is one object photographed on a plain background and scaled far past its container. Set the image to about 150% of the hero's height, rotate it 10 to 20 degrees and position it so the top, left and bottom edges of the viewport all crop it and only its right-hand third is fully inside; use `overflow: hidden` on the section and `mix-blend-mode: multiply` if the field is light. The headline fills the right half: two stacked lines of very bold lowercase at clamp(120px, 13vw, 210px), right-aligned 16px from the right edge, tracking -0.05em, line-height 0.86, vertically centred. It sits behind the object in the stacking order, so the object's right-hand contour tucks over the first one or two letters of each line. One supporting sentence at 18px, max 28ch, is right-aligned under the headline on columns 9–12. Nothing else is on the screen: no second image, no list.",
+  "mobile": "The object moves to the top: the image is 150vw wide, rotated, cropped by the top, left and right edges, and occupies the upper 52svh. The headline sits below it at 19vw on two lines, right-aligned at a 12px margin, its first line overlapped by the object's lower contour. The supporting sentence follows at 16px, right-aligned. The action button stays fixed bottom-right.",
+  "headline": "Two lines of one or two short words each, up to about 8 characters per line at 13vw, partly tucked behind the object.",
+  "motion": "shutter-image",
+  "seenIn": [
+   "opl-when-you-wish-upon-a-starboy"
+  ]
+ },
+ "type": {
+  "id": "bricolage-contrast",
+  "name": "Bricolage Grotesque",
+  "class": "grotesk-tight",
+  "display": {
+   "family": "Bricolage Grotesque",
+   "source": "google",
+   "weights": [
+    600
+   ],
+   "italic": false,
+   "settings": "weight 600 · tracking -0.04em · leading 0.92 · sentence case; leave optical sizing on so large sizes tighten and gain contrast",
+   "css": "<link rel=\"preconnect\" href=\"https://fonts.googleapis.com\">\n<link rel=\"preconnect\" href=\"https://fonts.gstatic.com\" crossorigin>\n<link href=\"https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;500;600&display=swap\" rel=\"stylesheet\">"
+  },
+  "text": {
+   "family": "Bricolage Grotesque",
+   "source": "google",
+   "weights": [
+    400,
+    500
+   ],
+   "italic": false,
+   "settings": "400 for body, 500 for emphasis · leading 1.5 · tracking 0",
+   "css": "<link rel=\"preconnect\" href=\"https://fonts.googleapis.com\">\n<link rel=\"preconnect\" href=\"https://fonts.gstatic.com\" crossorigin>\n<link href=\"https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;500;600&display=swap\" rel=\"stylesheet\">"
+  },
+  "standsInFor": [
+   "Beausite Classic",
+   "F37 Analog"
+  ],
+  "note": "A grotesk with visible stroke contrast and slightly irregular curves, so headings look drawn rather than engineered. Suits reports, consultancies and design-led software that want warmth without a serif.",
+  "seenIn": [
+   "aww-ai-in-design-report-2026",
+   "aww-illoca",
+   "opl-ohhmydesign"
+  ],
+  "links": [
+   "https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;500;600&display=swap"
+  ],
+  "scale": {
+   "step-small": "clamp(0.8125rem, 0.79rem + 0.1vw, 0.875rem)",
+   "step-body": "clamp(1.0625rem, 1rem + 0.25vw, 1.1875rem)",
+   "step-lead": "clamp(1.25rem, 1.1rem + 0.7vw, 1.625rem)",
+   "step-head": "clamp(2rem, 1.3rem + 3.2vw, 4rem)"
+  }
+ },
+ "palette": {
+  "id": "black-crimson",
+  "name": "Black and crimson",
+  "tags": [
+   "dark-neutral",
+   "mono-accent"
+  ],
+  "bg": "#0a0a0a",
+  "surface": "#151515",
+  "ink": "#efefef",
+  "muted": "#8c8c8c",
+  "accent": "#b11226",
+  "accentInk": "#ffffff",
+  "fields": [
+   {
+    "bg": "#efefef",
+    "ink": "#0a0a0a"
+   }
+  ],
+  "note": "Black with off-white text and mid-grey texture takes nearly the whole page, and the last sections may invert to off-white with black type. Deep crimson is scattered sparingly: a few characters in a heading, a slider fill, the one button.",
+  "seenIn": [
+   "opl-textmode-overlay"
+  ]
+ },
+ "photos": {
+  "set": "interior-and-table",
+  "title": "Interior and table",
+  "note": "rooms, windows, chairs, cups, food and tabletops",
+  "treatment": "Scale the main image well past its container (`width: 120–160%`) and let `overflow: hidden` on the section do the cropping.",
+  "others": [
+   "water",
+   "hands-and-making",
+   "mountain",
+   "object-still"
+  ],
+  "photos": [
+   {
+    "id": 625,
+    "alt": "Wooden dining table with white moulded chairs beside large windows",
+    "tone": "light",
+    "colours": [
+     "white",
+     "warm wood",
+     "cream"
+    ],
+    "mono": false,
+    "calm": "left",
+    "quality": 5,
+    "ratio": 1.5,
+    "by": "Breather",
+    "page": "https://unsplash.com/photos/DEdM9Vs6s8w"
+   },
+   {
+    "id": 1068,
+    "alt": "Small plant in a vase on a white table against a blue wall",
+    "tone": "mid",
+    "colours": [
+     "bright blue",
+     "white",
+     "green"
+    ],
+    "mono": false,
+    "calm": "top",
+    "quality": 5,
+    "ratio": 1.74,
+    "by": "Padurariu Alexandru",
+    "page": "https://unsplash.com/photos/iNmouRApXYM"
+   },
+   {
+    "id": 225,
+    "alt": "Glass teapot of herbal tea beside yellow flowers on a table",
+    "tone": "mid",
+    "colours": [
+     "amber yellow",
+     "dark brown",
+     "white"
+    ],
+    "mono": false,
+    "calm": "none",
+    "quality": 4,
+    "ratio": 1.53,
+    "by": "Vee O",
+    "page": "https://unsplash.com/photos/hGO27G5tZJ8"
+   },
+   {
+    "id": 691,
+    "alt": "Green mug on a bedside table beside rumpled white bedding",
+    "tone": "light",
+    "colours": [
+     "white",
+     "teal green",
+     "warm beige"
+    ],
+    "mono": false,
+    "calm": "left",
+    "quality": 4,
+    "ratio": 1.5,
+    "by": "David Mao",
+    "page": "https://unsplash.com/photos/m0l5J8Lqnzo"
+   },
+   {
+    "id": 102,
+    "alt": "Raspberries on a white ledge with warm golden blurred background",
+    "tone": "light",
+    "colours": [
+     "golden yellow",
+     "raspberry red",
+     "white"
+    ],
+    "mono": false,
+    "calm": "top",
+    "quality": 4,
+    "ratio": 1.33,
+    "by": "Ben Moore",
+    "page": "https://unsplash.com/photos/pJILiyPdrXI"
+   },
+   {
+    "id": 292,
+    "alt": "Fresh vegetables, red onion and peppercorns on a wooden cutting board",
+    "tone": "mid",
+    "colours": [
+     "green",
+     "warm wood",
+     "purple red"
+    ],
+    "mono": false,
+    "calm": "none",
+    "quality": 4,
+    "ratio": 1.51,
+    "by": "Webvilla",
+    "page": "https://unsplash.com/photos/hv1MrBzGGNY"
+   },
+   {
+    "id": 429,
+    "alt": "White cup filled with fresh raspberries on a pale wooden table",
+    "tone": "light",
+    "colours": [
+     "raspberry red",
+     "white",
+     "pale wood"
+    ],
+    "mono": false,
+    "calm": "left",
+    "quality": 4,
+    "ratio": 1.78,
+    "by": "Glen Carrie",
+    "page": "https://unsplash.com/photos/FjjUVn_KHLU"
+   },
+   {
+    "id": 192,
+    "alt": "Silhouetted people at cafe tables before large bright windows",
+    "tone": "mid",
+    "colours": [
+     "white",
+     "black",
+     "grey"
+    ],
+    "mono": true,
+    "calm": "top",
+    "quality": 4,
+    "ratio": 1,
+    "by": "Adam Przewoski",
+    "page": "https://unsplash.com/photos/umchkHwkdyM"
+   }
+  ]
+ },
+ "motion": {
+  "id": "shutter-image",
+  "name": "Shutter image",
+  "description": "The one hero or showcase image opens from an edge with a clip-path over about 1.1 seconds while the picture inside settles from 1.12 scale to rest. Use it once, on the image that matters most; later images simply are there. Recipe: 'Image shutter' in references/motion.md."
+ },
+ "sections": [
+  {
+   "id": "showcase-one-frame-three-distances",
+   "role": "showcase",
+   "name": "One frame, three distances",
+   "shape": "pinned",
+   "tags": [
+    "photo-led",
+    "poster"
+   ],
+   "directions": [
+    "pinned-poster",
+    "hero-object",
+    "dark-room",
+    "sentence-as-layout",
+    "place-carries-it"
+   ],
+   "needs": [],
+   "blueprint": "A wrapper 300vh tall holds a sticky stage of 100svh. On the stage one frame is centred: 30vw wide at 4:5, square corners, overflow hidden. Inside it the same photograph is shown at three distances as the reader scrolls: the whole subject, then scaled to 180% toward one detail, then to 320% on a second detail (transform: scale with a transform-origin per stage, 700ms ease, switched by IntersectionObserver on three invisible markers). The sentence is delivered in halves: its first two or three words sit above the frame at clamp(56px, 8vw, 130px), centred; the last words arrive below the frame at the second stage, overlapping the frame's bottom edge by 0.3em. At the third stage one caption of 28ch at 17px appears to the right of the frame, top-aligned. The two halves together are the heading and stay within two lines.",
+   "mobile": "The frame grows to 70vw at 4:5 and stays sticky at centre. The first half of the sentence sits above it at 13vw, the second half below it at the same size. The third-stage caption appears under the sentence at 16px, centred.",
+   "seenIn": [
+    "aww-vero-new-york",
+    "aww-illoca",
+    "opl-screentune"
+   ]
+  },
+  {
+   "id": "how-it-works-one-verb-at-a-time",
+   "role": "how-it-works",
+   "name": "One verb at a time",
+   "shape": "full-bleed",
+   "tags": [
+    "photo-led",
+    "poster"
+   ],
+   "directions": [
+    "pinned-poster",
+    "loud-flat-poster",
+    "dark-room",
+    "hero-object",
+    "sentence-as-layout",
+    "place-carries-it"
+   ],
+   "needs": [],
+   "blueprint": "Three to five full-bleed panels, each 100svh tall, stacked with no gap; each is one stage and holds one photograph covering it. In every panel a single word, the verb for that stage ('Cut', 'Fold', 'Stitch', 'Press'), is set at clamp(96px, 17vw, 300px), heavy and centred, inside a wrapper that is position: sticky; top: 50% and shifted up by half its own height. Because each word is sticky only within its own panel, it holds the centre of the screen while its photograph passes behind it, and is then pushed out by the next panel's verb. Use mix-blend-mode: difference in white, or one solid colour tested on every image. One sentence at 18px sits in the bottom-left corner of each panel over a neutral scrim limited to that corner. There is no separate heading: the verbs, read in order, are both the heading and the sequence.",
+   "mobile": "Panels stay 100svh, each photograph cropped to a vertical slice. The verb is 24vw, still sticky at the centre. The sentence sits along the bottom over a scrim at 16px, full width with 16px margins.",
+   "seenIn": [
+    "opl-eagles-nest",
+    "aww-seasats",
+    "aww-vero-new-york"
+   ]
+  },
+  {
+   "id": "features-specimens-on-colour-tiles",
+   "role": "features",
+   "name": "Specimens on colour tiles",
+   "shape": "grid",
+   "tags": [
+    "object-led",
+    "colour-field"
+   ],
+   "directions": [
+    "specimen-catalogue",
+    "hero-object",
+    "one-motif",
+    "colour-chapters",
+    "borrowed-category"
+   ],
+   "needs": [],
+   "blueprint": "Each capability is represented by one object photographed alone and shown on a flat colour tile. Columns 1–3 hold the heading (two to four words at 40–52px), top-aligned, with a 30ch sentence beneath and nothing else down the rest of that column. Columns 4–12 hold a grid of five or six tiles in two rows with 10px gaps: tiles are 4:5 except one, which is double width at 8:5 and placed second in the first row. Tile colours rotate through three palette fields. Each photograph is centred at about 70% of its tile's height; on light tiles use mix-blend-mode: multiply so a white studio background disappears. Under each tile, outside it and aligned to its left edge: the capability name at 20px medium and one fact at 16px in the soft ink. No text on the tiles and no hover lift.",
+   "mobile": "The heading and its sentence sit on top at full width. Tiles become a two-column grid with 8px gaps; the double tile spans both columns at 8:5 and comes first. Names shrink to 17px and facts to 15px, still under each tile.",
+   "seenIn": [
+    "aww-noho",
+    "aww-coffeetech-r",
+    "opl-when-you-wish-upon-a-starboy"
+   ]
+  },
+  {
+   "id": "about-shaped-portrait-panel",
+   "role": "about",
+   "name": "Inset panel, shaped portrait",
+   "shape": "split",
+   "tags": [
+    "colour-field",
+    "photo-led",
+    "object-led"
+   ],
+   "directions": [
+    "one-motif",
+    "hero-object",
+    "borrowed-category",
+    "colour-chapters",
+    "dark-room"
+   ],
+   "needs": [],
+   "blueprint": "A deep-toned panel inset 20px from the page edges with a 12px radius, about 110svh tall, `overflow: hidden`. Left half: a two-line statement of four to seven words at clamp(40px, 4.4vw, 64px) in a pale ink, top-left with 56px padding; it is the heading and has nothing above it. Below it a photograph of the person or the workshop, masked with `clip-path` or an SVG `mask` to one bold shape taken from the subject (a four-lobed flower, a circle, an arch, a chamfered block), 38vw across, positioned so the panel's bottom edge crops its lowest fifth. Right side, starting at 63% of the width and 56px from the top: two text blocks 300px wide and 64px apart, each a subhead at 22px over a four-line paragraph at 15px; then one solid button in the accent colour. Between the statement and the text blocks the panel is empty. One photograph only.",
+   "mobile": "The panel is inset 10px and stacks: the statement at 8.5vw, then the two text blocks at full width, the button, and last the shaped photograph at 86vw across, centred and cropped by the panel's bottom edge by a quarter of its height.",
+   "seenIn": [
+    "opl-zara-webb"
+   ]
+  },
+  {
+   "id": "cta-object-returns",
+   "role": "cta",
+   "name": "The object returns",
+   "shape": "split",
+   "tags": [
+    "object-led",
+    "photo-led"
+   ],
+   "directions": [
+    "hero-object",
+    "specimen-catalogue",
+    "dark-room",
+    "one-motif",
+    "borrowed-category"
+   ],
+   "needs": [],
+   "blueprint": "The thing shown in the hero comes back once, from another angle, to close the page. On one flat field 90svh tall, the object's photograph occupies columns 1–8, scaled to about 130% of that area and anchored so the section's bottom and left edges crop it (`overflow: hidden` on the section; on light fields `mix-blend-mode: multiply` removes a white studio background). The text sits small in columns 10–12, vertically centred: a closing line of three to five words at 32–40px, one sentence at 17px, the price or key fact on its own line at 22px, and one rectangular button. Nothing overlaps the object's focal area. Where the page's subject is a shape rather than a photograph, the page's motif takes the object's place at the same scale as a flat filled shape. The closing line is the only heading.",
+   "mobile": "The text block comes first: closing line at 28px, sentence, fact, full-width button. The object follows at 130% of the screen width, shifted so the right and bottom edges crop it, filling about 55svh on the same flat field.",
+   "seenIn": [
+    "opl-dabbit",
+    "opl-monte"
+   ]
+  },
+  {
+   "id": "footer-wordmark-on-last-photograph",
+   "role": "footer",
+   "name": "Name across the last photograph",
+   "shape": "full-bleed",
+   "tags": [
+    "photo-led",
+    "poster"
+   ],
+   "directions": [
+    "place-carries-it",
+    "uneven-photographs",
+    "dark-room",
+    "hero-object",
+    "split-stage"
+   ],
+   "needs": [],
+   "blueprint": "The footer is the page's last photograph, full-bleed at 100vw by 100svh, darkened evenly with `filter: brightness(0.62)` so paper-coloured type reads everywhere on it. Three layers of text sit on the image. Top row, 32px from the edge: a short link list at 16px at the left margin and contact details at the right margin, each no wider than three columns. Mid-height is left to the photograph. Along the bottom, the wordmark runs the full width in the paper colour, letters about 12–20vw tall depending on the name's length, baseline 56px above the edge; under it one line of legal text at 13px. Choose an image whose interest is in its middle band, since the top and bottom carry text. No panel, no box and no colour block separates the footer from the image: the photograph is the footer.",
+   "mobile": "The photograph is 100vw by 88svh, cropped to its strongest vertical slice. Links stack at the top-left at 16px, contact beneath them. The wordmark is fitted to the width along the bottom, with the legal line under it at 12px.",
+   "seenIn": [
+    "aww-seasats",
+    "aww-alethia",
+    "opl-vestris"
+   ]
+  }
+ ],
+ "references": [
+  {
+   "id": "opl-plastic",
+   "name": "Plastic",
+   "url": "https://myplastic.app",
+   "source": "One Page Love",
+   "kind": "consumer-app",
+   "score": 7.1,
+   "idea": "A plain, quiet app page given one physical object: a photographed vinyl record cropped by the top-right corner of the viewport.",
+   "mood": [
+    "clean",
+    "calm",
+    "tactile",
+    "friendly"
+   ],
+   "archetype": "other: centred-statement-with-corner-object",
+   "hero": "Pale grey page with no navigation, only a bold wordmark with a small orange-red caps descriptor beneath it at top left (80px margin). A photographed black vinyl record with an orange-red label is cropped by the top-right corner, showing a quarter disc about 360px wide and tall, with an orange wire stand poking out below it. The headline is centred slightly above the middle in two lines at 74px (5.2vw), about 37% of the viewport wide, followed by a two-line 17px sentence and two black store badges side by side. Lower down, an award mark and a laurel-framed rating sit centred; the bottom fifth is empty.",
+   "type": "Archivo only. Headline weight 500, sentence case, tight leading, 74px against 17px body, about a 4.4x jump. Feature headings near 30px in two colours, a much larger heading in the dark section (digest peak 12vw), and tiny tracked caps in the footer.",
+   "colour": "#f5f5f5 #d5d5d5 #090d0e #171615 #e0441c — Greys and near-black with one orange-red accent taken from the record label; it colours the logo descriptor and the first line of each feature heading. One near-black section breaks the light page.",
+   "imagery": "Phone mockups with real app screens (album-cover grids, a camera view) sit inside mid-grey rounded panels and are cropped by the panel edge. The hero uses a cut-out photographed record with a soft shadow; album art supplies the colour.",
+   "layout": "Centred hero, then feature rows on a wide container: a tall grey panel on one side and a short text block vertically centred on the other, sides swapping per row. A dark full-width section with offset white cards follows, then a narrow FAQ column and a sparse footer.",
+   "sections": [
+    {
+     "role": "features",
+     "description": "Each feature is a two-column row. One column is a mid-grey rounded panel about 540px wide and 720px tall containing a phone mockup pinned near the top, with the next phone's top edge peeking in at the panel's bottom. The other column holds a two-line heading, first line orange-red and second near-black at the same size, over a three-line grey paragraph, vertically centred. The panel side alternates left and right."
+    },
+    {
+     "role": "showcase",
+     "description": "A near-black full-width section opens with a large centred white heading. Below it, white rounded cards of different sizes are placed off-grid at staggered horizontal positions: one holds an album-cover collage with a record sliding out, with a bold white caption and a grey line beneath it on the dark ground; another is a small data card listing collection fields as label and value rows."
+    },
+    {
+     "role": "faq",
+     "description": "A left-aligned column about 480px wide, offset toward the page centre and headed by a bold short title. Six questions in small bold text are separated by hairlines, each with a plus sign at the right edge. A generous empty gap follows before a footer of three tiny caps link groups spread left, centre and right, small legal notes, and a pipe-separated caps link row."
+    }
+   ],
+   "steal": [
+    "Crop one photographed physical object by a viewport corner so the hero has a subject without a centred mockup.",
+    "Set two-line feature headings at one size with the first line in the accent colour and the second in ink.",
+    "Drop the nav entirely on a one-page app site: wordmark plus a one-line descriptor top left, store badges directly under the headline."
+   ]
+  },
+  {
+   "id": "aww-the-watch",
+   "name": "The Watch",
+   "url": "https://thewatch.60fps.fr/",
+   "source": "Awwwards Site of the Day",
+   "kind": "physical-product",
+   "score": 6.8,
+   "idea": "A single 3D watch is the only actor: it holds centre stage and turns, flips and finally explodes into parts while giant product-name letters slide behind and in front of it.",
+   "mood": [
+    "clinical",
+    "metallic",
+    "monochrome",
+    "technical",
+    "quiet"
+   ],
+   "archetype": "product-object-centre",
+   "hero": "Light grey field with soft darker blurs toward the corners. A steel chronograph rendered in 3D stands upright at dead centre, about 80% of viewport height. Behind it the product name is set once across the full width in a wide, squared geometric sans at 24vw in mid-grey; the watch covers the middle character, so only two letters at the left edge and two at the right are readable. A thin circle about 700px across with faint radial spokes and one darker arc sits behind the watch like a dial diagram. No navigation, logo, body copy or button anywhere.",
+   "type": "Nekst, a wide squared geometric sans, regular weight, uppercase, used only huge (up to 25vw) in black, mid-grey and white within one line stack. Body is Inter at 12px in 130px columns, roughly a 30x jump with nothing in between.",
+   "colour": "#e8e8e8 #c7c7c7 #a1a1a1 #6b6b6b #0a0a0a #ffffff — Entirely greyscale: pale grey ground with out-of-focus darker clouds, type in black, grey and white. The page darkens to mid-grey for the exploded view. Only the brass gear train adds warmth.",
+   "imagery": "One real-time 3D steel watch shown front, three-quarter, caseback and exploded into dial, movement and plates lined up on a horizontal axis. No photographs; the object floats with no ground shadow.",
+   "layout": "No grid chrome at all: the object holds the centre while type moves around it. Giant letters crop at any edge, captions sit in a 130px column left or right of the watch, and one product label is rotated 90 degrees.",
+   "sections": [
+    {
+     "role": "showcase",
+     "description": "Four stacked lines of uppercase display type about 110px tall, flush left at mid-page and running off the right edge: line one mid-grey, line two black, lines three and four pale grey to white. The watch, tilted three-quarter, floats over the upper right of the stack and hides parts of letters, so type and object share the same space instead of sitting side by side."
+    },
+    {
+     "role": "features",
+     "description": "The watch is turned to show its open caseback, placed just left of centre. To its right, a 130px-wide column holds two micro-paragraphs at 12px, each with a grey one-line title above. A small grey circular toggle sits far left. A white display word crops off the top edge. The rest of the frame is empty grey with a darker blurred cloud at upper right."
+    },
+    {
+     "role": "other",
+     "description": "Exploded view. The ground shifts to a mid-grey vertical gradient with a faint horizon line. The watch's components (dial, tourbillon, movement, barrel, bridges) are separated and spaced along one horizontal axis at eye level like specimens. Tiny part names are set vertically along the bottom edge under each piece; a small prompt with a plus icon sits top-centre."
+    }
+   ],
+   "steal": [
+    "Set the product name so large that the product itself replaces one of its characters, leaving the name half-hidden and the object as the missing letter.",
+    "Stack one display line in three tints (black, mid-grey, white) on a grey ground so a single typeface produces depth without colour.",
+    "End a product story with an exploded view laid out on one horizontal axis with vertical micro-labels instead of a spec table."
+   ],
+   "media": "One fixed full-bleed WebGL canvas renders every picture: a steel chronograph about 620px tall (69% of the height, 29% of the width) centred inside a 720px ring with the giant model code behind it, then the watch from every side, an exploded line of parts on an axis with leader labels, particle ribbons on black, a black-finish reprise and a close-up cropped by the bottom edge. No photographs and no video; two very tall gradient overlays hand the ground from light to dark and back.",
+   "motion": "The preloader holds at least 4.5s on the 3D assets, then its 720px circle stays to become the ring round the watch while a dark arc draws clockwise over 1.2s. Lenis drives one pinned, scrubbed timeline over 38 screens: the watch turns, separates into parts, the ground moves from #ebebeb to #a1a1a1 to #0a0a0a, and headline lines change colour by their distance from the viewport centre; per-character transforms are written every frame, smoothed by a 20ms ease-out."
+  },
+  {
+   "id": "opl-anidachi",
+   "name": "Anidachi",
+   "url": "https://anidachi.com",
+   "source": "One Page Love",
+   "kind": "physical-product",
+   "score": 7.6,
+   "idea": "A toy brand built from one custom modular wordmark and one 3D device, both of which change colour with each full-bleed candy-coloured section.",
+   "mood": [
+    "toy-like",
+    "saturated",
+    "cheerful",
+    "retro-digital",
+    "bold"
+   ],
+   "archetype": "giant-wordmark",
+   "hero": "A saturated sky-blue field covering the top 92% of the viewport. The custom modular wordmark is repeated in four stacked rows, each spanning the full width inside 30px margins, drawn tone-on-tone in a slightly lighter blue that brightens row by row toward the bottom, so the name works as wallpaper. A tiny white pixel-cat mark sits top-left; a white rounded button with blue text top-right. A 3D flower-shaped toy device hangs on a carabiner from the top edge at centre, barely entered on desktop and fully visible on mobile, where it covers the pattern. A pale ice section starts at the bottom edge.",
+   "type": "AnidachiDisplay is custom modular lettering: monoline rounded strokes on a square grid, unicase forms, used at 7-10vw. Body and UI in Ease, a soft rounded geometric sans, at 20px. Text is always coloured to its section, never black.",
+   "colour": "#24c0fe #eff9fb #b6c814 #ff6b2b #ffffff #000000 — Each section is one flat saturated field (sky blue, ice, chartreuse, orange) with type in a single contrasting tint of the same family or white. The 3D device is recoloured to match its section.",
+   "imagery": "A glossy flower-shaped handheld with cream buttons and a small black screen showing pixel-art animal characters, hung from a metal clasp. Pixel sprites also appear loose on the page and as a giant low-contrast watermark.",
+   "layout": "Full-bleed colour sections of one to two screens with 30px margins. Each holds one giant display phrase at an edge, one small text block, and the 3D device crossing section boundaries. Alignment shifts section to section: centred, left column, bottom-left.",
+   "sections": [
+    {
+     "role": "intro",
+     "description": "Pale ice section. Centred: the small mascot mark and wordmark in sky blue at about 9vw, followed by a two-line statement in the rounded sans at 7vw in the same blue. Below, a left column 370px wide holds a three-line 24px lead and small paragraphs, all blue on ice; a pixel-art cat sprite stands in the right half, and a pill-outlined email field with a round arrow button ends the block."
+    },
+    {
+     "role": "showcase",
+     "description": "Chartreuse full-bleed section. A title in the modular display face runs edge to edge in white at about 10vw across the top. The 3D device, recoloured olive to match, hangs from its clasp at left-centre and overlaps a diagonal ribbon of translucent rounded-square tiles, each holding a tinted character, running from lower-left to upper-right and off the edge."
+    },
+    {
+     "role": "features",
+     "description": "Solid orange section, almost empty. A three-line 14px white paragraph sits near the top, right of centre; the bottom-left holds a two-line hyphenated phrase in the display face at roughly 9vw, white, hugging the left margin and the bottom edge. The lower edge of the device intrudes from the section above."
+    },
+    {
+     "role": "footer",
+     "description": "Ice ground with an enormous pixel-art face in a barely darker green tint as a watermark filling the frame. Lime wordmark lower-left at about 300px wide, three stacked lime links at centre, one link at right, tiny copyright beneath the logo."
+    }
+   ],
+   "steal": [
+    "Repeat the wordmark as tone-on-tone rows filling the hero, stepping the tint row by row, so the brand name is the background pattern.",
+    "Give every section one saturated colour, set all its text in a single contrasting tint, and recolour the 3D product to match.",
+    "Anchor a giant two-line display phrase to the bottom-left corner of an otherwise empty colour field, with one small paragraph far away at the top."
+   ]
+  }
+ ],
+ "scenes": []
+}
