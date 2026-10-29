@@ -202,12 +202,10 @@ p{margin:0}
 /* cover: the flip (scroll-driven) */
 .flip{position:relative;height:100svh;min-height:560px;background:var(--paper)}
 .flip-st{position:relative;height:100%;overflow:hidden}
-.flip-3d{position:absolute;inset:var(--nav-h) 0 0 0}
+.flip-3d{position:absolute;inset:0}
 .flip-3d canvas{display:block;width:100%;height:100%}
 .flip-3d.nogl{display:none}
-@media (min-width:900px){.flip-3d{left:30%}}
-.flip-word{position:absolute;left:50%;top:calc(50% + var(--nav-h)/2);z-index:4;transform:translate(-50%,-50%);margin:0;pointer-events:none;text-align:center;color:var(--paper);font-family:var(--display);font-stretch:75%;font-weight:800;text-transform:uppercase;letter-spacing:-.02em;line-height:.8;font-size:min(12vh,11vw);white-space:nowrap}
-@media (min-width:900px){.flip-word{left:65%}}
+.flip-word{position:absolute;left:50%;top:50%;z-index:4;transform:translate(-50%,-50%);margin:0;pointer-events:none;text-align:center;color:var(--paper);font-family:var(--display);font-stretch:75%;font-weight:800;text-transform:uppercase;letter-spacing:-.02em;line-height:.8;font-size:min(13.5vh,12vw);white-space:nowrap}
 .flip-word small{display:block;margin-top:1.3rem;font-family:var(--mono);font-weight:400;font-size:.75rem;letter-spacing:.2em;color:rgba(240,233,222,.75)}
 .flip-copy{position:absolute;left:var(--gut);bottom:clamp(28px,6vh,72px);z-index:5;pointer-events:none;width:min(44rem,86vw)}
 .flip-copy .step{position:absolute;left:0;bottom:0;opacity:0;transform:translateY(24px);transition:opacity .5s,transform .6s cubic-bezier(.2,.7,.2,1)}
@@ -229,6 +227,8 @@ p{margin:0}
 .flip-cover{position:absolute;inset:0;z-index:8;opacity:0;pointer-events:none}
 .flip-cover.live{pointer-events:auto}
 .flip-cover .hero{position:absolute;inset:0;height:100%;min-height:0}
+/* the name sits in the room: warm ink that multiplies with the wall, lit from the window on the right, slightly soft like the background */
+.hero-word{color:#2c221d;background:linear-gradient(97deg,#1f1814 0%,#2d231d 38%,#4a3a30 72%,#6f5a4b 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;mix-blend-mode:multiply;opacity:.9;filter:blur(.35px)}
 @media (max-width:899px){.flip-ticks{display:none}.flip-copy{bottom:clamp(20px,4vh,40px)}.flip-copy h2.h-lg{font-size:clamp(2.6rem,13vw,4.4rem)}}
 @media (max-width:760px){
   .flip-cover .hero{padding-top:var(--nav-h);background:var(--paper)}
@@ -1115,13 +1115,14 @@ function initFlip(){
   const CREAM='#E8DFD0',BORD='#7E2428';
   const steps=$$('.flip-copy .step',sec),ticks=$$('#flip-ticks span'),cover=$('#flip-cover'),hint=$('#flip-hint'),word=$('#flip-word'),media=$('.hero-media',cover);
   const sm=(a,b,x)=>{const t=clamp((x-a)/(b-a));return t*t*(3-2*t)};
-  const ABOVE={theta:0,phi:.012,radius:innerWidth<900?150:205,t:[0,40,0]},SIDE=Object.assign({},POSES.final.cam,{radius:POSES.final.cam.radius*1.1});
+  const ABOVE={theta:0,phi:.012,radius:innerWidth<900?135:172,t:[0,40,0]},SIDE=Object.assign({},POSES.final.cam,{radius:POSES.final.cam.radius*(innerWidth<900?1.45:1.1)});
   // flip angle along the scroll: 0 top, PI chess, 3PI cards (one extra turn), 4PI the top again
   const FLIP=[[0,0],[.08,0],[.26,PI],[.32,PI],[.50,3*PI],[.60,3*PI],[.70,4*PI]];
   const flipAt=p=>{let i=0;while(i<FLIP.length-2&&p>=FLIP[i+1][0])i++;const[a0,v0]=FLIP[i],[a1,v1]=FLIP[i+1];return v0+(v1-v0)*ease(clamp((p-a0)/Math.max(1e-6,a1-a0)))};
   let last='';const setSurf=s=>{V.setConfig({oak:false,oakBody:false,oakAcc:false,body:CREAM,accent:BORD,surface:s});last=s};
   setSurf('chess');V.cur.body.set(CREAM);V.cur.acc.set(BORD);
-  const DUR=17000,HOLD=.14;let t0=0,raf=0;   // the whole story in 15 seconds, then the photo cover stays
+  const ground=V.scene.children.find(o=>o.material&&o.material.type==='ShadowMaterial');
+  const DUR=18000,HOLD=.17;let t0=0,raf=0;   // the whole story in 15 seconds, then the photo cover stays
   const upd=raw=>{
     const p=raw<=HOLD?0:(raw-HOLD)/(1-HOLD);   // hold on the name first
     const a=flipAt(p);V.flipG.rotation.x=a;V.flipG.position.y=Math.abs(Math.sin(a))*34;V.flipAnim=null;V.flipA=a;
@@ -1129,12 +1130,14 @@ function initFlip(){
     const e=ease(sm(.71,.86,p));
     V.cam.phi=ABOVE.phi+(SIDE.phi-ABOVE.phi)*e;V.cam.radius=ABOVE.radius+(SIDE.radius-ABOVE.radius)*e;V.cam.theta=ABOVE.theta+(SIDE.theta-ABOVE.theta)*e+(p>.86?(p-.86)*2.4:0);
     for(let k=0;k<3;k++)V.cam.t[k]=ABOVE.t[k]+(SIDE.t[k]-ABOVE.t[k])*e;
+    if(ground)ground.material.opacity=.2*e;V.disc.castShadow=e>.02;   // no shadow while the top flips; it arrives with the 3D view
     word.style.opacity=raw>=1?0:1-sm(HOLD-.03,HOLD+.03,raw);
     const st=p>=.76&&p<.87?3:p>=.62&&p<.73?2:p>=.34&&p<.60?1:p>=.12&&p<.32?0:-1;
     steps.forEach((el,k)=>el.classList.toggle('on',k===st));
     const tk=p<.12?0:p<.33?1:p<.61?2:p<.75?3:4;ticks.forEach((el,k)=>el.classList.toggle('on',k===tk));
     const c=sm(.87,.95,p);cover.style.opacity=c;cover.classList.toggle('live',c>.6);
     if(media)media.style.transform=`scale(${1.08-.08*c})`;
+    hint.style.opacity=c>.05?0:1;hint.style.pointerEvents=c>.05?'none':'';
   };
   const tick=now=>{if(!t0)t0=now;const p=Math.min(1,(now-t0)/DUR);upd(p);
     if(p<1)raf=requestAnimationFrame(tick);else{raf=0;sec.classList.add('done')}};
