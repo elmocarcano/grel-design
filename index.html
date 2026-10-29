@@ -118,121 +118,86 @@ p{margin:0}
 }
 @media (max-width:420px){.hero-cta .btn{flex:1 1 100%;justify-content:space-between}}
 
-/* home · tasteskill v2 "The object, large" (seed 1583369997) */
-body.is-home{background:#0d0c0b}
-body.is-home .nav,body.is-home #foot{display:none}
-.th{--bg:#0d0c0b;--surface:#171514;--surface-2:#221f1d;--ink:#ebe9e5;--muted:#a49c92;--accent:#8e1f2a;--accent-ink:#fff;--field:#e6e3de;--field-ink:#0d0c0b;
-  --step-small:clamp(.8125rem,.79rem + .1vw,.875rem);--step-body:clamp(1.125rem,1.06rem + .15vw,1.1875rem);--step-lead:clamp(1.25rem,1.1rem + .7vw,1.625rem);--step-head:clamp(2rem,1.3rem + 3.2vw,4rem);--step-display:clamp(56px,8vw,130px);
-  --m:clamp(16px,2.4vw,32px);font-family:'Bricolage Grotesque',system-ui,sans-serif;color:var(--ink);background:var(--bg);font-size:var(--step-body);line-height:1.5}
-.th h1,.th h2,.th h3{font-family:'Bricolage Grotesque',system-ui,sans-serif;font-weight:600;letter-spacing:-.04em;line-height:.92;margin:0;text-transform:none;font-stretch:100%}
-.th p{margin:0}
-.th-btn{display:inline-flex;align-items:center;justify-content:center;min-height:52px;padding:0 1.6rem;background:var(--accent);color:var(--accent-ink);font-size:var(--step-body);font-weight:500;letter-spacing:0;transition:background .2s,transform .2s}
-.th-btn:hover{background:#a8283a}.th-btn:active{transform:scale(.97)}
-.th-btn:focus-visible,.th button:focus-visible,.th a:focus-visible{outline:2px solid var(--ink);outline-offset:3px}
-.th-btn.light{background:var(--ink);color:var(--bg)}.th-btn.light:hover{background:#fff}
-/* hero */
-.th-hero{position:relative;height:100svh;min-height:640px;overflow:hidden;background:var(--bg)}
-.th-mark{position:absolute;top:var(--m);right:var(--m);z-index:3;display:flex;align-items:center;gap:.6rem;font-size:1.5rem;font-weight:600;letter-spacing:-.02em;color:var(--ink)}
-.th-mark svg{width:24px;height:24px}
-.th-hero h1{position:absolute;right:var(--m);top:50%;transform:translateY(-58%);z-index:3;text-align:right;font-size:clamp(120px,13vw,210px);letter-spacing:-.05em;line-height:.86;text-transform:lowercase}
-.th-hero .sub{position:absolute;right:var(--m);top:calc(50% + clamp(120px,13vw,210px)*.86*.78);z-index:3;max-width:28ch;text-align:right;font-size:var(--step-body);color:var(--ink)}
-.th-obj{position:absolute;z-index:2;width:min(132svh,74vw);height:auto;left:-10%;top:6%;transform:rotate(-7deg);transform-origin:60% 50%;pointer-events:none}
-.th-obj img{width:100%;height:auto;display:block}
-.th-action{position:fixed;right:var(--m);bottom:var(--m);z-index:60;transition:opacity .3s,transform .3s}
-.th-action.away{opacity:0;transform:translateY(12px);pointer-events:none}
-@media (max-width:900px){
-  .th-hero{height:auto;min-height:100svh;display:flex;flex-direction:column;justify-content:flex-end;padding-bottom:calc(var(--m) + 76px)}
-  .th-obj{height:auto;width:122vw;left:-16vw;top:11svh}
-  .th-hero h1{position:relative;top:auto;right:auto;transform:none;align-self:flex-end;padding-right:20px;font-size:19vw;margin-top:50svh}
-  .th-hero .sub{position:relative;top:auto;right:auto;align-self:flex-end;padding:1rem 20px 0;font-size:1.125rem}
-}
-/* showcase: one frame, three distances */
-.th-show{position:relative;height:240vh;background:var(--bg)}
-.th-show .stage{position:sticky;top:0;height:100svh;display:grid;place-items:center;overflow:hidden}
-.th-show .wrap{position:relative;display:flex;flex-direction:column;align-items:center}
-.th-show h2{font-size:var(--step-display);text-align:center;white-space:nowrap}
-.th-show h2 .b{display:block;position:relative;z-index:2;margin-top:.12em;opacity:0;transform:translateY(.3em);transition:opacity .6s,transform .6s}
-.th-show[data-stage="2"] h2 .b,.th-show[data-stage="3"] h2 .b{opacity:1;transform:none}
-.th-frame{position:relative;display:block;width:min(30vw,50svh);aspect-ratio:4/5;overflow:hidden;margin-top:.2em;background:var(--surface)}
-.th-frame img{width:100%;height:100%;object-fit:cover;transition:transform .7s cubic-bezier(.4,0,.2,1);transform-origin:50% 50%}
-.th-show[data-stage="2"] .th-frame img{transform:scale(1.8);transform-origin:52% 74%}
-.th-show[data-stage="3"] .th-frame img{transform:scale(3.2);transform-origin:44% 52%}
-.th-show .cap{position:absolute;left:calc(50% + min(15vw,25svh) + 2rem);top:calc(var(--step-display)*.92 + .2em);width:min(28ch,calc(50vw - min(15vw,25svh) - 2rem - var(--m)));font-size:var(--step-body);color:var(--ink);opacity:0;transition:opacity .6s}
-.th-show[data-stage="3"] .cap{opacity:1}
-@media (max-width:900px){.th-frame{width:70vw}.th-show h2{font-size:13vw}.th-show .cap{position:static;width:auto;max-width:34ch;margin-top:1rem;text-align:center;font-size:1rem;padding-inline:var(--m)}}
-/* how it works: one verb at a time */
-.th-verb{position:relative;height:100svh;overflow:hidden;background:var(--surface)}
-.th-verb>img{position:absolute;top:0;right:0;width:68%;height:100%;object-fit:cover;object-position:var(--op,50% 50%)}
-.th-verb .w{position:absolute;left:var(--m);bottom:var(--m);width:calc(32% - var(--m)*2);z-index:1}
-.th-verb h2{font-size:var(--step-display);color:var(--ink);line-height:.9}
-.th-verb p{margin-top:1.25rem;max-width:30ch;font-size:var(--step-body);color:var(--ink)}
-@media (max-width:900px){.th-verb{height:auto;min-height:0;display:flex;flex-direction:column}.th-verb>img{position:relative;width:100%;height:62svh}.th-verb .w{position:static;width:auto;padding:1.5rem 20px 3rem}.th-verb p{font-size:1.0625rem}}
-/* specimens on colour tiles + the live picker */
-.th-tiles{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:10px;padding:clamp(120px,14vw,220px) var(--m)}
-.th-tiles .head{grid-column:1/4;display:flex;flex-direction:column;gap:1.2rem;padding-right:1.5rem}
-.th-tiles .head h2{font-size:var(--step-head)}
-.th-tiles .head p{max-width:30ch;color:var(--ink)}
-.th-grid{grid-column:4/13;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
-.th-tile{display:flex;flex-direction:column;gap:.7rem;text-align:left;color:var(--ink)}
-.th-tile .im{position:relative;display:grid;place-items:center;aspect-ratio:4/5;background:var(--t,var(--surface));overflow:hidden}
-.th-tile.wide{grid-column:span 2}.th-tile.wide .im{aspect-ratio:8/5}
-.th-tile .im img{width:112%;max-width:none;height:auto}
-.th-tile.wide .im img{width:64%;max-width:none;transition:opacity .25s}
-.th-tile .nm{font-size:var(--step-lead);font-weight:500;letter-spacing:-.01em;line-height:1.2}
-.th-tile .ft{font-size:var(--step-body);color:var(--muted)}
-.th-tile button.go:hover .nm{text-decoration:underline;text-underline-offset:4px}
-.th-pick{display:grid;grid-template-columns:auto minmax(0,1fr);gap:.55rem 1rem;align-items:center;margin-top:.2rem}
-.th-pick span{font-size:var(--step-body);color:var(--muted)}
-.th-pick .row{display:flex;gap:6px;flex-wrap:wrap}
-.th-pick button{width:34px;height:34px;border-radius:50%;background:var(--c);position:relative;transition:transform .15s}
-.th-pick button:hover{transform:scale(1.1)}
-@media (max-width:420px){.th-pick .row{gap:5px;flex-wrap:nowrap}.th-pick button{width:min(34px,calc((100vw - 120px)/8 - 5px));height:auto;aspect-ratio:1}}
-.th-pick button[aria-pressed="true"]::after{content:"";position:absolute;inset:-5px;border-radius:50%;border:2px solid var(--ink)}
-@media (max-width:980px){.th-tiles .head,.th-grid{grid-column:1/-1}.th-tiles .head{margin-bottom:1.5rem}.th-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.th-tile.wide{grid-column:1/-1;order:-1}.th-tile .nm{font-size:1.0625rem}.th-tile .ft{font-size:.9375rem}}
-/* about: inset panel, shaped portrait */
-.th-about{margin:0 20px;min-height:110svh;position:relative;overflow:hidden;background:#3b1015;color:var(--ink)}
-.th-about h2{position:relative;z-index:1;padding:56px;font-size:var(--step-head);max-width:17ch}
-.th-about .shape{position:absolute;left:56px;bottom:calc(-38vw*.2);width:38vw;aspect-ratio:1;border-radius:50%;overflow:hidden}
-.th-about .shape img{width:100%;height:100%;object-fit:cover;object-position:52% 60%}
-.th-about .txt{position:absolute;left:63%;top:56px;display:flex;flex-direction:column;gap:64px;width:min(300px,30vw)}
-.th-about h3{font-size:var(--step-lead);font-weight:500;letter-spacing:-.01em;line-height:1.2;margin-bottom:.6rem}
-.th-about .txt p{font-size:var(--step-body);color:#ecdfda}
-@media (min-width:901px) and (max-width:1100px){.th-about{min-height:0;padding-bottom:calc(38vw*.85)}.th-about .txt{position:relative;left:auto;top:auto;flex-direction:row;width:auto;gap:40px;padding:0 56px}.th-about .txt>div{flex:1}.th-about .txt>div:last-child{flex:0 0 auto;align-self:flex-end}}
-@media (max-width:900px){.th-about{margin:0 10px;min-height:0;padding-bottom:calc(86vw*.75)}.th-about h2{padding:32px 20px 0;font-size:8vw}.th-about .txt{position:static;width:auto;padding:28px 20px 32px;gap:32px}.th-about .shape{left:7vw;width:86vw;bottom:calc(-86vw*.25)}}
-/* cta: the object returns */
-.th-cta{position:relative;height:90svh;min-height:620px;overflow:hidden;background:var(--field);color:var(--field-ink);display:grid;grid-template-columns:repeat(12,minmax(0,1fr));align-items:center;padding:0 var(--m);margin-top:clamp(120px,14vw,220px)}
-.th-cta .obj{position:absolute;left:-4%;bottom:-16%;width:min(60vw,112svh);pointer-events:none}
-.th-cta .obj img{width:100%;height:auto;display:block}
-.th-cta .txt{grid-column:9/13;position:relative;z-index:1;display:flex;flex-direction:column;gap:1rem}
-.th-cta h2{font-size:var(--step-head);letter-spacing:-.04em}
-.th-cta .price{font-size:var(--step-lead);font-weight:500}
-@media (max-width:980px){.th-cta{height:auto;min-height:0;display:flex;flex-direction:column;align-items:stretch;padding:56px var(--m) 0}.th-cta .txt{order:-1}.th-cta h2{font-size:var(--step-head)}.th-cta .obj{position:relative;left:auto;bottom:auto;width:104vw;max-width:none;margin:2.5rem 0 -8vw -6vw}}
-/* footer: name across the last photograph */
-.th-foot{position:relative;height:100svh;min-height:560px;overflow:hidden;color:var(--ink)}
-.th-foot>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 40%;filter:brightness(.62)}
-.th-foot .top{position:absolute;top:32px;left:var(--m);right:var(--m);display:flex;justify-content:space-between;gap:2rem;flex-wrap:wrap;font-size:1rem}
-.th-foot .top nav{display:flex;flex-direction:column;gap:.35rem}
-.th-foot .top a,.th-foot .top button{color:var(--ink);text-align:left;font-size:1rem}
-.th-foot .top a:hover,.th-foot .top button:hover{text-decoration:underline;text-underline-offset:4px}
-.th-foot .word{position:absolute;left:var(--m);right:var(--m);bottom:56px;font-size:clamp(4rem,14.6vw,15rem);font-weight:600;letter-spacing:-.05em;line-height:.8;white-space:nowrap}
-.th-foot .legal{position:absolute;left:var(--m);bottom:22px;font-size:var(--step-small);color:#ddd5cb}
-@media (max-width:900px){.th-foot{height:88svh}.th-foot .word{font-size:17.5vw}.th-foot .legal{font-size:.8125rem}}
-/* motion */
+/* home (architect's object) */
+.hm{--rule:rgba(21,20,19,.18)}
+.hm-wrap{max-width:1440px;margin-inline:auto;padding-inline:var(--gut)}
+.hm-mono{font-family:var(--mono);font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;font-weight:400}
+.hm-muted{color:var(--ink-2)}
+.hm-d{font-family:var(--display);font-weight:300;letter-spacing:-.035em;line-height:.95;margin:0;text-transform:none;font-stretch:100%}
+.hm-xl{font-size:clamp(3.4rem,7.8vw,7rem)}
+.hm-l{font-size:clamp(2.2rem,3.9vw,3.5rem);line-height:1.02;letter-spacing:-.03em}
+.hm-intro{padding-top:calc(var(--nav-h) + clamp(40px,5vw,72px));padding-bottom:clamp(28px,3vw,40px);display:flex;justify-content:space-between;align-items:flex-end;gap:2.5rem;flex-wrap:wrap}
+.hm-intro .l{display:flex;flex-direction:column;gap:1.4rem}
+.hm-intro .r{display:flex;flex-direction:column;gap:1.4rem;max-width:360px;padding-bottom:.6rem}
+.hm-intro .r p{margin:0;font-size:1.06rem;line-height:1.55;color:#3d3934}
+.hm-btns{display:flex;gap:.6rem;flex-wrap:wrap}
+.hm-btn{display:inline-flex;align-items:center;gap:.6rem;min-height:48px;padding:0 1.4rem;border:1px solid var(--ink);font-family:var(--mono);font-size:.74rem;letter-spacing:.12em;text-transform:uppercase;transition:background .25s,color .25s}
+.hm-btn.solid{background:var(--ink);color:var(--paper)}
+.hm-btn:hover{background:#7E2428;border-color:#7E2428;color:var(--paper)}
+.hm-photo{position:relative;margin:0;width:100%;aspect-ratio:1312/835;overflow:hidden;background:#d9cbb8}
+.hm-photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.hm-photo svg{position:absolute;inset:0;width:100%;height:100%}
+.hm-photo .dim{stroke:var(--ink);stroke-width:1.4;fill:none;vector-effect:non-scaling-stroke}
+.hm-photo .call{stroke:#7E2428;stroke-width:1.4;fill:none;vector-effect:non-scaling-stroke}
+.hm-tag{position:absolute;padding:.35em .7em;background:var(--paper);font-family:var(--mono);font-size:clamp(.58rem,.85vw,.76rem);letter-spacing:.1em;white-space:nowrap}
+.hm-photo figcaption{position:absolute;left:clamp(10px,1.4vw,20px);bottom:clamp(10px,1.4vw,18px);padding:.4em .7em;background:rgba(240,233,222,.9)}
 @media (prefers-reduced-motion:no-preference){
-  .th-obj img{animation:thShutter 1.1s cubic-bezier(.7,0,.2,1) .15s both}
-  .th-hero h1,.th-hero .sub,.th-mark{animation:thUp .9s cubic-bezier(.2,.7,.2,1) .7s both}.th-hero .sub{animation-delay:.85s}
-  .th-in>*{opacity:0;transform:translateY(24px);transition:opacity .7s cubic-bezier(.2,.7,.2,1),transform .7s cubic-bezier(.2,.7,.2,1)}
-  .th-in.on>*{opacity:1;transform:none}
-  .th-in.on>*:nth-child(2){transition-delay:.08s}.th-in.on>*:nth-child(3){transition-delay:.16s}.th-in.on>*:nth-child(4){transition-delay:.24s}.th-in.on>*:nth-child(5){transition-delay:.32s}.th-in.on>*:nth-child(6){transition-delay:.4s}
-  .th-verb>img{transform:scale(1.08);transition:transform 1.6s cubic-bezier(.2,.7,.2,1)}.th-verb.on>img{transform:none}
-  .th-foot>img{animation:thDrift 24s ease-in-out infinite alternate}
+  .hm-photo .dim,.hm-photo .call{stroke-dasharray:2000;stroke-dashoffset:2000;animation:hmDraw 1.6s cubic-bezier(.4,0,.2,1) .5s forwards}
+  .hm-tag{opacity:0;animation:hmFade .6s ease 1.6s forwards}
+  .hm-intro .l,.hm-intro .r{animation:hmUp .9s cubic-bezier(.2,.7,.2,1) both}.hm-intro .r{animation-delay:.12s}
 }
-@keyframes thShutter{from{clip-path:inset(0 100% 0 0);transform:scale(1.12)}to{clip-path:inset(0 0 0 0);transform:none}}
-@keyframes thUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:none}}
-.th-hero h1{animation-name:thUpH}
-@keyframes thUpH{from{opacity:0;transform:translateY(calc(-58% + 20px))}to{opacity:1;transform:translateY(-58%)}}
-@media (max-width:900px){.th-hero h1{animation-name:thUp}}
-@keyframes thDrift{from{transform:scale(1.04) translateX(-1%)}to{transform:scale(1.1) translateX(1%)}}
+@keyframes hmDraw{to{stroke-dashoffset:0}}
+@keyframes hmFade{to{opacity:1}}
+@keyframes hmUp{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+.hm-sec{padding-block:clamp(80px,10vw,140px)}
+.hm-head{display:flex;justify-content:space-between;align-items:flex-end;gap:2.5rem;flex-wrap:wrap;padding-bottom:1.75rem;border-bottom:1px solid var(--rule)}
+.hm-head h2{max-width:760px}
+.hm-three{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:clamp(24px,3vw,40px);padding-top:3rem}
+.hm-three>div{display:flex;flex-direction:column;gap:1.1rem}
+.hm-panel{aspect-ratio:4/3;display:grid;place-items:center;background:var(--sheet);border:1px solid rgba(21,20,19,.14);position:relative;overflow:hidden}
+.hm-panel svg{height:82%}
+.hm-panel img{position:absolute;left:6%;top:18%;width:88%}
+.hm-panel img.sh{mix-blend-mode:multiply}
+.hm-three p{margin:0;font-size:.95rem;line-height:1.55;color:var(--ink-2)}
+.hm-nums{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));margin-top:4.5rem;border-top:1px solid var(--rule)}
+.hm-nums div{padding:1.4rem 0;display:flex;align-items:baseline;gap:.9rem}
+.hm-nums b{font-family:var(--display);font-weight:300;font-size:clamp(2.8rem,4.4vw,4rem);letter-spacing:-.03em;line-height:1}
+.hm-nums b.acc{color:#7E2428}
+.hm-band{background:var(--sheet);border-block:1px solid rgba(21,20,19,.14)}
+.hm-ed{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1.25rem;padding-top:2.5rem}
+.hm-ed button{display:flex;flex-direction:column;gap:.9rem;text-align:left}
+.hm-ed .im{display:grid;place-items:center;aspect-ratio:5/4;background:var(--t);overflow:hidden}
+.hm-ed .im img{width:96%;transition:transform .6s cubic-bezier(.2,.7,.2,1)}
+.hm-ed button:hover .im img{transform:scale(1.05)}
+.hm-ed .cap{display:flex;justify-content:space-between;gap:.5rem}
+.hm-ed .cap b{font-weight:500}
+.hm-ed .any{display:flex;flex-direction:column;justify-content:space-between;aspect-ratio:5/4;padding:1.4rem;box-sizing:border-box;border:1px solid var(--ink)}
+.hm-dots{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:.6rem;width:70%}
+.hm-dots i,.hm-sw i{display:block;aspect-ratio:1;border-radius:50%;background:var(--c);box-shadow:inset 0 0 0 1px rgba(21,20,19,.14)}
+.hm-ed .any span.t{font-family:var(--display);font-weight:300;font-size:clamp(1.4rem,2vw,1.9rem);line-height:1.05;letter-spacing:-.02em}
+.hm-det{display:flex;gap:clamp(32px,4.5vw,64px);flex-wrap:wrap;align-items:stretch}
+.hm-det figure{margin:0;flex:1 1 480px;min-width:0;display:flex;flex-direction:column;gap:.75rem}
+.hm-det figure img{width:100%;aspect-ratio:3/2;object-fit:cover}
+.hm-det .txt{flex:1 1 380px;min-width:0;display:flex;flex-direction:column;justify-content:space-between;gap:2.5rem}
+.hm-det ol{margin:0;padding:0;list-style:none;border-top:1px solid var(--rule)}
+.hm-det li{display:grid;grid-template-columns:56px minmax(0,1fr);gap:.75rem;padding:1.25rem 0;border-bottom:1px solid var(--rule)}
+.hm-det li .n{font-family:var(--mono);font-size:.76rem;color:#7E2428}
+.hm-det li b{font-weight:600}
+.hm-studio{background:#7E2428;color:var(--paper)}
+.hm-studio .hm-wrap{display:flex;justify-content:space-between;align-items:flex-end;gap:3rem;flex-wrap:wrap}
+.hm-studio blockquote{margin:0;max-width:900px;font-family:var(--display);font-weight:300;font-size:clamp(2.6rem,5vw,4.5rem);line-height:1;letter-spacing:-.035em}
+.hm-studio .r{display:flex;flex-direction:column;gap:1rem;max-width:320px}
+.hm-studio p{margin:0;font-size:.95rem;line-height:1.55;color:#EBD7D2}
+.hm-studio a{color:var(--paper);border-bottom:1px solid currentColor;align-self:flex-start;padding-bottom:2px}
+.hm-make{display:flex;justify-content:space-between;align-items:center;gap:3rem;flex-wrap:wrap}
+.hm-make .l{display:flex;flex-direction:column;gap:1.1rem}
+.hm-make .l p{margin:0;max-width:420px;font-size:1.06rem;line-height:1.55;color:#3d3934}
+.hm-make .r{display:flex;flex-direction:column;gap:1.4rem;align-items:flex-start}
+.hm-sw{display:flex;gap:.6rem;flex-wrap:wrap}
+.hm-sw button{width:40px;height:40px;border-radius:50%;padding:0}
+.hm-sw button i{width:100%;height:100%;transition:transform .2s}
+.hm-sw button:hover i{transform:scale(1.1)}
+@media (max-width:640px){.hm-intro .r{max-width:none}.hm-tag.h{display:none}}
 
 /* idea */
 .idea-grid{display:grid;grid-template-columns:repeat(12,1fr);gap:clamp(24px,4vw,64px) clamp(12px,2vw,28px);align-items:end}
@@ -485,10 +450,9 @@ body.is-home .nav,body.is-home #foot{display:none}
 @media (max-width:860px){.foot-b{grid-column:1/-1}.foot-c{grid-column:span 6}}
 
 /* cart drawer */
-.veil{position:fixed;inset:0;background:rgba(21,20,19,.4);z-index:90;opacity:0;visibility:hidden;pointer-events:none;transition:opacity .3s,visibility 0s linear .3s}
+.veil{position:fixed;inset:0;background:rgba(21,20,19,.4);z-index:90;opacity:0;pointer-events:none;transition:opacity .3s}
 .drawer{position:fixed;top:0;right:0;bottom:0;width:min(440px,100%);background:var(--paper);z-index:100;transform:translateX(102%);visibility:hidden;transition:transform .45s cubic-bezier(.2,.7,.2,1),visibility 0s linear .45s;display:flex;flex-direction:column;padding:calc(var(--nav-h)/2 + env(safe-area-inset-top,0px)) var(--gut) calc(24px + env(safe-area-inset-bottom,0px));border-left:1.5px solid var(--ink)}
-body.cart-open .veil{opacity:1;visibility:visible;pointer-events:auto;transition-delay:0s}
-@media (prefers-reduced-motion:reduce){body:not(.cart-open) .drawer,body:not(.cart-open) .veil{display:none}}
+body.cart-open .veil{opacity:1;pointer-events:auto}
 body.cart-open .drawer{transform:none;visibility:visible;transition-delay:0s}
 .drawer header{display:flex;justify-content:space-between;align-items:center;padding-bottom:1rem;border-bottom:1px solid var(--ink)}
 .drawer .items{flex:1;overflow:auto;padding-block:.5rem}
@@ -1071,101 +1035,85 @@ S.order=()=>`
 /* ---------- pages ---------- */
 const PAGES={};
 
-
-/* ---------- home · "the object, large" (tasteskill v2, seed 1583369997) ---------- */
-const PICK_BG={cream:'#2a2724',butter:'#2a2724',rose:'#2a2724',terracotta:'#2a2724',sage:'#2a2724',lake:'#2a2724',bordeaux:'#2a2724',graphite:'#3a3633'};
-const TH={};
-const TH_LOGO='<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="1" y="1" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.6"/><rect x="9" y="9" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.6"/></svg>';
-TH.hero=()=>`
-<section class="th-hero" aria-label="TuttoTondo">
-  <a class="th-mark" href="#/" data-link="/">${TH_LOGO}Grel Design</a>
-  <h1>tutto<br>tondo</h1>
-  <div class="th-obj"><img src="img/home/object.webp" width="2000" height="1567" fetchpriority="high" alt="TuttoTondo coffee table, cream plates and a bordeaux top, seen from low down"></div>
-  <p class="sub">A round coffee table cut from one sheet and slotted together by hand. From ${P('standard')}.</p>
-</section>
-<button class="th-btn th-action" data-scroll="#configurator">Make it yours</button>`;
-TH.show=()=>`
-<section class="th-show" id="th-show" data-stage="1" aria-label="Seen from every side">
-  <div class="stage"><div class="wrap">
-    <h2><span class="a">Seen from</span>
-      <span class="th-frame"><img src="img/home/room-4x5.jpg" width="1200" height="1500" loading="lazy" alt="TuttoTondo in cream and bordeaux in a living room above Lake Como, with a bowl and a vase of red branches"></span>
-      <span class="b">every side.</span></h2>
-    <p class="cap">Tutto tondo is the sculptor's term for a figure carved in the round. TuttoTondo was drawn to be looked at from wherever you sit.</p>
-  </div></div>
-</section>`;
-TH.verbs=()=>[
-  ['cut','Cut.','One 70 × 80 cm sheet. The curve of each plate is the edge of the top, so nothing is thrown away.','The flat sheet: two plates and the round top lying inside one rectangle','30% 50%'],
-  ['slot','Slot.','Two plates meet halfway and lock into a cross. No screws, no glue, no tools.','One plate lowered onto the other, the top waiting on the floor','68% 50%'],
-  ['drop','Drop.','The round top settles into the curves, flush with the four corners.','The round top coming down onto the crossed plates','30% 50%'],
-  ['turn','Turn.','The top rotates in its seat. Flip it for a chess board or a card table.','The finished table seen from above','70% 50%']
-].map(([k,v,t,alt,op])=>`
-<section class="th-verb" style="--op:${op}">
-  <img src="img/home/verb-${k}.jpg" width="2400" height="1350" loading="lazy" alt="${alt}">
-  <div class="w"><h2>${v}</h2><p>${t}</p></div>
-</section>`).join('');
-TH.tiles=()=>{
-  const sw=(k)=>COLORS.map(c=>`<button data-k="${k}" data-c="${c[0]}" aria-pressed="false" aria-label="${k==='body'?'Plates':'Top'}: ${c[1]}" style="--c:${c[2]}"></button>`).join('');
-  const ed=(b,a,t)=>`<button class="th-tile go" data-b="${b}" data-a="${a}"><span class="im" style="--t:${t}"><img src="img/hero-${b}-${a}.webp" width="1400" height="745" loading="lazy" alt="TuttoTondo, ${CMAP[b].name} plates and a ${CMAP[a].name} top"></span><span class="nm">${CMAP[b].name} × ${CMAP[a].name}</span><span class="ft">${P('standard')}</span></button>`;
-  return `
-<section class="th-tiles" aria-labelledby="th-colours">
-  <div class="head th-in"><h2 id="th-colours">Any two colours.</h2><p>Choose the plates and the top from eight shades, or any RAL colour.</p></div>
-  <div class="th-grid th-in">
-    ${ed('sage','cream','#1f2420')}
-    <div class="th-tile wide"><span class="im" style="--t:#2a2724"><img id="th-pick-img" src="img/home/pick-cream-bordeaux.webp" width="900" height="813" alt="Your TuttoTondo: Cream plates and a Bordeaux top"></span>
-      <span class="nm" id="th-pick-nm">Yours: Cream × Bordeaux</span>
-      <div class="th-pick"><span>Plates</span><div class="row" role="group" aria-label="Plates colour">${sw('body')}</div><span>Top</span><div class="row" role="group" aria-label="Top colour">${sw('accent')}</div></div>
-      <span class="ft">${P('standard')} · <button class="go-cfg" style="color:var(--ink);text-decoration:underline;text-underline-offset:4px">open it in the configurator</button></span></div>
-    ${ed('terracotta','lake','#2a201c')}
-    ${ed('cream','rose','#2b2423')}
-    ${ed('bordeaux','cream','#241718')}
-    <button class="th-tile go" data-fin-go="natural"><span class="im" style="--t:#2a241c"><img src="img/hero-oak-oak.webp" width="1400" height="745" loading="lazy" alt="TuttoTondo Natural, every part in oak"></span><span class="nm">Natural oak</span><span class="ft">${P('natural')}</span></button>
+/* ---------- home: the architect's object ---------- */
+const EDTINT={sage:'#DCE2D6',terracotta:'#EED3C8',rose:'#F3E3DF',bordeaux:'#E6D2D0',cream:'#EEE6D8',lake:'#DCE4EA',butter:'#F1E9CF',graphite:'#D8D5D0'};
+const HM={};
+HM.intro=()=>`
+<section class="hm"><div class="hm-wrap hm-intro">
+  <div class="l"><span class="hm-mono hm-muted">Collection 01 — TuttoTondo coffee table</span>
+    <h1 class="hm-d hm-xl">One sheet.<br>One table.</h1></div>
+  <div class="r"><p>Two plates and a round top, cut from a single sheet and slotted together by hand. No screws, no tools, no waste.</p>
+    <div class="hm-btns"><button class="hm-btn solid" data-scroll="#configurator">Make it yours ${ARROW}</button><a class="hm-btn" href="#/tuttotondo" data-link="/tuttotondo">From ${P('standard')}</a></div></div>
+</div>
+<div class="hm-wrap"><figure class="hm-photo">
+  <img src="img/home-hero.jpg" srcset="img/home-hero.jpg 1312w, img/home-hero@2x.jpg 2624w" sizes="(max-width:1440px) 100vw, 1344px" width="1312" height="835" fetchpriority="high" alt="TuttoTondo in cream and bordeaux in a sunlit living room above Lake Como">
+  <svg viewBox="0 0 1312 835" preserveAspectRatio="none" aria-hidden="true">
+    <path class="dim" d="M278 300V412M1086 286V412M278 400H1086M272 394L284 406M1080 394L1092 406"/>
+    <path class="dim" d="M1130 246H1182M1130 616H1182M1170 246V616M1164 240L1176 252M1164 610L1176 622"/>
+    <path class="call" d="M742 642L860 742H1010"/><circle cx="742" cy="642" r="6" fill="#7E2428"/>
+  </svg>
+  <span class="hm-tag" style="left:50%;top:47.9%;transform:translate(-50%,-50%)">Ø 60 cm</span>
+  <span class="hm-tag" style="left:89.2%;top:51.6%;transform:translate(-50%,-50%) rotate(-90deg)">H 40 cm</span>
+  <span class="hm-tag h" style="left:77.2%;top:89%;transform:translateY(-50%);text-transform:uppercase">Slot joint · no screws</span>
+  <figcaption class="hm-mono">Cream × Bordeaux</figcaption>
+</figure></div></section>`;
+HM.idea=()=>`
+<section class="hm hm-sec"><div class="hm-wrap">
+  <div class="hm-head"><h2 class="hm-d hm-l">Everything the table needs is drawn inside one sheet.</h2><span class="hm-mono hm-muted">01 — The idea</span></div>
+  <div class="hm-three">
+    <div><div class="hm-panel"><svg viewBox="-8 -10 86 100" role="img" aria-label="A 70 by 80 centimetre sheet">
+      <rect x="0" y="0" width="70" height="80" fill="none" stroke="#151413" stroke-width=".5" stroke-dasharray="1.6 1.2"/>
+      <path d="M0 -5H70M0 -6.5V-3.5M70 -6.5V-3.5M-5 0V80M-6.5 0H-3.5M-6.5 80H-3.5" stroke="#8C8579" stroke-width=".3" fill="none"/>
+      <text x="35" y="-6.6" text-anchor="middle" font-family="DM Mono, monospace" font-size="3.2" fill="#5A544B">70</text>
+      <text x="-6.4" y="40" text-anchor="middle" transform="rotate(-90 -6.4 40)" font-family="DM Mono, monospace" font-size="3.2" fill="#5A544B">80</text></svg></div>
+      <span class="hm-mono">01 · One sheet</span><p>A single 70 × 80 cm panel. Nothing added, nothing thrown away.</p></div>
+    <div><div class="hm-panel"><svg viewBox="-8 -10 86 100" role="img" aria-label="The sheet cut into two plates, a round top and two tabs">
+      <path d="${PATH_A}" fill="rgba(126,36,40,.12)" stroke="#151413" stroke-width=".5"/>
+      <path d="${PATH_B}" fill="rgba(126,36,40,.12)" stroke="#151413" stroke-width=".5"/>
+      <circle cx="35" cy="40" r="30" fill="#E8DFD0" stroke="#151413" stroke-width=".5"/>
+      <text x="35" y="41.2" text-anchor="middle" font-family="DM Mono, monospace" font-size="3.2" fill="#5A544B">Ø 60</text></svg></div>
+      <span class="hm-mono">02 · One cut</span><p>The curve that shapes each plate is the edge of the round top.</p></div>
+    <div><div class="hm-panel"><img class="sh" src="img/hero-shadow.webp" alt="" aria-hidden="true" loading="lazy"><img src="img/hero-cream-bordeaux.webp" alt="The assembled table, cream plates and a bordeaux top" loading="lazy"></div>
+      <span class="hm-mono">03 · No screws</span><p>The plates slot into a cross, the top drops in. One minute, by hand.</p></div>
   </div>
-</section>`;};
-TH.about=()=>`
-<section class="th-about" aria-labelledby="th-made">
-  <h2 id="th-made">Drawn in Milano,<br>made in Italy.</h2>
-  <div class="txt th-in">
-    <div><h3>An architect's table</h3><p>Greta drew TuttoTondo for her own home: one sheet, a few cuts, no screws. It became the first object of Grel Design.</p></div>
-    <div><h3>Made to order</h3><p>Each table is cut and lacquered in Italy in the colours you choose, then assembled by you in about a minute.</p></div>
-    <div><button class="th-btn light" data-scroll="#configurator">Make it yours</button></div>
+  <div class="hm-nums"><div><b>1</b><span class="hm-mono hm-muted">sheet</span></div><div><b>1</b><span class="hm-mono hm-muted">cut</span></div><div><b>0</b><span class="hm-mono hm-muted">screws</span></div><div><b class="acc">0</b><span class="hm-mono hm-muted">waste</span></div></div>
+</div></section>`;
+HM.editions=()=>`
+<section class="hm hm-band"><div class="hm-wrap hm-sec">
+  <div class="hm-head"><h2 class="hm-d hm-l">Four editions.<br>Or your own colour.</h2><span class="hm-mono hm-muted">02 — Editions</span></div>
+  <div class="hm-ed" id="hm-ed">${EDITIONS.map(([b,a])=>`<button data-b="${b}" data-a="${a}"><span class="im" style="--t:${EDTINT[b]||'#EEE6D8'}"><img src="img/hero-${b}-${a}.webp" width="1400" height="745" loading="lazy" alt="TuttoTondo, ${CMAP[b].name} plates and a ${CMAP[a].name} top"></span><span class="cap hm-mono"><b>${CMAP[b].name} × ${CMAP[a].name}</b><span class="hm-muted">${P('standard')}</span></span></button>`).join('')}
+    <button data-fin-go="custom"><span class="any"><span class="hm-dots">${COLORS.map(c=>`<i style="--c:${c[2]}"></i>`).join('')}</span><span class="t">Any two colours.<br>Any RAL.</span></span><span class="cap hm-mono"><b>Configure yours →</b><span class="hm-muted">from ${P('standard')}</span></span></button>
   </div>
-  <div class="shape"><img src="img/home/room-4x5.jpg" width="1200" height="1500" loading="lazy" alt="The table in a living room with a view of the lake"></div>
-</section>`;
-TH.cta=()=>`
-<section class="th-cta" aria-labelledby="th-yours">
-  <div class="obj"><img src="img/home/object-back.webp" width="1800" height="1800" loading="lazy" alt="TuttoTondo seen from the other side and from above, the bordeaux top and the cream cross"></div>
-  <div class="txt th-in"><h2 id="th-yours">Yours, in the round.</h2><p>Choose the plates and the top; we cut it for you in Italy.</p><p class="price">From ${P('standard')}</p><div><button class="th-btn" data-scroll="#configurator">Make it yours</button></div></div>
-</section>`;
-TH.foot=()=>`
-<footer class="th-foot">
-  <img src="img/home/room.jpg" width="2000" height="1828" loading="lazy" alt="">
-  <div class="top"><nav aria-label="Footer"><a href="#/tuttotondo" data-link="/tuttotondo">TuttoTondo</a><a href="#/about" data-link="/about">Studio</a><a href="#/contact" data-link="/contact">Contact</a></nav><p>Grel Design<br>Milano, Italy</p></div>
-  <p class="word" aria-hidden="true">Grel Design</p>
-  <p class="legal">© 2026 Grel Design. Designed and made in Italy.</p>
-</footer>`;
+</div></section>`;
+HM.details=()=>`
+<section class="hm hm-sec"><div class="hm-wrap hm-det">
+  <figure><img src="img/detail-cream-brick.jpg" width="930" height="620" loading="lazy" alt="Close-up of the joint where the round top rests in the slotted plates"><figcaption class="hm-mono hm-muted">The joint — top resting in the slotted plates</figcaption></figure>
+  <div class="txt"><div style="display:flex;flex-direction:column;gap:1.1rem"><span class="hm-mono hm-muted">03 — Details</span><h2 class="hm-d hm-l">A table with two sides.</h2></div>
+    <ol>
+      <li><span class="n">01</span><span><b>Turn it.</b> <span class="hm-muted">The round top rotates freely in its seat.</span></span></li>
+      <li><span class="n">02</span><span><b>Flip it.</b> <span class="hm-muted">The reverse can be a chess board or a card table.</span></span></li>
+      <li><span class="n">03</span><span><b>Take it apart.</b> <span class="hm-muted">Flat again in a minute, for moving or storing.</span></span></li>
+      <li><span class="n">04</span><span><b>Or in oak.</b> <span class="hm-muted">TuttoTondo Natural, every part in oak.</span></span></li>
+    </ol>
+    <div><a class="hm-btn" href="#/tuttotondo" data-link="/tuttotondo">See every detail ${ARROW}</a></div></div>
+</div></section>`;
+HM.studio=()=>`
+<section class="hm hm-studio"><div class="hm-wrap hm-sec">
+  <blockquote>“One sheet of wood. A few cuts. No screws.”</blockquote>
+  <div class="r"><span class="hm-mono">Greta · Architect · Milano</span><p>Designed for our own home, then for yours. Drawn in Milano, made in Italy.</p><a class="hm-mono" href="#/about" data-link="/about">The studio →</a></div>
+</div></section>`;
+HM.make=()=>`
+<section class="hm hm-sec"><div class="hm-wrap hm-make">
+  <div class="l"><span class="hm-mono hm-muted">04 — Configurator</span><h2 class="hm-d hm-xl">Make it yours.</h2><p>Pick a colour for the plates and one for the top. Eight shades, or any RAL.</p></div>
+  <div class="r"><div class="hm-sw" role="group" aria-label="Start with a colour">${COLORS.map(c=>`<button data-c="${c[0]}" title="${c[1]}" aria-label="Start with ${c[1]}"><i style="--c:${c[2]}"></i></button>`).join('')}</div>
+    <button class="hm-btn solid" data-scroll="#configurator">Open the configurator ${ARROW}</button></div>
+</div></section>`;
 function initHome(){
-  document.body.classList.toggle('is-home',currentPath()==='/');
-  const show=$('#th-show');if(!show)return;
-  // showcase: three distances, switched by markers
-  let raf=0;const stage=()=>{raf=0;const r=show.getBoundingClientRect(),p=-r.top/Math.max(1,r.height-innerHeight);show.dataset.stage=p<.3?1:p<.68?2:3};
-  const onS=()=>{if(!raf)raf=requestAnimationFrame(stage)};addEventListener('scroll',onS,{passive:true});unsubs.push(()=>removeEventListener('scroll',onS));stage();
-  // entrances
-  const en=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('on');en.unobserve(e.target)}}),{threshold:.2});
-  $$('.th-in,.th-verb').forEach(el=>en.observe(el));unsubs.push(()=>en.disconnect());
-  // the live thing: plates + top
-  const pick={body:'cream',accent:'bordeaux'};const img=$('#th-pick-img'),nm=$('#th-pick-nm');
-  const paint=()=>{img.src=`img/home/pick-${pick.body}-${pick.accent}.webp`;const t=`${CMAP[pick.body].name} × ${CMAP[pick.accent].name}`;nm.textContent='Yours: '+t;img.alt=`Your TuttoTondo: ${CMAP[pick.body].name} plates and a ${CMAP[pick.accent].name} top`;
-    $$('.th-pick button').forEach(b=>b.setAttribute('aria-pressed',pick[b.dataset.k]===b.dataset.c))};
-  $$('.th-pick button').forEach(b=>on(b,'click',()=>{pick[b.dataset.k]=b.dataset.c;paint()}));
-  on($('.go-cfg'),'click',()=>{setCfg({finish:'standard',body:pick.body,accent:pick.accent});scrollToSel('#configurator')});
-  $$('.th-tile.go[data-b]').forEach(b=>on(b,'click',()=>{setCfg({finish:'standard',body:b.dataset.b,accent:b.dataset.a});scrollToSel('#configurator')}));
-  paint();
-  // the fixed action steps aside where the page has its own button or the closing name
-  const act=$('.th-action');const seenSet=new Set();
-  const io2=new IntersectionObserver(es=>{es.forEach(e=>e.isIntersecting?seenSet.add(e.target):seenSet.delete(e.target));act.classList.toggle('away',seenSet.size>0)},{threshold:0});
-  $$('.th-about,.th-cta,.th-foot').forEach(el=>io2.observe(el));unsubs.push(()=>io2.disconnect());
+  const ed=$('#hm-ed');if(!ed)return;
+  $$('button[data-b]',ed).forEach(b=>on(b,'click',()=>{setCfg({finish:'standard',body:b.dataset.b,accent:b.dataset.a});scrollToSel('#configurator')}));
+  $$('.hm-sw button').forEach(b=>on(b,'click',()=>{setCfg({finish:'standard',body:b.dataset.c});scrollToSel('#configurator')}));
 }
-PAGES['/']=()=>`<div class="th">`+TH.hero()+TH.show()+TH.verbs()+TH.tiles()+TH.about()+TH.cta()+TH.foot()+`</div>`;
+PAGES['/']=()=>HM.intro()+HM.idea()+HM.editions()+HM.details()+HM.studio()+HM.make();
 const SUB=[['The idea','#idea'],['The design','#sheet'],['Make it yours','#configurator'],['Made in Italy','#italy'],['Specifications','#specs'],['Order','#order']];
 PAGES['/tuttotondo']=()=>`
 <div class="pp">

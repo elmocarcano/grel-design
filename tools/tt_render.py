@@ -43,16 +43,6 @@ def sdf_parts(x, y, z):
     return a, b, dd
 
 
-def classify_parts(p, n, part):
-    """1 = body colour, 2 = accent colour (default: the assembled table)."""
-    c = np.ones(p.shape[0], np.int8)
-    # plate B end faces are the accent detail
-    c[(part == 1) & (np.abs(p[:, 2]) > 34.8) & (np.abs(n[:, 2]) > 0.5)] = 2
-    # the top: upper face and its edge carry the accent, underside the body
-    c[(part == 2) & (n[:, 1] > -0.5)] = 2
-    return c
-
-
 def sdf(x, y, z):
     a, b, d = sdf_parts(x, y, z)
     return np.minimum(np.minimum(a, b), d)
@@ -144,7 +134,11 @@ def render_buffers(W, H, az=34, el=20, dist=330, fov=22, target=(0, 17, 0),
     n = normal(p[:, 0], p[:, 1], p[:, 2])
     a, b, dd = sdf_parts(p[:, 0], p[:, 1], p[:, 2])
     part = np.argmin(np.stack([a, b, dd], -1), -1)
-    c = classify_parts(p, n, part)
+    c = np.ones(idx.size, np.int8)
+    # plate B end faces are the accent detail
+    c[(part == 1) & (np.abs(p[:, 2]) > 34.8) & (np.abs(n[:, 2]) > 0.5)] = 2
+    # the top: upper face and its edge carry the accent, underside the body
+    c[(part == 2) & (n[:, 1] > -0.5)] = 2
     cls[idx] = c
 
     lp = np.asarray(light_pos, float)
