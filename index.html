@@ -518,6 +518,10 @@ body.cart-open .drawer{transform:none;visibility:visible;transition-delay:0s}
 .toast{position:fixed;left:50%;bottom:calc(20px + env(safe-area-inset-bottom,0px));transform:translate(-50%,20px);background:var(--ink);color:var(--paper);padding:.8rem 1.1rem;z-index:120;opacity:0;pointer-events:none;transition:opacity .2s var(--ease-out),transform .2s var(--ease-out)}
 .toast.on{opacity:1;transform:translate(-50%,0)}
 
+.lang{display:inline-flex;align-items:center;gap:.35rem;color:var(--ink-3)}
+.lang button{color:var(--ink-3);padding:.2rem 0;border-bottom:1px solid transparent;transition:color .2s}
+.lang button.on{color:var(--ink);border-bottom-color:currentColor}
+@media (hover:hover) and (pointer:fine){.lang button:hover{color:var(--ink)}}
 /* reveal */
 .rv{opacity:1;transform:none}
 @media (prefers-reduced-motion:no-preference){
@@ -536,6 +540,7 @@ body.cart-open .drawer{transform:none;visibility:visible;transition-delay:0s}
       <a href="#/contact" data-link="/contact">Contact</a>
     </nav>
     <div class="nav-right mono">
+      <span class="lang" role="group" aria-label="Language"><button data-lang="it" lang="it" aria-label="Italiano">IT</button><span aria-hidden="true">/</span><button data-lang="en" lang="en" aria-label="English">EN</button></span>
       <button id="cartbtn" aria-label="Open cart">Cart<span class="cart-n" id="cartn">0</span></button>
       <button class="menu-btn" id="menubtn" aria-label="Menu" aria-expanded="false">Menu</button>
     </div>
@@ -1148,12 +1153,12 @@ function initFlip(){
   const sm=(a,b,x)=>{const t=clamp((x-a)/(b-a));return t*t*(3-2*t)};
   const ABOVE={theta:0,phi:.012,radius:innerWidth<900?135:172,t:[0,40,0]},SIDE=Object.assign({},POSES.final.cam,{radius:POSES.final.cam.radius*(innerWidth<900?1.45:1.1)});
   // flip angle along the scroll: 0 top, PI chess, 3PI cards (one extra turn), 4PI the top again
-  const FLIP=[[0,0],[.08,0],[.26,PI],[.32,PI],[.50,3*PI],[.60,3*PI],[.70,4*PI]];
+  const FLIP=[[0,0],[.04,0],[.26,PI],[.32,PI],[.50,3*PI],[.60,3*PI],[.70,4*PI]];
   const flipAt=p=>{let i=0;while(i<FLIP.length-2&&p>=FLIP[i+1][0])i++;const[a0,v0]=FLIP[i],[a1,v1]=FLIP[i+1];return v0+(v1-v0)*ease(clamp((p-a0)/Math.max(1e-6,a1-a0)))};
   let last='';const setSurf=s=>{V.setConfig({oak:false,oakBody:false,oakAcc:false,body:CREAM,accent:BORD,surface:s});last=s};
   setSurf('chess');V.cur.body.set(CREAM);V.cur.acc.set(BORD);
   const ground=V.scene.children.find(o=>o.material&&o.material.type==='ShadowMaterial');
-  const DUR=18000,HOLD=.17;let t0=0,raf=0;   // the whole story in 15 seconds, then the photo cover stays
+  const DUR=16700,HOLD=2200/DUR;let t0=0,raf=0;   // 2.2 s on the name, the first flip right after, then the photo cover stays
   const upd=raw=>{
     const p=raw<=HOLD?0:(raw-HOLD)/(1-HOLD);   // hold on the name first
     const a=flipAt(p);V.flipG.rotation.x=a;V.flipG.position.y=Math.abs(Math.sin(a))*34;V.flipAnim=null;V.flipA=a;
@@ -1432,5 +1437,170 @@ $('#menubtn').addEventListener('click',()=>{const o=$('#nav').classList.toggle('
 $('#checkout').addEventListener('click',()=>{$('#checkmsg').textContent='Draft site: checkout is not connected yet. Nothing was charged.'});
 renderCart();render();
 </script>
+<script>
+"use strict";
+/* ============ LANGUAGE: English source, Italian applied on top ============
+   The page is written in English. In Italian every visible text and label is swapped through IT below
+   (exact sentence → translation) or RULES (sentences built with names or prices). To change a translation,
+   edit the right-hand side. A sentence missing here simply stays in English. */
+(()=>{
+const COL={Cream:'Crema',Butter:'Burro',Rose:'Rosa',Terracotta:'Terracotta',Sage:'Salvia',Lake:'Lago',Bordeaux:'Bordeaux',Graphite:'Grafite','Play green':'Verde gioco',Oak:'Rovere',Brick:'Mattone'};
+const IT={
+// menu, cart, footer
+'Collection':'Collezione','About':'Chi siamo','Contact':'Contatti','Cart':'Carrello','Menu':'Menu','Close ✕':'Chiudi ✕',
+'Total':'Totale','Checkout':'Procedi all’ordine','Remove':'Rimuovi',
+'Draft site: checkout is not connected yet.':'Sito in anteprima: l’ordine online non è ancora attivo.',
+'Draft site: checkout is not connected yet. Nothing was charged.':'Sito in anteprima: l’ordine online non è ancora attivo. Non è stato addebitato nulla.',
+'Your cart is empty. One sheet, one table: start with':'Il carrello è vuoto. Un foglio, un tavolo: inizia da',
+'Added to cart':'Aggiunto al carrello','Chess board added to your table':'Scacchiera aggiunta al tuo tavolo','Cards added to your table':'Tavolo da carte aggiunto al tuo tavolo',
+'Studio':'Studio','Product page':'Scheda prodotto','Product 02':'Prodotto 02','Product 03':'Prodotto 03','In drawing':'In disegno',
+'Designed and made in Italy':'Disegnato e prodotto in Italia','© 2026 Grel Design':'© 2026 Grel Design',
+'Milano, Italy':'Milano, Italia',
+// cover
+'Flip it.':'Giralo.','The top lifts out and turns over. The reverse is a chessboard.':'Il piano si solleva e si capovolge. Sul retro, una scacchiera.',
+'Or cards.':'O le carte.','A green card table, cut into the design.':'Un tavolo da gioco verde, inciso nel disegno.',
+'Or just coffee.':'O solo un caffè.','Turn it back and it is a table again.':'Giralo di nuovo ed è di nuovo un tavolino.',
+'Ø 60 × H 40 · from':'Ø 60 × H 40 · da','One table.':'Un tavolo.','Two sides.':'Due lati.',
+'Skip →':'Salta →','Replay ↻':'Rivedi ↻',
+'Collection · 01':'Collezione · 01','One sheet.':'Un foglio.','Infinite balance.':'Equilibrio infinito.','One sheet. Infinite balance.':'Un foglio. Equilibrio infinito.',
+'Tool-free · Made in Italy · From':'Senza attrezzi · Made in Italy · Da',
+'Discover':'Scopri','Make it yours':'Fallo tuo','Make it yours.':'Fallo tuo.','Make yours':'Crea il tuo',
+// idea
+'The idea':'L’idea',
+'TuttoTondo started as a simple idea for our own home: a table reduced to its essential elements.':'TuttoTondo è nato come un’idea semplice per casa nostra: un tavolo ridotto ai suoi elementi essenziali.',
+'The name is Italian for':'Il nome viene dall’espressione','all round':'a tutto tondo','Tutto tondo.':'Rotondo, compiuto.',
+'It describes the shape, and the way the idea holds together from every side.':'Descrive la forma, e un’idea che regge da qualunque lato la si guardi.',
+'Designed by Greta →':'Disegnato da Greta →','Designed by Greta.':'Disegnato da Greta.',
+// sheet
+'The sheet':'Il foglio','One sheet':'Un foglio','Cut':'Taglio','Components':'Componenti','Scroll ↓':'Scorri ↓','PLATE A':'PIASTRA A','PLATE B':'PIASTRA B',
+'One sheet. Everything the table needs is drawn inside this rectangle.':'Un foglio. Tutto ciò che serve al tavolo è disegnato dentro questo rettangolo.',
+'One cut line. The curve that shapes each plate is the edge of the round top.':'Una sola linea di taglio. La curva che dà forma a ogni piastra è il bordo del piano rotondo.',
+'Two plates. One round top. Two small tabs. That is the whole table.':'Due piastre. Un piano rotondo. Due piccole linguette. È tutto il tavolo.',
+'The same parts, coloured. Assembled without a single screw.':'Le stesse parti, a colori. Montate senza una sola vite.',
+'It started with one sheet.':'Tutto è partito da un foglio.','One cut.':'Un taglio.','Zero waste.':'Zero scarti.',
+'The two base plates and the round top share one outline. The curve cut out of each plate is the edge of the tabletop.':'Le due piastre di base e il piano rotondo condividono un unico contorno. La curva ritagliata da ogni piastra è il bordo del piano.',
+'What one part gives up, the next one takes. The geometry is designed around the sheet, not the other way round.':'Quello che una parte lascia, l’altra lo prende. La geometria è disegnata attorno al foglio, non il contrario.',
+'Sheet':'Foglio','Waste':'Scarto',
+// configurator
+'Configurator':'Configuratore',
+'Pick a body, pick an accent, or choose oak for either. The body is the base. The accent is the top and the small details. The geometry never changes.':'Scegli un colore per la base e uno per gli accenti, oppure il rovere per uno dei due. La base sono le piastre. Gli accenti sono il piano e i piccoli dettagli. La geometria non cambia mai.',
+'Drag to turn':'Trascina per ruotare','Flip the top':'Capovolgi il piano',
+'Standard':'Standard','Custom RAL':'RAL su misura','Natural oak':'Rovere naturale','Body':'Base','Accent':'Accenti','Finish':'Finitura',
+'Choose two RAL colours and create a TuttoTondo made specifically for you. Made to order.':'Scegli due colori RAL e crea un TuttoTondo fatto apposta per te. Su ordinazione.',
+'Choose two RAL colours and create a TuttoTondo made specifically for you.':'Scegli due colori RAL e crea un TuttoTondo fatto apposta per te.',
+'RAL 01 · Body':'RAL 01 · Base','RAL 02 · Accent':'RAL 02 · Accenti',
+'Preview colours are approximate. Final finish is matched to the RAL reference.':'I colori dell’anteprima sono indicativi. La finitura finale corrisponde al riferimento RAL.',
+'The whole table in natural oak: plates, centre and round top. The grain stays visible. A separate material edition, not an eighth colour.':'Tutto il tavolo in rovere naturale: piastre, centro e piano. La venatura resta visibile. Un’edizione a sé, non un ottavo colore.',
+'Reverse side':'Retro del piano','Preview the reverse side':'Anteprima del retro','Plain':'Liscio','Chess':'Scacchi','Cards':'Carte','Chess board':'Scacchiera',
+'Standard Grel colour palette':'Palette colori Grel standard','Oak and a Grel colour':'Rovere e un colore Grel','Two RAL colours · made to order':'Due colori RAL · su ordinazione',
+'Add to cart':'Aggiungi al carrello','Your TuttoTondo':'Il tuo TuttoTondo','Interactive 3D view of TuttoTondo. Drag to turn.':'Vista 3D interattiva di TuttoTondo. Trascina per ruotare.',
+// chess
+'Optional':'Opzionale','Play with it.':'Giocaci.','Two more games.':'Altri due giochi.',
+'Flip the top and the reverse becomes a chessboard, or a card table in green. Cut into the design, not placed on top of it.':'Capovolgi il piano e il retro diventa una scacchiera, o un tavolo da carte verde. Inciso nel disegno, non appoggiato sopra.',
+'Turn the top':'Gira il piano','Add to my table':'Aggiungi al mio tavolo','The round top, standard side and game side':'Il piano rotondo, lato standard e lato gioco',
+// assembly
+'No screws.':'Niente viti.','Assembly':'Montaggio','Simple to assemble. Simple to understand.':'Semplice da montare. Semplice da capire.',
+'Simple to assemble.':'Semplice da montare.','Simple to understand.':'Semplice da capire.',
+'Two plates and a round top. Nothing to fix, nothing to tighten.':'Due piastre e un piano rotondo. Niente da fissare, niente da stringere.',
+'Five steps.':'Cinque passaggi.','Unpack':'Apri','Two plates, one round top.':'Due piastre, un piano rotondo.',
+'Slot':'Incastra','One plate drops onto the other. The slots meet halfway.':'Una piastra scende sull’altra. Le fessure si incontrano a metà.',
+'Assemble':'Monta','A cross. Nothing to fix, nothing to tighten.':'Una croce. Niente da fissare, niente da stringere.',
+'Add the top':'Aggiungi il piano','Lower the round top into the curves.':'Appoggia il piano rotondo nelle curve.',
+'Done':'Fatto','No tools. No screws.':'Niente attrezzi. Niente viti.','Play sequence ▶':'Avvia sequenza ▶','TuttoTondo assembled':'TuttoTondo montato',
+// italy
+'Designed and made in Italy.':'Disegnato e prodotto in Italia.',
+'Drawn in Milano. Produced locally in Italy, from the sheet to the finished table.':'Disegnato a Milano. Prodotto in Italia, dal foglio al tavolo finito.',
+'Italian flag':'Bandiera italiana',
+// product page
+'Grel Design · Collection 01':'Grel Design · Collezione 01',
+'A coffee table drawn around one sheet of wood. No screws. Two colours. Two sides.':'Un tavolino disegnato attorno a un solo foglio di legno. Niente viti. Due colori. Due lati.',
+'Order':'Ordina','The design':'Il progetto','Made in Italy':'Made in Italy','Specifications':'Scheda tecnica','On this page':'In questa pagina',
+'The top':'Il piano','Two sides. One table.':'Due lati. Un tavolo.',
+'The round top turns. Rotate it to change how the table sits in the room. Flip it, and the colour turns with it.':'Il piano rotondo gira. Ruotalo per cambiare come il tavolo sta nella stanza. Capovolgilo, e il colore cambia con lui.',
+'Rotate':'Ruota','Signature combinations':'Abbinamenti firmati','Grel Editions':'Grel Editions',
+'Four combinations we keep coming back to. Start here, or don’t. Pick one and it loads into the configurator.':'Quattro abbinamenti a cui torniamo sempre. Parti da qui, oppure no. Scegline uno e si carica nel configuratore.',
+'Made to order':'Su ordinazione','Your colours.':'I tuoi colori.','Choose your RAL':'Scegli il tuo RAL',
+'Material edition':'Edizione materica','Natural.':'Naturale.','The same geometry, in oak.':'La stessa geometria, in rovere.',
+'Plates, centre and round top: every part in natural oak, with the grain left visible. It is a material of its own, not an eighth colour.':'Piastre, centro e piano: ogni parte in rovere naturale, con la venatura a vista. È un materiale a sé, non un ottavo colore.',
+'TuttoTondo Natural':'TuttoTondo Natural','Configure Natural':'Configura Natural','TuttoTondo Natural, entirely in oak':'TuttoTondo Natural, interamente in rovere',
+'The facts.':'I dati.','Object':'Oggetto','TuttoTondo, coffee table':'TuttoTondo, tavolino','Size':'Misure','Ø 60 cm × 40 cm high':'Ø 60 cm × 40 cm di altezza',
+'Material':'Materiale','Oak (rovere)':'Rovere','Construction':'Costruzione','Two slotted plates and a round top. Tool-free, no screws.':'Due piastre a incastro e un piano rotondo. Senza attrezzi, senza viti.',
+'Colour':'Colore','Body + accent from seven standard colours (49 combinations). Custom: two RAL colours. Natural: oak.':'Base + accenti da sette colori standard (49 abbinamenti). Su misura: due colori RAL. Natural: rovere.',
+'Options':'Opzioni','Chess board or cards on the reverse of the top,':'Scacchiera o tavolo da carte sul retro del piano,','Made':'Produzione','Price':'Prezzo',
+'· Custom':'· Su misura','· Natural':'· Natural','Provisional launch pricing.':'Prezzi di lancio provvisori.','Change configuration':'Modifica configurazione',
+'TuttoTondo, your configuration':'TuttoTondo, la tua configurazione',
+'Detail of TuttoTondo in cream and brick: the round top resting in the slotted plates':'Dettaglio di TuttoTondo crema e mattone: il piano rotondo appoggiato sulle piastre a incastro',
+// about, contact
+'A small studio. One object at a time.':'Un piccolo studio. Un oggetto alla volta.',
+'Grel Design is an independent Italian design brand. Every object starts with a simple idea and one rule: use what you need, and nothing else.':'Grel Design è un marchio di design italiano indipendente. Ogni oggetto nasce da un’idea semplice e da una regola: usare quello che serve, e nient’altro.',
+'The first object is TuttoTondo, a coffee table drawn from a single sheet of wood. More will follow, each with the same point of view: honest materials, simple geometry, intelligent construction.':'Il primo oggetto è TuttoTondo, un tavolino ricavato da un solo foglio di legno. Ne seguiranno altri, con lo stesso sguardo: materiali onesti, geometria semplice, costruzione intelligente.',
+'The designer':'La designer','One sheet of wood.':'Un foglio di legno.','A few cuts.':'Pochi tagli.','Greta · Architect · Milano':'Greta · Architetta · Milano',
+'That idea became the first object of Grel Design.':'Quell’idea è diventata il primo oggetto di Grel Design.','See the table':'Guarda il tavolo',
+'Say hello.':'Scrivici.','Questions about TuttoTondo, custom RAL colours or the Natural edition? Write to us.':'Domande su TuttoTondo, sui colori RAL su misura o sull’edizione Natural? Scrivici.',
+'Name':'Nome','Email':'Email','Message':'Messaggio','Send':'Invia',
+'Thank you. This is a draft site, so the form is not connected yet and nothing was sent.':'Grazie. Questo è un sito in anteprima: il modulo non è ancora attivo e non è stato inviato nulla.',
+// labels for screen readers and images
+'Grel Design, home':'Grel Design, home','Language':'Lingua','Main':'Principale','Open cart':'Apri il carrello',
+'TuttoTondo: the top flips, chess, cards, coffee':'TuttoTondo: il piano si capovolge, scacchi, carte, caffè',
+'TuttoTondo coffee table in cream and bordeaux, in a sunlit living room above Lake Como':'Tavolino TuttoTondo crema e bordeaux, in un soggiorno soleggiato sopra il Lago di Como',
+'One sheet, one cut, components, table':'Un foglio, un taglio, componenti, tavolo',
+'One sheet cut into two plates, a round top and two small tabs':'Un foglio tagliato in due piastre, un piano rotondo e due piccole linguette',
+'The finished table: bordeaux plates and a cream top':'Il tavolo finito: piastre bordeaux e piano crema'
+};
+Object.assign(IT,COL);
+const col=s=>COL[s]||s;
+const RULES=[
+  [/^(Cream|Butter|Rose|Terracotta|Sage|Lake|Bordeaux|Graphite|Play green|Oak|Brick) (?:×|and) (Cream|Butter|Rose|Terracotta|Sage|Lake|Bordeaux|Graphite|Play green|Oak|Brick)$/,(m,a,b)=>`${col(a)} × ${col(b)}`],
+  [/^TuttoTondo (Cream|Butter|Rose|Terracotta|Sage|Lake|Bordeaux|Graphite|Oak) and (\w+)$/,(m,a,b)=>`TuttoTondo ${col(a)} e ${col(b)}`],
+  [/^TuttoTondo · (\w+) × (\w+)$/,(m,a,b)=>`TuttoTondo · ${col(a)} × ${col(b)}`],
+  [/^(.+?) × (.+?)( · Chess board| · Cards)? · Ø 60 × 40 cm$/,(m,a,b,s)=>`${col(a)} × ${col(b)}${s===' · Chess board'?' · scacchiera':s===' · Cards'?' · carte':''} · Ø 60 × 40 cm`],
+  [/^(Natural oak|Custom RAL)( · chess board| · cards)? · Ø 60 × 40 cm$/,(m,a,s)=>`${IT[a]}${s===' · chess board'?' · scacchiera':s===' · cards'?' · carte':''} · Ø 60 × 40 cm`],
+  [/^(.+?) × (.+?)( · chess board| · cards) · Ø 60 × 40 cm$/,(m,a,b,s)=>`${col(a)} × ${col(b)}${s===' · chess board'?' · scacchiera':' · carte'} · Ø 60 × 40 cm`],
+  [/^(.+) body · (.+) accent( · Chess board| · Cards)?$/,(m,a,b,s)=>`Base ${col(a).toLowerCase()} · accenti ${col(b).toLowerCase()}${s===' · Chess board'?' · scacchiera':s===' · Cards'?' · carte':''}`],
+  [/^Natural oak( · Chess board| · Cards)$/,(m,s)=>`Rovere naturale${s===' · Chess board'?' · scacchiera':' · carte'}`],
+  [/^TuttoTondo Custom$/,()=>'TuttoTondo su misura'],
+  [/^from (€.*)$/,(m,p)=>`da ${p}`],
+  [/^Start with (.+)$/,(m,c)=>`Inizia con ${IT[c]||c.toLowerCase()}`],
+  [/^Start with a colour$/,()=>'Inizia da un colore'],
+  [/^Configure yours →$/,()=>'Configura il tuo →'],
+  [/^from$/,()=>'da']
+];
+const tr=s=>{if(IT[s]!=null)return IT[s];for(const[re,f]of RULES){const m=s.match(re);if(m)return f(...m)}return null};
+
+const KEY='grel-lang',ATTRS=['aria-label','alt','title','placeholder'];
+let lang='en';
+try{const q=new URLSearchParams(location.search).get('lang');const sv=localStorage.getItem(KEY);
+  lang=(q==='it'||q==='en')?q:(sv==='it'||sv==='en')?sv:((navigator.language||'').toLowerCase().startsWith('it')?'it':'en')}catch(_){}
+const txt=new WeakMap(),att=new WeakMap();   // node → {en, it}: the English stays available, so switching back needs no reload
+const doText=n=>{
+  const p=n.parentElement;if(!p||p.closest('script,style,[data-noi18n]'))return;
+  let r=txt.get(n);const v=n.nodeValue;
+  if(!r||(v!==r.en&&v!==r.it)){r={en:v,it:null};const core=v.replace(/\s+/g,' ').trim();if(core){const t=tr(core);if(t!=null){const i0=v.search(/\S/),i1=v.search(/\s*$/);r.it=v.slice(0,i0)+t+v.slice(i1)}}txt.set(n,r)}
+  const want=lang==='it'&&r.it!=null?r.it:r.en;if(v!==want)n.nodeValue=want;
+};
+const doAttr=el=>{
+  let m=att.get(el);if(!m){m={};att.set(el,m)}
+  ATTRS.forEach(a=>{const v=el.getAttribute(a);if(v==null)return;let r=m[a];
+    if(!r||(v!==r.en&&v!==r.it)){const t=tr(v.trim());r=m[a]={en:v,it:t}}
+    const want=lang==='it'&&r.it!=null?r.it:r.en;if(v!==want)el.setAttribute(a,want)});
+};
+const walk=root=>{
+  if(root.nodeType===3){doText(root);return}if(root.nodeType!==1)return;
+  doAttr(root);root.querySelectorAll('['+ATTRS.join('],[')+']').forEach(doAttr);
+  const w=document.createTreeWalker(root,NodeFilter.SHOW_TEXT);let n;while(n=w.nextNode())doText(n);
+};
+let busy=false;
+const mo=new MutationObserver(list=>{if(busy)return;busy=true;
+  list.forEach(m=>{if(m.type==='characterData')doText(m.target);else if(m.type==='attributes')doAttr(m.target);else m.addedNodes.forEach(walk)});
+  mo.takeRecords();busy=false});
+const apply=()=>{busy=true;document.documentElement.lang=lang;walk(document.body);mo.takeRecords();busy=false;
+  document.querySelectorAll('[data-lang]').forEach(b=>{const on=b.dataset.lang===lang;b.classList.toggle('on',on);b.setAttribute('aria-pressed',on)})};
+window.setLang=l=>{lang=l;try{localStorage.setItem(KEY,l);const u=new URL(location.href);if(u.searchParams.has('lang')){u.searchParams.set('lang',l);history.replaceState(history.state,'',u)}}catch(_){}apply()};
+document.addEventListener('click',e=>{const b=e.target.closest('[data-lang]');if(b){e.preventDefault();setLang(b.dataset.lang)}});
+mo.observe(document.body,{subtree:true,childList:true,characterData:true,attributes:true,attributeFilter:ATTRS});
+apply();
+})();
+</script>
+
 
 </body></html>
